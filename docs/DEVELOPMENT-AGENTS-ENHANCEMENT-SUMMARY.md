@@ -8,7 +8,7 @@
 ## What Was Created
 
 ### 1. New Security Agent ✅
-**File:** [agents/10-security-agent.md](agents/10-security-agent.md)
+**File:** [agents/11-security-agent.md](agents/11-security-agent.md)
 
 **Purpose:** Final security gate before code commits
 
@@ -106,7 +106,7 @@
 6. If > 5 iterations total → Escalate to user
 7. Mark complete and commit
 
-#### Coding Agent (07-coding-agent.md)
+#### Coding Agent (08-coding-agent.md)
 **Enhancements:**
 - ✅ Added secure coding skill (mandatory)
 - ✅ Added secrets detection awareness
@@ -122,7 +122,7 @@
 - Secure error handling
 - No known vulnerabilities in dependencies
 
-#### Code Inspector Agent (08-code-inspector.md)
+#### Code Inspector Agent (09-code-inspector.md)
 **Enhancements:**
 - ✅ Added code review checklist skill (primary guide)
 - ✅ Added secure coding awareness
@@ -136,7 +136,7 @@
 - Performance considerations
 - Leaves deep security review to Security Agent
 
-#### QA Lead Agent (09-qa-lead.md)
+#### QA Lead Agent (10-qa-lead.md)
 **Enhancements:**
 - ✅ Added test case design skill
 - ✅ Added Playwright MCP for UI testing automation
@@ -471,7 +471,7 @@ skills/
 ## Files Created/Modified
 
 ### New Files Created
-1. `agents/10-security-agent.md`
+1. `agents/11-security-agent.md`
 2. `skills/secure-coding-skill.md`
 3. `skills/secrets-detection-skill.md`
 4. `skills/dependency-security-skill.md`
@@ -482,9 +482,9 @@ skills/
 
 ### Modified Files
 1. `agents/06-tech-lead.md` (enhanced)
-2. `agents/07-coding-agent.md` (enhanced)
-3. `agents/08-code-inspector.md` (enhanced)
-4. `agents/09-qa-lead.md` (enhanced)
+2. `agents/08-coding-agent.md` (enhanced)
+3. `agents/09-code-inspector.md` (enhanced)
+4. `agents/10-qa-lead.md` (enhanced)
 
 ---
 
