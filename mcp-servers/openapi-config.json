@@ -1,0 +1,49 @@
+{
+  "mcpServers": {
+    "openapi": {
+      "name": "OpenAPI Design & Validation",
+      "description": "Validate and inspect OpenAPI specs, endpoint contracts, request/response schemas, and API consistency",
+      "command": "npx",
+      "args": [
+        "-y",
+        "openapi-mcp-server"
+      ],
+      "capabilities": {
+        "spec_validation": "Validate OpenAPI document structure and completeness",
+        "contract_review": "Inspect endpoints, parameters, request/response schemas",
+        "consistency_checks": "Detect naming/format inconsistencies",
+        "error_modeling": "Review error response standards",
+        "documentation_support": "Support API documentation quality checks"
+      },
+      "when_to_use": [
+        "Breaking API requirements into user stories",
+        "Verifying API contracts before implementation",
+        "Aligning UX form flows with backend validation contracts",
+        "Reviewing endpoint naming, status codes, and error payload patterns"
+      ],
+      "example_queries": [
+        "Validate this OpenAPI spec and list critical issues",
+        "Which endpoints are missing standardized error responses?",
+        "Do request schemas align with declared required fields?",
+        "Identify endpoints likely to break pagination consistency"
+      ],
+      "agent_instructions": {
+        "activation": "Use when API stories, acceptance criteria, or contract quality need validation.",
+        "usage": "Run targeted checks on endpoint groups and convert findings into story tasks and acceptance criteria.",
+        "integration": "Reference findings in project-plan.md, dependencies.md, and user stories that involve API contracts."
+      }
+    }
+  },
+  "how_to_use": {
+    "for_agents": "Use this MCP to validate API quality and ensure planning/design outputs map to enforceable API contracts.",
+    "for_humans": "Install the package and wire into your MCP settings when API contract quality is part of your workflow.",
+    "setup_instructions": [
+      "Install Node.js 16+",
+      "Install server package via npm or use npx",
+      "Add this server in your MCP configuration",
+      "Provide OpenAPI documents/paths to the MCP tooling"
+    ]
+  },
+  "priority": "⭐⭐⭐ MEDIUM",
+  "tags": ["api", "openapi", "contract", "validation"]
+}

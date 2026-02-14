@@ -1,0 +1,114 @@
+{
+  "mcpServers": {
+    "azure": {
+      "name": "Azure Cloud Platform & Services",
+      "description": "Azure App Service, Key Vault, Application Insights, deployment patterns, and regional compliance for Sweden-based hosting",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      },
+      "repositories": [
+        "Azure/azure-sdk-for-python",
+        "Azure-Samples/app-service-python-configure-deployment",
+        "Azure/azure-cli"
+      ],
+      "capabilities": {
+        "app_service": "Azure App Service configuration, deployment, scaling",
+        "key_vault": "Secret management with Azure Key Vault integration",
+        "application_insights": "Monitoring, logging, performance tracking",
+        "deployment": "CI/CD with GitHub Actions to Azure",
+        "regional_compliance": "Sweden region configuration for GDPR",
+        "security": "HTTPS enforcement, managed identities, network security",
+        "storage": "Azure Blob Storage integration (if needed)",
+        "scaling": "Auto-scaling configuration and performance optimization",
+        "cost_optimization": "Pricing tiers and resource optimization",
+        "python_runtime": "Python 3.11 runtime configuration"
+      },
+      "when_to_use": [
+        "Configuring Azure App Service for Django deployment",
+        "Setting up Azure Key Vault for secrets management",
+        "Configuring Application Insights for monitoring",
+        "Implementing CI/CD pipeline with GitHub Actions to Azure",
+        "Ensuring Sweden region compliance for GDPR",
+        "Configuring HTTPS and TLS 1.3 enforcement",
+        "Setting up managed identities for secure service access",
+        "Optimizing Azure costs and performance",
+        "Troubleshooting Azure deployment issues",
+        "Configuring environment variables in Azure App Service",
+        "Setting up deployment slots (staging/production)",
+        "Configuring custom domains and SSL certificates"
+      ],
+      "example_queries": [
+        "How to deploy Django to Azure App Service with Python 3.11?",
+        "Best practices for Azure Key Vault integration in Python?",
+        "How to configure Application Insights for Django logging?",
+        "GitHub Actions workflow for Azure App Service deployment?",
+        "How to enforce HTTPS and TLS 1.3 on Azure App Service?",
+        "Azure App Service configuration for Sweden Central region?",
+        "How to use managed identities to access Azure Key Vault?",
+        "Setting up staging and production slots in Azure App Service?",
+        "Environment variable configuration in Azure App Service?",
+        "How to optimize Azure App Service for Django performance?"
+      ],
+      "deployment_patterns": [
+        "Blue-green deployment with staging slots",
+        "Zero-downtime deployment strategies",
+        "Database migration automation in CI/CD",
+        "Secrets management in deployment pipeline",
+        "Health checks and warmup configuration",
+        "Static file serving from Azure or CDN",
+        "PostgreSQL connection pooling from Azure",
+        "Logging pipeline to Application Insights"
+      ],
+      "security_focus": [
+        "Azure Key Vault for secret storage (never in code or environment variables)",
+        "Managed identities for service-to-service authentication",
+        "HTTPS-only enforcement with TLS 1.3 minimum",
+        "Network security (VNet integration if needed)",
+        "Access restrictions and IP whitelisting",
+        "Security headers configuration",
+        "Compliance with Swedish/EU data residency requirements",
+        "Audit logging for access and changes"
+      ],
+      "agent_instructions": {
+        "activation": "Use when configuring Azure infrastructure, deployment pipelines, or troubleshooting Azure-specific issues.",
+        "usage": "Reference Azure documentation for service configuration, security best practices, and deployment patterns.",
+        "integration": "Combine with Django MCP for comprehensive deployment strategy and GitHub MCP for CI/CD automation.",
+        "coding_agent": "Use when implementing Azure SDK integrations (Key Vault, Application Insights).",
+        "tech_lead": "Primary resource for infrastructure architecture, deployment strategy, cost planning.",
+        "security_agent": "Validate Azure security configurations (Key Vault, HTTPS, managed identities)."
+      }
+    }
+  },
+  "how_to_use": {
+    "for_agents": "Use this MCP to access Azure service documentation, deployment patterns, and cloud-specific best practices.",
+    "for_humans": "Reuses GitHub PAT for accessing Azure documentation repositories. For actual Azure deployments, use Azure CLI or service principal.",
+    "setup_instructions": [
+      "Ensure GITHUB_PERSONAL_ACCESS_TOKEN is configured (same as GitHub MCP)",
+      "For actual Azure operations, configure Azure CLI with `az login`",
+      "Set up service principal for CI/CD deployments",
+      "Configure Azure credentials in GitHub Secrets for Actions"
+    ],
+    "project_context": {
+      "hosting": "Azure App Service",
+      "region": "Sweden Central (GDPR compliance)",
+      "runtime": "Python 3.11",
+      "tier": "B2 or higher (2 cores, 3.5GB RAM)",
+      "framework": "Django",
+      "secrets": "Azure Key Vault (production) or secure environment variables",
+      "monitoring": "Application Insights",
+      "deployment": "GitHub Actions with staging/production slots"
+    }
+  },
+  "priority": "HIGH - Primary hosting platform for the project",
+  "agents_that_need_this": [
+    "Tech Lead (infrastructure and deployment architecture)",
+    "Coding Agent (Azure SDK integration)",
+    "Security Agent (Azure security configuration validation)"
+  ],
+  "related_user_story": "US-001: Infrastructure Setup & Environment Configuration"
+}

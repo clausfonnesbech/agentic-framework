@@ -1,0 +1,210 @@
+{
+  "mcpServers": {
+    "postgresql": {
+      "name": "PostgreSQL Database",
+      "description": "Access to PostgreSQL database features, query execution, schema inspection, and performance optimization",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "${POSTGRES_CONNECTION_STRING}"
+      ],
+      "capabilities": {
+        "queries": "Execute SQL queries and inspect results",
+        "schema": "Inspect database schema, tables, and relationships",
+        "performance": "Analyze query performance with EXPLAIN",
+        "indexes": "Create and manage database indexes",
+        "constraints": "Define foreign keys, unique constraints, checks",
+        "full_text_search": "Implement PostgreSQL full-text search",
+        "json": "Work with JSONB data types",
+        "arrays": "Utilize PostgreSQL array types",
+        "advanced_types": "Use custom types, enums, and domains"
+      },
+      "when_to_use": [
+        "Complex SQL query optimization",
+        "Advanced PostgreSQL features (JSONB, arrays, full-text)",
+        "Database performance analysis",
+        "Index strategy planning",
+        "Query plan analysis (EXPLAIN)",
+        "Migration script creation",
+        "Constraint design (foreign keys, unique, check)",
+        "Data integrity rules",
+        "PostgreSQL-specific functions and operators"
+      ],
+      "example_queries": [
+        "How do I create an index for full-text search on a text column?",
+        "What's the best way to store JSON data in PostgreSQL?",
+        "How to use JSONB for flexible document storage?",
+        "What indexes should I create for a users table with email and team_id?",
+        "How do I implement soft deletes with constraints?",
+        "What's the best practice for timestamp columns (created_at, updated_at)?",
+        "How to use PostgreSQL arrays for tags or categories?",
+        "How to optimize queries with JOIN operations?",
+        "What are the performance implications of LIKE vs full-text search?"
+      ],
+      "agent_instructions": {
+        "activation": "When researching database-specific features, query optimization, or advanced PostgreSQL capabilities beyond basic Supabase operations.",
+        "usage": "Query PostgreSQL patterns for advanced features, performance optimization, and database design best practices. Use for technical deep dives into database behavior.",
+        "integration": "Incorporate PostgreSQL findings into database design sections with specific SQL examples and performance considerations.",
+        "best_practices": [
+          "Always use parameterized queries (prevent SQL injection)",
+          "Add indexes strategically (query patterns, not all columns)",
+          "Use EXPLAIN ANALYZE to understand query performance",
+          "Prefer JSONB over JSON for better performance",
+          "Use constraints to enforce data integrity",
+          "Implement appropriate indexes for foreign keys",
+          "Consider partial indexes for conditional queries",
+          "Use connection pooling for production deployments"
+        ]
+      },
+      "configuration": {
+        "type": "database-connection",
+        "environment": "development (read-only recommended)",
+        "access_method": "MCP protocol via VS Code/Copilot",
+        "authentication": "PostgreSQL connection string",
+        "security_notes": [
+          "Use read-only database user for MCP queries",
+          "Limit schema access to necessary tables only",
+          "Never use superuser credentials",
+          "Connection string contains password - keep secure",
+          "Consider using connection pooler (PgBouncer) in production"
+        ]
+      },
+      "common_use_cases": {
+        "schema_design": {
+          "description": "Design optimal database schemas",
+          "examples": [
+            "Creating tables with appropriate data types",
+            "Defining relationships (1:1, 1:N, M:N)",
+            "Adding constraints (NOT NULL, UNIQUE, CHECK)",
+            "Setting up foreign keys with CASCADE rules",
+            "Designing audit trail columns (created_at, updated_at, deleted_at)"
+          ]
+        },
+        "indexing": {
+          "description": "Create indexes for query performance",
+          "examples": [
+            "B-tree indexes for equality and range queries",
+            "Composite indexes for multi-column queries",
+            "Partial indexes for filtered queries",
+            "Full-text search indexes (GIN)",
+            "JSONB indexes for nested data queries"
+          ]
+        },
+        "query_optimization": {
+          "description": "Optimize slow queries",
+          "examples": [
+            "Using EXPLAIN to analyze query plans",
+            "Identifying missing indexes",
+            "Rewriting queries for better performance",
+            "Using CTEs (Common Table Expressions) for clarity",
+            "Avoiding N+1 query problems"
+          ]
+        },
+        "advanced_features": {
+          "description": "Leverage PostgreSQL-specific capabilities",
+          "examples": [
+            "JSONB for flexible document storage",
+            "Arrays for multi-value columns",
+            "Full-text search with tsvector",
+            "Window functions for analytics",
+            "Generated columns (computed values)"
+          ]
+        }
+      },
+      "supabase_integration": {
+        "note": "Supabase IS PostgreSQL (hosted)",
+        "compatibility": "100% compatible - Supabase is Postgres 15+",
+        "advantages": [
+          "Use PostgreSQL patterns directly in Supabase",
+          "All PostgreSQL features available",
+          "Native Postgres extensions supported",
+          "Direct SQL access via Supabase SQL Editor"
+        ],
+        "connection": {
+          "method": "Use Supabase connection string",
+          "format": "postgresql://postgres:[password]@db.[project-ref].supabase.co:5432/postgres",
+          "pooler": "Supabase provides connection pooler (port 6543)",
+          "ssl": "SSL required for Supabase connections"
+        }
+      },
+      "performance_considerations": {
+        "indexes": [
+          "Each index adds overhead to writes",
+          "Composite indexes order matters (leftmost prefix rule)",
+          "Partial indexes reduce storage and improve specificity",
+          "Too many indexes hurt INSERT/UPDATE performance"
+        ],
+        "queries": [
+          "JOIN operations can be expensive without proper indexes",
+          "LIKE queries with leading wildcard can't use indexes",
+          "Use covering indexes to avoid table lookups",
+          "Limit result sets with pagination"
+        ],
+        "data_types": [
+          "Use smallest appropriate data type",
+          "TEXT vs VARCHAR: TEXT is usually preferred",
+          "TIMESTAMP vs TIMESTAMPTZ: Use TIMESTAMPTZ for timezone awareness",
+          "SERIAL vs UUID: UUIDs prevent auto-increment conflicts"
+        ]
+      },
+      "postgresql_features": {
+        "version": "PostgreSQL 15+ (Supabase default)",
+        "extensions": [
+          "pg_trgm - Fuzzy text matching",
+          "uuid-ossp - UUID generation",
+          "pgcrypto - Cryptographic functions",
+          "pg_stat_statements - Query statistics"
+        ],
+        "data_types": [
+          "INTEGER, BIGINT, NUMERIC",
+          "TEXT, VARCHAR, CHAR",
+          "TIMESTAMP, TIMESTAMPTZ, DATE, TIME",
+          "BOOLEAN",
+          "JSONB (preferred over JSON)",
+          "ARRAY (e.g., TEXT[])",
+          "UUID",
+          "ENUM (custom types)"
+        ]
+      }
+    }
+  },
+  "how_to_use": {
+    "for_agents": "When researching PostgreSQL-specific features, query optimization, or advanced database capabilities. Use this for technical database questions beyond basic Supabase operations.",
+    "for_humans": "This MCP provides PostgreSQL expertise for the Supabase database. Configure with a read-only connection string for safe exploration.",
+    "setup_instructions": [
+      "Get PostgreSQL connection string from Supabase project settings",
+      "Create a read-only database user (recommended for safety)",
+      "Set environment variable: POSTGRES_CONNECTION_STRING",
+      "Install MCP server: npm install -g @modelcontextprotocol/server-postgres",
+      "Test connection with simple query",
+      "Configure in VS Code/Copilot settings"
+    ],
+    "security_warnings": [
+      "⚠️ Use read-only database credentials",
+      "⚠️ Never commit connection strings to version control",
+      "⚠️ Connection string contains database password",
+      "⚠️ Limit database user permissions to SELECT only if possible",
+      "⚠️ Consider creating a dedicated MCP user with minimal privileges"
+    ]
+  },
+  "environment_variables": {
+    "POSTGRES_CONNECTION_STRING": {
+      "description": "PostgreSQL connection string",
+      "format": "postgresql://username:password@host:port/database",
+      "example": "postgresql://postgres:password@db.project.supabase.co:5432/postgres",
+      "required": true,
+      "current_value": "Set in .env file",
+      "security": "SENSITIVE - Contains database password",
+      "note": "Use read-only user credentials for safety"
+    }
+  },
+  "priority": "⭐⭐⭐⭐ HIGH",
+  "tags": ["database", "postgresql", "sql", "performance", "optimization"],
+  "documentation": [
+    "https://www.postgresql.org/docs/",
+    "https://supabase.com/docs/guides/database",
+    "https://www.postgresql.org/docs/current/indexes.html",
+    "https://www.postgresql.org/docs/current/performance-tips.html"
+  ]
+}

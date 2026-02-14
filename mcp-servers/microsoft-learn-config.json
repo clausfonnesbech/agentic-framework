@@ -1,0 +1,48 @@
+{
+  "mcpServers": {
+    "microsoft-learn": {
+      "name": "Microsoft Learn",
+      "description": "Access to Microsoft Learn documentation, tutorials, and technical resources",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-microsoft-learn"
+      ],
+      "capabilities": {
+        "search": "Search Microsoft Learn content",
+        "documentation": "Access documentation articles",
+        "tutorials": "Find learning paths and tutorials",
+        "api_references": "Look up API documentation"
+      },
+      "when_to_use": [
+        "Project involves Microsoft technologies (Azure, M365, Power Platform, .NET)",
+        "Need to understand Microsoft service capabilities",
+        "Looking for implementation patterns and best practices",
+        "Checking technical feasibility of Microsoft solutions",
+        "Finding code examples or tutorials"
+      ],
+      "example_queries": [
+        "How to authenticate with Azure Active Directory",
+        "Power Automate capabilities and limitations",
+        "Best practices for Azure Functions",
+        "Microsoft Graph API for accessing user data",
+        "SharePoint Online integration patterns"
+      ],
+      "agent_instructions": {
+        "activation": "When a user's request mentions Microsoft technologies or when researching solutions that might benefit from Microsoft services, activate this MCP server.",
+        "usage": "Use natural language queries to search for relevant documentation. Present findings as part of your research, not as raw search results.",
+        "integration": "Incorporate Microsoft Learn findings into your proposal under 'Technical Considerations' section with proper attribution."
+      }
+    }
+  },
+  "how_to_use": {
+    "for_agents": "When your process includes researching Microsoft technologies, refer to this configuration to understand what's available via the Microsoft Learn MCP server. Use it to inform your proposals with accurate, official information.",
+    "for_humans": "This configuration defines how agents can access Microsoft Learn. To actually use the MCP server, ensure you have Node.js installed and the MCP server package is available.",
+    "setup_instructions": [
+      "Ensure Node.js is installed on your system",
+      "The MCP server will be automatically installed via npx when first used",
+      "No API keys are required for Microsoft Learn MCP",
+      "Agent will automatically reference this configuration when needed"
+    ]
+  }
+}

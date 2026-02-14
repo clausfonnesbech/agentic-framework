@@ -1,0 +1,276 @@
+{
+  "mcpServers": {
+    "supabase": {
+      "name": "Supabase (Hosted MCP Service)",
+      "description": "Direct access to Supabase platform via official hosted MCP service. Provides database, authentication, storage, realtime, and Edge Functions capabilities.",
+      "type": "http",
+      "url": "https://mcp.supabase.com/mcp",
+      "authentication": "oauth",
+      "capabilities": {
+        "account": "List and manage Supabase projects and organizations",
+        "docs": "Search Supabase documentation for up-to-date information",
+        "database": "List tables, execute SQL, manage migrations and extensions",
+        "debugging": "Get logs and advisory notices for projects",
+        "development": "Get project URLs, API keys, and generate TypeScript types",
+        "functions": "List, retrieve, and deploy Edge Functions",
+        "storage": "Manage storage buckets and configuration",
+        "branching": "Create and manage development branches (paid plans)"
+      },
+      "when_to_use": [
+        "Database schema design and table management",
+        "Row Level Security (RLS) policy implementation",
+        "Authentication setup (email, OAuth, magic links, JWT)",
+        "File storage bucket configuration",
+        "Real-time subscription patterns",
+        "Edge Function deployment",
+        "Query optimization and performance analysis",
+        "Migration management and deployment",
+        "Supabase documentation search",
+        "TypeScript type generation from database schema"
+      ],
+      "example_queries": [
+        "How do I create a table with Row Level Security in Supabase?",
+        "What are the best practices for Supabase Auth with OAuth providers?",
+        "How to configure storage buckets with proper access policies?",
+        "What are the Supabase free tier limitations?",
+        "How do I set up real-time subscriptions for a chat application?",
+        "How to implement role-based access control with RLS policies?",
+        "How to deploy and manage Supabase Edge Functions?",
+        "What PostgreSQL extensions are available in Supabase?"
+      ],
+      "agent_instructions": {
+        "activation": "When researching Supabase features, database design, authentication, storage, or real-time capabilities.",
+        "usage": "Query Supabase MCP for official documentation, implementation patterns, and best practices. Use for schema design, auth strategies, and service configuration.",
+        "integration": "Incorporate findings into technical specifications with specific Supabase implementation details, noting any tier limitations or constraints.",
+        "best_practices": [
+          "Always check free tier vs. paid tier limits",
+          "Verify RLS policies cover all security requirements",
+          "Consider connection pooling for serverless environments",
+          "Use read-only mode for production safety",
+          "Scope MCP to specific project when possible"
+        ]
+      },
+      "configuration": {
+        "type": "http",
+        "transport": "https",
+        "authentication": "oauth_2.1",
+        "hosted_by": "Supabase",
+        "no_installation_required": true,
+        "note": "Official Supabase hosted MCP service. OAuth authentication happens automatically during MCP client setup."
+      },
+      "url_parameters": {
+        "project_ref": {
+          "description": "Scope MCP to a specific Supabase project (RECOMMENDED)",
+          "format": "?project_ref=<project-id>",
+          "location": "Supabase Dashboard → Settings → General → Project ID",
+          "required": false,
+          "example": "https://mcp.supabase.com/mcp?project_ref=abcdefghijk",
+          "security_benefit": "Limits MCP access to one project instead of all projects in your organization",
+          "note": "Account-level tools (list_projects, list_organizations) will be unavailable when scoped"
+        },
+        "read_only": {
+          "description": "Restrict MCP to read-only operations (RECOMMENDED for production)",
+          "format": "?read_only=true",
+          "required": false,
+          "example": "https://mcp.supabase.com/mcp?read_only=true",
+          "security_benefit": "Prevents write operations, SQL executes as read-only Postgres user",
+          "disabled_tools": ["apply_migration", "create_project", "pause_project", "restore_project", "deploy_edge_function", "create_branch", "delete_branch", "merge_branch", "reset_branch", "rebase_branch", "update_storage_config"]
+        },
+        "features": {
+          "description": "Enable specific tool groups only",
+          "format": "?features=database,docs,debugging",
+          "available_groups": ["account", "docs", "database", "debugging", "development", "functions", "storage", "branching"],
+          "default_groups": ["account", "database", "debugging", "development", "docs", "functions", "branching"],
+          "required": false,
+          "example": "https://mcp.supabase.com/mcp?features=database,docs",
+          "note": "Reduce attack surface by enabling only needed tool groups"
+        },
+        "recommended_url": {
+          "description": "Recommended secure configuration for development",
+          "full_url": "https://mcp.supabase.com/mcp?project_ref=<your-project-id>&read_only=true&features=database,docs,debugging,development",
+          "rationale": "Project-scoped, read-only, with essential tool groups for safe development"
+        }
+      },
+      "common_use_cases": {
+        "database_schema": {
+          "description": "Design and manage database tables and relationships",
+          "tools": ["list_tables", "execute_sql", "apply_migration"],
+          "example": "Research table structure for multi-tenant application with RLS"
+        },
+        "authentication": {
+          "description": "Configure auth providers and policies",
+          "tools": ["search_docs", "get_project", "execute_sql"],
+          "example": "Implement OAuth with Google and GitHub providers"
+        },
+        "storage": {
+          "description": "Manage file uploads and storage buckets",
+          "tools": ["list_storage_buckets", "get_storage_config", "execute_sql"],
+          "example": "Configure storage buckets with RLS for team file isolation"
+        },
+        "edge_functions": {
+          "description": "Deploy serverless functions",
+          "tools": ["list_edge_functions", "get_edge_function", "deploy_edge_function"],
+          "example": "Deploy Edge Function for webhook processing"
+        },
+        "realtime": {
+          "description": "Set up real-time subscriptions",
+          "tools": ["search_docs", "execute_sql"],
+          "example": "Configure real-time channels for chat application"
+        },
+        "documentation_search": {
+          "description": "Search official Supabase docs",
+          "tools": ["search_docs"],
+          "example": "Find best practices for connection pooling"
+        },
+        "type_generation": {
+          "description": "Generate TypeScript types from schema",
+          "tools": ["generate_typescript_types"],
+          "example": "Create type-safe client code for frontend"
+        }
+      },
+      "tier_comparison": {
+        "free_tier": {
+          "database": "500 MB storage",
+          "bandwidth": "2 GB per month",
+          "storage": "1 GB",
+          "auth_users": "50,000 monthly active users",
+          "realtime": "200 concurrent connections",
+          "edge_functions": "500,000 invocations per month",
+          "note": "Projects pause after 1 week of inactivity"
+        },
+        "pro_tier": {
+          "database": "8 GB storage (expandable)",
+          "bandwidth": "50 GB per month",
+          "storage": "100 GB",
+          "auth_users": "100,000 monthly active users",
+          "realtime": "500 concurrent connections",
+          "edge_functions": "2 million invocations per month",
+          "additional": "Point-in-time recovery, branching, SOC2 compliance",
+          "cost": "$25/month per project"
+        }
+      },
+      "security_considerations": {
+        "prompt_injection_risk": "LLMs may follow malicious instructions in user content. Always review tool calls before execution.",
+        "oauth_permissions": "MCP authenticates with your developer permissions. Never share MCP access with end users.",
+        "recommendations": [
+          "Use read-only mode whenever possible",
+          "Scope to specific development project, not production",
+          "Enable manual approval for all tool calls in your MCP client",
+          "Use development branches for testing (paid feature)",
+          "Limit feature groups to only what's needed",
+          "Never connect MCP to production databases with real user data"
+        ]
+      },
+      "supabase_integration": {
+        "supported_languages": {
+          "javascript": "@supabase/supabase-js",
+          "python": "supabase-py",
+          "dart": "supabase-flutter",
+          "swift": "supabase-swift",
+          "kotlin": "supabase-kt"
+        },
+        "postgresql_version": "PostgreSQL 15+",
+        "available_extensions": [
+          "pg_trgm (text search)",
+          "uuid-ossp (UUID generation)",
+          "pgcrypto (encryption)",
+          "postgis (geospatial)",
+          "pgjwt (JWT tokens)",
+          "pg_stat_statements (query stats)",
+          "pg_cron (scheduled jobs - admin only)"
+        ],
+        "realtime_protocol": "WebSocket-based, uses PostgreSQL LISTEN/NOTIFY",
+        "auth_methods": ["Email/Password", "Magic Links", "OAuth (Google, GitHub, Azure, etc.)", "Phone/SMS", "SAML SSO (Enterprise)"],
+        "storage_features": ["Resumable uploads", "Image transformations", "CDN distribution", "RLS policies"]
+      }
+    }
+  },
+  "how_to_use": {
+    "for_agents": "Activate when researching Supabase capabilities, database design, authentication strategies, storage patterns, or realtime features. Query for official documentation and implementation patterns.",
+    "for_humans": "This configuration connects AI agents to the official Supabase hosted MCP service. Agents can search docs, query database schemas, understand RLS policies, and research auth/storage configurations.",
+    "setup_instructions": [
+      "1. Configure your MCP client with URL: https://mcp.supabase.com/mcp",
+      "2. RECOMMENDED: Add URL parameters for security:",
+      "   - ?project_ref=<your-project-id> (scope to one project)",
+      "   - &read_only=true (prevent write operations)",
+      "   - &features=database,docs,debugging (limit tool groups)",
+      "3. Your MCP client will prompt for Supabase OAuth login during setup",
+      "4. Choose the organization containing the project you want to work with",
+      "5. No npm installation or environment variables needed!",
+      "6. Test by asking: 'What authentication methods does Supabase support?'"
+    ],
+    "vscode_configuration": {
+      "description": "Add this to VS Code settings.json for GitHub Copilot",
+      "settings_path": "Preferences: Open User Settings (JSON)",
+      "config": {
+        "github.copilot.chat.experimental.mcpServers": {
+          "supabase": {
+            "type": "http",
+            "url": "https://mcp.supabase.com/mcp?project_ref=<your-project-id>&read_only=true&features=database,docs,debugging,development"
+          }
+        }
+      },
+      "note": "Replace <your-project-id> with your actual Supabase project ID"
+    }
+  },
+  "tools_available": {
+    "account_tools": [
+      "list_projects",
+      "get_project",
+      "create_project",
+      "pause_project",
+      "restore_project",
+      "list_organizations",
+      "get_organization",
+      "get_cost",
+      "confirm_cost"
+    ],
+    "documentation_tools": [
+      "search_docs"
+    ],
+    "database_tools": [
+      "list_tables",
+      "list_extensions",
+      "list_migrations",
+      "apply_migration",
+      "execute_sql"
+    ],
+    "debugging_tools": [
+      "get_logs",
+      "get_advisors"
+    ],
+    "development_tools": [
+      "get_project_url",
+      "get_publishable_keys",
+      "generate_typescript_types"
+    ],
+    "edge_function_tools": [
+      "list_edge_functions",
+      "get_edge_function",
+      "deploy_edge_function"
+    ],
+    "storage_tools": [
+      "list_storage_buckets",
+      "get_storage_config",
+      "update_storage_config"
+    ],
+    "branching_tools": [
+      "create_branch",
+      "list_branches",
+      "delete_branch",
+      "merge_branch",
+      "reset_branch",
+      "rebase_branch"
+    ]
+  },
+  "priority": "⭐⭐⭐⭐⭐ CRITICAL",
+  "tags": ["database", "authentication", "storage", "realtime", "supabase", "postgresql", "hosted-service", "http-mcp"],
+  "documentation": [
+    "https://supabase.com/docs/guides/getting-started/mcp",
+    "https://supabase.com/mcp",
+    "https://github.com/supabase-community/supabase-mcp",
+    "https://modelcontextprotocol.io/introduction"
+  ],
+  "last_updated": "2026-02-12",
+  "version": "1.0-corrected"
+}

@@ -1,0 +1,201 @@
+{
+  "mcpServers": {
+    "semgrep": {
+      "name": "Semgrep Static Security Analysis",
+      "description": "Automated security scanning for Python/Django code using Semgrep rules for OWASP Top 10, CVE detection, and secure coding patterns",
+      "command": "semgrep",
+      "args": [
+        "scan",
+        "--config=auto",
+        "--json"
+      ],
+      "alternative_tool": {
+        "name": "Bandit",
+        "command": "bandit",
+        "args": ["-r", ".", "-f", "json"],
+        "description": "Python-specific security linter, lighter weight than Semgrep"
+      },
+      "capabilities": {
+        "vulnerability_detection": "Detect SQL injection, XSS, command injection, path traversal",
+        "owasp_coverage": "OWASP Top 10 vulnerability patterns",
+        "secrets_scanning": "Detect hardcoded credentials, API keys, tokens",
+        "insecure_crypto": "Weak encryption, hardcoded keys, insecure random",
+        "auth_issues": "Authentication bypass, weak password policies",
+        "injection_flaws": "SQL, NoSQL, command, LDAP injection patterns",
+        "dependency_analysis": "Known vulnerable dependencies (when using --supply-chain)",
+        "custom_rules": "Project-specific security rules",
+        "django_specific": "Django-specific vulnerability patterns",
+        "python_patterns": "Python security best practices"
+      },
+      "when_to_use": [
+        "Security Agent reviewing code before commit",
+        "Pre-commit hook for automated security checks",
+        "CI/CD pipeline security gate",
+        "Code Inspector performing security-aware reviews",
+        "Identifying exposed secrets in codebase",
+        "Detecting SQL injection vulnerabilities",
+        "Finding XSS vulnerabilities in templates",
+        "Checking for insecure deserialization",
+        "Validating input sanitization",
+        "Detecting weak cryptography usage"
+      ],
+      "example_queries": [
+        "Scan for SQL injection vulnerabilities in Django ORM queries",
+        "Check for hardcoded secrets or API keys",
+        "Find XSS vulnerabilities in Django templates",
+        "Detect insecure random number generation",
+        "Check for weak password hashing",
+        "Find command injection vulnerabilities",
+        "Scan for path traversal in file operations",
+        "Detect insecure deserialization",
+        "Check for CSRF token usage in forms",
+        "Find authentication bypass patterns"
+      ],
+      "rule_categories": [
+        "security/django-security",
+        "security/sql-injection",
+        "security/xss",
+        "security/command-injection",
+        "security/path-traversal",
+        "security/weak-crypto",
+        "security/secrets",
+        "security/authentication",
+        "security/authorization",
+        "security/insecure-deserialization"
+      ],
+      "usage_patterns": {
+        "full_scan": {
+          "command": "semgrep scan --config=auto .",
+          "when": "Complete security review before major release"
+        },
+        "targeted_scan": {
+          "command": "semgrep scan --config=p/django path/to/code",
+          "when": "Django-specific security check"
+        },
+        "secrets_only": {
+          "command": "semgrep scan --config=p/secrets .",
+          "when": "Check for exposed credentials"
+        },
+        "owasp_top_10": {
+          "command": "semgrep scan --config=p/owasp-top-ten .",
+          "when": "Industry-standard vulnerability check"
+        },
+        "ci_pipeline": {
+          "command": "semgrep ci",
+          "when": "Run in CI/CD with Semgrep Cloud integration"
+        }
+      },
+      "severity_thresholds": {
+        "ERROR": "Critical vulnerabilities that MUST be fixed (SQL injection, auth bypass)",
+        "WARNING": "High-risk issues that SHOULD be fixed (weak crypto, XSS)",
+        "INFO": "Medium-risk patterns to review (deprecated functions)",
+        "NOTE": "Low-risk suggestions for improvement"
+      },
+      "agent_instructions": {
+        "security_agent": {
+          "activation": "Run Semgrep scan as first step in security review process.",
+          "usage": "Execute targeted scans based on code type (Django, Python, secrets). Parse JSON output for automated blocking.",
+          "blocking_criteria": "ERROR severity findings MUST block commit. WARNING severity requires review and justification.",
+          "integration": "Combine with secrets-detection-skill.md patterns and dependency-security-skill.md for comprehensive coverage."
+        },
+        "coding_agent": {
+          "activation": "Run Semgrep during self-review before marking story complete.",
+          "usage": "Quick scan with --config=p/security-audit for basic security check.",
+          "response": "Fix all ERROR findings. Document WARNING findings with rationale if false positive."
+        },
+        "tech_lead": {
+          "activation": "Configure Semgrep rules for project standards.",
+          "usage": "Review scan results for systemic issues requiring pattern changes or training.",
+          "integration": "Add Semgrep to GitHub Actions for automated security gates."
+        }
+      },
+      "ci_cd_integration": {
+        "github_actions": {
+          "workflow": ".github/workflows/security-scan.yml",
+          "trigger": "on push, pull_request to main",
+          "steps": [
+            "Checkout code",
+            "Setup Semgrep",
+            "Run semgrep ci",
+            "Upload results to GitHub Security tab",
+            "Block merge if ERROR findings exist"
+          ]
+        },
+        "pre_commit_hook": {
+          "file": ".git/hooks/pre-commit",
+          "command": "semgrep scan --config=auto --error",
+          "behavior": "Block commit if vulnerabilities found"
+        }
+      }
+    }
+  },
+  "installation": {
+    "method_1_pip": {
+      "command": "pip install semgrep",
+      "when": "For local development and agent usage"
+    },
+    "method_2_homebrew": {
+      "command": "brew install semgrep",
+      "when": "macOS local installation"
+    },
+    "method_3_docker": {
+      "command": "docker pull returntocorp/semgrep",
+      "when": "Isolated execution or CI/CD"
+    },
+    "verification": {
+      "command": "semgrep --version",
+      "expected": "1.x.x or higher"
+    }
+  },
+  "alternative_bandit_setup": {
+    "description": "Lighter-weight Python-specific security scanner as alternative to Semgrep",
+    "installation": "pip install bandit",
+    "command": "bandit -r . -f json -o security-report.json",
+    "when_to_use": "Faster scans for Python-only projects, less comprehensive than Semgrep",
+    "agents_note": "Bandit is simpler but Semgrep has better Django and secrets detection"
+  },
+  "how_to_use": {
+    "for_agents": "Execute Semgrep commands to perform automated security scanning. Parse JSON output to identify vulnerabilities.",
+    "for_humans": "Install Semgrep locally and configure pre-commit hooks or CI/CD integration for automated security gates.",
+    "setup_instructions": [
+      "Install Semgrep: pip install semgrep",
+      "Verify installation: semgrep --version",
+      "Run initial scan: semgrep scan --config=auto .",
+      "Review findings in JSON format: semgrep scan --config=auto --json",
+      "Configure CI/CD: Add semgrep ci to GitHub Actions",
+      "Set up pre-commit hook for local enforcement"
+    ],
+    "project_context": {
+      "languages": ["Python", "Django"],
+      "focus_areas": [
+        "SQL injection (Django ORM)",
+        "XSS (Django templates)",
+        "Secrets detection (API keys, tokens)",
+        "Authentication/authorization issues",
+        "CSRF protection",
+        "Insecure file operations"
+      ],
+      "compliance": "GDPR - focus on data protection vulnerabilities"
+    }
+  },
+  "priority": "HIGH - Automates Security Agent's scanning capabilities",
+  "agents_that_need_this": [
+    "Security Agent (primary user - automated vulnerability scanning)",
+    "Coding Agent (self-review security check)",
+    "Tech Lead (CI/CD configuration and security gate management)"
+  ],
+  "benefits": [
+    "Automated detection of OWASP Top 10 vulnerabilities",
+    "Catches issues that manual review might miss",
+    "Consistent security standards across all code",
+    "Fast execution (seconds for typical project)",
+    "Django-specific security rules",
+    "Secrets detection without regex maintenance",
+    "Reduces Security Agent's manual review burden"
+  ],
+  "related_skills": [
+    "skills/secure-coding-skill.md",
+    "skills/secrets-detection-skill.md",
+    "skills/dependency-security-skill.md"
+  ]
+}

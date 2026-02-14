@@ -1,0 +1,210 @@
+{
+  "mcpServers": {
+    "python-docs": {
+      "name": "Python & FastAPI/Django Documentation",
+      "description": "Access to Python, FastAPI, and Django documentation, patterns, and best practices",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      },
+      "repositories": [
+        "tiangolo/fastapi",
+        "django/django",
+        "supabase-community/supabase-py"
+      ],
+      "capabilities": {
+        "framework_docs": "Access FastAPI and Django documentation",
+        "integration_patterns": "Python integration with Supabase",
+        "code_examples": "Real-world implementation examples",
+        "best_practices": "Python web development patterns",
+        "api_design": "RESTful API patterns in Python",
+        "authentication": "Auth middleware implementations",
+        "async_patterns": "Async/await patterns (FastAPI)",
+        "orm_patterns": "Django ORM and Supabase client patterns"
+      },
+      "when_to_use": [
+        "Researching Python web framework choice (FastAPI vs Django)",
+        "Implementation patterns for REST APIs",
+        "Authentication middleware design",
+        "Database integration with Supabase",
+        "WebSocket/real-time implementation",
+        "File upload handling",
+        "Background task processing",
+        "Testing patterns (pytest, unittest)",
+        "Deployment considerations"
+      ],
+      "example_queries": [
+        "What are the key differences between FastAPI and Django for this project?",
+        "How to implement JWT authentication middleware in FastAPI?",
+        "Best practices for file uploads in Python web frameworks?",
+        "How to integrate Supabase with FastAPI?",
+        "WebSocket implementation patterns in FastAPI?",
+        "Django vs FastAPI for CMS features?",
+        "How to handle background tasks in FastAPI?",
+        "Best practices for error handling in Python APIs?"
+      ],
+      "agent_instructions": {
+        "activation": "When researching Python web framework capabilities, implementation patterns, or framework-specific features.",
+        "usage": "Query Python documentation for framework comparison, implementation patterns, and integration strategies with Supabase and React frontends.",
+        "integration": "Incorporate framework findings into technical decisions and implementation plans with specific code patterns and tradeoffs.",
+        "best_practices": [
+          "Compare FastAPI vs Django based on project requirements",
+          "Consider async support (FastAPI native, Django Channels)",
+          "Evaluate admin interface needs (Django built-in, FastAPI custom)",
+          "Check Supabase integration patterns for chosen framework",
+          "Consider team Python experience level",
+          "Evaluate documentation quality and community support"
+        ]
+      },
+      "configuration": {
+        "type": "documentation-access",
+        "environment": "all",
+        "access_method": "GitHub MCP server",
+        "authentication": "GitHub Personal Access Token (public repos)",
+        "note": "Uses GitHub MCP to access FastAPI/Django repositories"
+      },
+      "framework_comparison": {
+        "fastapi": {
+          "strengths": [
+            "Modern async/await support",
+            "Automatic API documentation (OpenAPI/Swagger)",
+            "High performance (ASGI)",
+            "Type hints and Pydantic validation",
+            "Native WebSocket support"
+          ],
+          "weaknesses": [
+            "No built-in admin interface",
+            "Smaller ecosystem than Django",
+            "More assembly required",
+            "Steeper learning curve for async patterns"
+          ],
+          "best_for": [
+            "API-first applications",
+            "Real-time features (WebSockets)",
+            "High-performance requirements",
+            "Modern Python patterns"
+          ]
+        },
+        "django": {
+          "strengths": [
+            "Batteries-included (ORM, admin, auth)",
+            "Mature ecosystem and documentation",
+            "Built-in admin interface",
+            "Django REST Framework for APIs",
+            "Large community support"
+          ],
+          "weaknesses": [
+            "Synchronous by default (requires Channels for async)",
+            "Heavier than FastAPI",
+            "More opinionated architecture",
+            "Slower for pure API workloads"
+          ],
+          "best_for": [
+            "Full-stack applications",
+            "CMS requirements",
+            "Admin interface needs",
+            "Traditional web applications"
+          ]
+        }
+      },
+      "supabase_integration": {
+        "library": "supabase-py",
+        "installation": "pip install supabase",
+        "patterns": {
+          "fastapi": "Dependency injection for Supabase client",
+          "django": "Custom authentication backend or middleware"
+        },
+        "considerations": [
+          "Supabase Auth vs Django built-in auth",
+          "Row Level Security policies vs Django permissions",
+          "Real-time subscriptions require WebSocket support",
+          "Storage integration patterns"
+        ]
+      },
+      "deployment_considerations": {
+        "azure": {
+          "service": "Azure App Service (Linux)",
+          "python_version": "3.11 or 3.12",
+          "asgi_server": "uvicorn (FastAPI) or gunicorn (Django)",
+          "startup_command_fastapi": "uvicorn main:app --host 0.0.0.0 --port 8000",
+          "startup_command_django": "gunicorn myproject.wsgi:application --bind 0.0.0.0:8000"
+        },
+        "docker": {
+          "base_image": "python:3.11-slim",
+          "considerations": [
+            "Multi-stage builds for smaller images",
+            "Virtual environment inside container",
+            "Health check endpoints"
+          ]
+        }
+      },
+      "authentication_patterns": {
+        "jwt_middleware": "Validate Supabase JWT tokens in middleware",
+        "dependency_injection": "Get current user via FastAPI Depends",
+        "role_based_access": "Check user roles from JWT claims",
+        "rls_integration": "Pass JWT to Supabase for Row Level Security"
+      },
+      "recommended_structure": {
+        "fastapi": [
+          "app/",
+          "├── main.py",
+          "├── api/",
+          "│   ├── v1/",
+          "│   │   ├── endpoints/",
+          "│   │   └── deps.py",
+          "├── core/",
+          "│   ├── config.py",
+          "│   └── security.py",
+          "├── db/",
+          "│   └── supabase.py",
+          "└── models/",
+          "    └── schemas.py"
+        ],
+        "django": [
+          "project/",
+          "├── manage.py",
+          "├── project/",
+          "│   ├── settings.py",
+          "│   ├── urls.py",
+          "│   └── wsgi.py",
+          "└── apps/",
+          "    ├── teams/",
+          "    ├── documents/",
+          "    └── cms/"
+        ]
+      }
+    }
+  },
+  "how_to_use": {
+    "for_agents": "When researching Python web framework capabilities, implementation patterns, or comparing FastAPI vs Django. Use this to access official documentation and real-world examples.",
+    "for_humans": "This configuration enables access to Python web framework documentation via GitHub MCP. Requires GitHub Personal Access Token for API access.",
+    "setup_instructions": [
+      "Create GitHub Personal Access Token at github.com/settings/tokens",
+      "Set environment variable: GITHUB_PERSONAL_ACCESS_TOKEN",
+      "Install GitHub MCP: npm install -g @modelcontextprotocol/server-github",
+      "Configure in VS Code/Copilot settings",
+      "Test by querying FastAPI or Django documentation"
+    ]
+  },
+  "environment_variables": {
+    "GITHUB_PERSONAL_ACCESS_TOKEN": {
+      "description": "GitHub Personal Access Token for API access",
+      "scopes": ["public_repo (read-only)"],
+      "required": true,
+      "current_value": "Set in .env file",
+      "note": "Create at github.com/settings/tokens"
+    }
+  },
+  "priority": "⭐⭐⭐ MEDIUM",
+  "tags": ["python", "fastapi", "django", "web-framework", "backend"],
+  "documentation": [
+    "https://fastapi.tiangolo.com/",
+    "https://docs.djangoproject.com/",
+    "https://github.com/supabase-community/supabase-py",
+    "https://www.python.org/doc/"
+  ]
+}

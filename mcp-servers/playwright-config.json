@@ -1,0 +1,53 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "name": "Playwright Browser Validation",
+      "description": "Run browser-based flow checks and UI validation to support UX quality and implementation verification",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp"
+      ],
+      "capabilities": {
+        "flow_execution": "Execute user journey steps in browser",
+        "ui_assertions": "Validate critical elements and interactions",
+        "keyboard_checks": "Test keyboard navigation and focus order",
+        "regression_support": "Support repeatable smoke checks",
+        "evidence": "Capture artifacts for handoff and QA"
+      },
+      "when_to_use": [
+        "UX/UI agent validating implemented flows",
+        "Task Manager defining executable acceptance checks",
+        "QA handoff for high-risk journeys",
+        "Verifying empty/error/loading states are reachable and usable"
+      ],
+      "example_queries": [
+        "Run a login flow and verify error handling on invalid credentials",
+        "Validate keyboard navigation across primary dashboard controls",
+        "Check that loading and empty states appear correctly on task list",
+        "Capture smoke evidence for top 3 user journeys"
+      ],
+      "agent_instructions": {
+        "activation": "Use when flow-level UX validation needs real browser behavior, not only static review.",
+        "usage": "Run focused journey checks and convert failures into concrete story tasks or defects.",
+        "integration": "Reference outcomes in handoff-checklist.md and implementation-readiness.md."
+      }
+    }
+  },
+  "how_to_use": {
+    "for_agents": "Use this MCP to validate actual interaction behavior and strengthen acceptance criteria quality.",
+    "for_humans": "Install and configure when browser-level flow verification is needed in your agent workflow.",
+    "setup_instructions": [
+      "Install Node.js 16+",
+      "Install Playwright MCP server package or run via npx",
+      "Ensure browser dependencies are available",
+      "Configure server in MCP settings"
+    ],
+    "notes": [
+      "If your environment uses a different Playwright MCP package name, update the command/args accordingly.",
+      "Use headless mode for CI and full mode for local UX debugging."
+    ]
+  },
+  "priority": "⭐⭐ MEDIUM",
+  "tags": ["ux", "playwright", "browser", "validation", "qa"]
+}

@@ -1,0 +1,162 @@
+{
+  "mcpServers": {
+    "n8n": {
+      "name": "n8n Workflow Automation",
+      "description": "Access to n8n workflows, automation capabilities, and workflow execution",
+      "command": "npx",
+      "args": [
+        "-y",
+        "n8n-mcp"
+      ],
+      "env": {
+        "N8N_API_URL": "${N8N_API_URL}",
+        "N8N_API_KEY": "${N8N_API_KEY}"
+      },
+      "capabilities": {
+        "workflows": "List and describe available workflows",
+        "execute": "Trigger workflow executions",
+        "templates": "Access workflow templates and examples",
+        "integrations": "Query available integrations and nodes",
+        "status": "Check workflow execution status"
+      },
+      "when_to_use": [
+        "Need to automate repetitive tasks or processes",
+        "Integrate multiple services and APIs",
+        "Build data pipelines or ETL workflows",
+        "Create automated notifications and alerts",
+        "Schedule recurring tasks or jobs",
+        "Connect business applications without code",
+        "Query available automation capabilities"
+      ],
+      "example_queries": [
+        "What workflows are available for customer onboarding?",
+        "Show me workflows that integrate with Slack and email",
+        "Can n8n connect to [specific service]?",
+        "What are the best practices for error handling in n8n?",
+        "How can I schedule a workflow to run daily?",
+        "What webhook integrations are available?",
+        "Show me templates for data synchronization"
+      ],
+      "agent_instructions": {
+        "activation": "When a user's request involves automation, integration between services, scheduled tasks, or workflow orchestration, consider using the n8n MCP server to explore available solutions.",
+        "usage": "Query n8n to understand automation capabilities, available integrations, and existing workflows. Use this information to inform your technical approach and identify automation opportunities.",
+        "integration": "When proposing solutions that involve automation, reference n8n capabilities in the 'Technical Considerations' or 'Proposed Solution' sections. Highlight how n8n can reduce manual effort and improve efficiency.",
+        "best_practices": [
+          "Always check if existing workflows can be reused or adapted",
+          "Consider n8n for connecting disparate systems without custom code",
+          "Recommend n8n when multiple API integrations are needed",
+          "Highlight cost savings from automation in your proposals",
+          "Mention n8n's visual workflow builder for non-technical users"
+        ]
+      },
+      "configuration": {
+        "type": "global",
+        "environment": "production",
+        "access_method": "MCP protocol via VS Code/Copilot",
+        "authentication": "Handled by MCP server connection",
+        "base_url": "${N8N_API_URL}",
+        "api_key": "${N8N_API_KEY}"
+      },
+      "common_use_cases": {
+        "data_integration": {
+          "description": "Sync data between applications",
+          "examples": [
+            "CRM to spreadsheet synchronization",
+            "Database to API data flow",
+            "File processing pipelines"
+          ]
+        },
+        "notifications": {
+          "description": "Automated alerts and notifications",
+          "examples": [
+            "Email notifications on system events",
+            "Slack messages for important updates",
+            "SMS alerts for critical issues"
+          ]
+        },
+        "scheduling": {
+          "description": "Time-based automation",
+          "examples": [
+            "Daily report generation",
+            "Weekly data backups",
+            "Monthly reconciliation processes"
+          ]
+        },
+        "webhooks": {
+          "description": "Event-driven automation",
+          "examples": [
+            "Process form submissions",
+            "Handle payment notifications",
+            "Respond to API callbacks"
+          ]
+        },
+        "business_processes": {
+          "description": "Multi-step business workflows",
+          "examples": [
+            "Employee onboarding sequences",
+            "Lead qualification pipelines",
+            "Customer support ticket routing"
+          ]
+        }
+      },
+      "integration_examples": {
+        "popular_services": [
+          "Google Workspace (Gmail, Sheets, Drive)",
+          "Microsoft 365 (Outlook, Excel, Teams)",
+          "Slack, Discord, Telegram",
+          "Salesforce, HubSpot, Pipedrive",
+          "Stripe, PayPal",
+          "AWS, Azure, GCP",
+          "GitHub, GitLab",
+          "Databases (PostgreSQL, MySQL, MongoDB)",
+          "HTTP/REST APIs"
+        ],
+        "node_categories": [
+          "Communication (Email, Chat, SMS)",
+          "Data (Databases, Spreadsheets, Files)",
+          "Marketing (CRM, Email Marketing)",
+          "Productivity (Calendar, Tasks, Notes)",
+          "Development (Git, CI/CD, Monitoring)",
+          "Finance (Payment, Invoicing, Accounting)",
+          "E-commerce (Shopping, Inventory)",
+          "Analytics (Tracking, Reporting)"
+        ]
+      }
+    }
+  },
+  "how_to_use": {
+    "for_agents": "When proposing solutions that involve automation, data integration, or connecting multiple services, query the n8n MCP server to understand what's possible. n8n can often replace custom integration code with visual workflows.",
+    "for_humans": "This configuration enables agents to access your n8n instance and understand available automation capabilities. Ensure your n8n server is running and the MCP server is properly configured in your VS Code or Copilot settings.",
+    "setup_instructions": [
+      "Ensure n8n is installed and running (self-hosted or cloud)",
+      "Install the n8n MCP server: npm install -g n8n-mcp",
+      "Set environment variables: N8N_API_URL and N8N_API_KEY",
+      "Configure the MCP server in your VS Code/Copilot settings",
+      "Agent will a{
+      "description": "Your n8n instance URL",
+      "examples": [
+        "http://localhost:5678",
+        "https://your-n8n.com",
+        "https://your-workspace.app.n8n.cloud"
+      ],
+      "required": true,
+      "current_value": "Set in .env file"
+    },
+    "N8N_API_KEY": {
+      "description": "Your n8n API key for authentication",
+      "required": true,
+      "current_value": "Set in .env file",
+      "note": "Generate this from your n8n instance Settings > API Keys"
+    }
+  },
+  "environment_variables": {
+    "N8N_API_URL": "Your n8n instance URL (e.g., https://your-n8n.com or http://localhost:5678)",
+    "N8N_API_KEY": "Your n8n API key for authentication"
+  },
+  "troubleshooting": {
+    "connection_failed": "Verify N8N_API_URL is correct and n8n is running",
+    "authentication_error": "Check that N8N_API_KEY is valid and has proper permissions",
+    "no_workflows_found": "Ensure you have created at least one workflow in n8n",
+    "execution_timeout": "Check workflow complexity and server resources"
+  }
+}

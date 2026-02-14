@@ -1,0 +1,106 @@
+{
+  "mcpServers": {
+    "django": {
+      "name": "Django Framework Documentation & Patterns",
+      "description": "Django-specific documentation, security patterns, ORM best practices, and Django REST Framework integration",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      },
+      "repositories": [
+        "django/django",
+        "encode/django-rest-framework",
+        "django-commons/django-debug-toolbar",
+        "jazzband/django-allauth"
+      ],
+      "capabilities": {
+        "security_patterns": "Django CSRF, SQL injection prevention, XSS protection, authentication",
+        "orm_best_practices": "Django ORM query optimization, N+1 prevention, transactions",
+        "authentication": "Django auth system, custom user models, session management",
+        "authorization": "Permission system, groups, custom permissions",
+        "rest_api": "Django REST Framework patterns, serializers, viewsets",
+        "middleware": "Custom middleware, request/response processing",
+        "forms_validation": "Form handling, validation, model forms",
+        "template_security": "Template auto-escaping, safe filters, CSRF tokens",
+        "caching": "Django cache framework, query caching, view caching",
+        "celery_integration": "Background tasks with Celery",
+        "testing": "Django test framework, fixtures, test client",
+        "deployment": "Production settings, static files, WSGI/ASGI"
+      },
+      "when_to_use": [
+        "Implementing Django models with proper constraints and indexes",
+        "Setting up authentication and permission systems",
+        "Creating secure REST APIs with Django REST Framework",
+        "Preventing common Django security vulnerabilities",
+        "Optimizing database queries and preventing N+1 problems",
+        "Implementing forms with validation",
+        "Setting up middleware for logging, authentication, CORS",
+        "Configuring production-ready Django settings",
+        "Integrating with PostgreSQL and Supabase",
+        "Implementing file uploads with Django Storage",
+        "Setting up CSRF protection and secure cookies",
+        "Creating management commands"
+      ],
+      "example_queries": [
+        "How to implement Row Level Security with Django and Supabase?",
+        "Best practices for custom user model in Django?",
+        "Django REST Framework serializer patterns for nested relationships?",
+        "How to prevent SQL injection in Django ORM queries?",
+        "Secure file upload handling in Django with size/type validation?",
+        "Django middleware for JWT authentication with Supabase?",
+        "How to implement team-scoped authorization in Django?",
+        "Production security settings for Django (ALLOWED_HOSTS, CSRF, etc.)?",
+        "Django ORM query optimization techniques?",
+        "How to handle database migrations safely in production?"
+      ],
+      "security_focus": [
+        "CSRF protection configuration and usage",
+        "SQL injection prevention (ORM best practices)",
+        "XSS prevention (template auto-escaping)",
+        "Authentication security (password hashing, session security)",
+        "Authorization patterns (permission checks, decorators)",
+        "Secure cookie configuration (HTTPOnly, Secure, SameSite)",
+        "Input validation and sanitization",
+        "File upload security (MIME validation, size limits)",
+        "Security middleware configuration",
+        "Production hardening checklist"
+      ],
+      "agent_instructions": {
+        "activation": "Use when implementing Django-specific features, security patterns, or troubleshooting Django issues.",
+        "usage": "Reference Django documentation for secure patterns, query optimization, and framework best practices.",
+        "integration": "Combine with secure-coding-skill.md and secrets-detection-skill.md for comprehensive security.",
+        "coding_agent": "Load at session start for Django projects. Reference for model design, views, serializers, and security.",
+        "security_agent": "Use to validate Django-specific security configurations and patterns.",
+        "tech_lead": "Reference for architecture decisions, Django vs alternatives, deployment strategies."
+      }
+    }
+  },
+  "how_to_use": {
+    "for_agents": "Use this MCP to access Django-specific patterns, security best practices, and framework documentation.",
+    "for_humans": "Reuses GitHub PAT for accessing Django repositories. No additional setup beyond GitHub MCP configuration.",
+    "setup_instructions": [
+      "Ensure GITHUB_PERSONAL_ACCESS_TOKEN is configured (same as GitHub MCP)",
+      "No additional installation needed if using npx",
+      "Configure MCP settings in VS Code/Copilot to enable Django server"
+    ],
+    "project_context": {
+      "framework": "Django",
+      "database": "PostgreSQL via Supabase",
+      "api_style": "REST (Django REST Framework)",
+      "authentication": "Supabase Auth + Django integration",
+      "deployment": "Azure App Service",
+      "region": "Sweden (GDPR compliance)"
+    }
+  },
+  "priority": "HIGH - Primary backend framework for the project",
+  "agents_that_need_this": [
+    "Coding Agent (primary user)",
+    "Security Agent (Django security patterns)",
+    "Tech Lead (architecture and design decisions)",
+    "Code Inspector (Django best practices validation)"
+  ]
+}

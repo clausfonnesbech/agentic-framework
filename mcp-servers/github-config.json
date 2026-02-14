@@ -1,0 +1,57 @@
+{
+  "mcpServers": {
+    "github": {
+      "name": "GitHub Repository & Work Tracking",
+      "description": "Access GitHub repositories, issues, pull requests, and project tracking context for execution planning",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      },
+      "capabilities": {
+        "repository_context": "Read repository structures and relevant docs",
+        "issues": "Create and review implementation issues",
+        "pull_requests": "Track implementation progress and review artifacts",
+        "project_tracking": "Map stories to execution artifacts",
+        "discussions": "Capture decisions and open questions"
+      },
+      "when_to_use": [
+        "Task Manager translating stories into execution tasks",
+        "Tracking delivery status and blockers",
+        "Connecting planning artifacts to implementation evidence",
+        "Reviewing historical decisions for dependency or scope clarity"
+      ],
+      "example_queries": [
+        "Create issues from these approved user stories",
+        "List open blockers tagged as backend",
+        "Map sprint stories to existing PRs",
+        "Show unresolved decisions related to authentication"
+      ],
+      "agent_instructions": {
+        "activation": "Use when planning artifacts need to be linked to actual implementation tracking.",
+        "usage": "Convert approved stories into issues/epics and maintain traceability between docs and execution.",
+        "integration": "Reference issue/PR IDs in sprint-plan.md and implementation-readiness.md."
+      }
+    }
+  },
+  "how_to_use": {
+    "for_agents": "Use this MCP to connect planning outputs with implementation execution in GitHub.",
+    "for_humans": "Create a PAT with minimal scopes and configure environment variables before enabling.",
+    "setup_instructions": [
+      "Create GitHub PAT with least privilege scopes for required operations",
+      "Set GITHUB_PERSONAL_ACCESS_TOKEN environment variable",
+      "Install server package via npm or use npx",
+      "Configure MCP settings in VS Code/Copilot"
+    ],
+    "security_warnings": [
+      "Never commit tokens to version control",
+      "Prefer read-only scopes unless issue/PR write access is required",
+      "Rotate tokens regularly"
+    ]
+  },
+  "priority": "⭐⭐⭐ MEDIUM",
+  "tags": ["github", "planning", "issues", "delivery"]
+}

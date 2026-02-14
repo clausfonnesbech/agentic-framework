@@ -1,0 +1,208 @@
+{
+  "mcpServers": {
+    "supabase": {
+      "name": "Supabase",
+      "description": "Access to Supabase database, authentication, storage, and Edge Functions capabilities",
+      "command": "npx",
+      "args": [
+        "-y",
+        "supabase-mcp",
+        "supabase-mcp-claude"
+      ],
+      "env": {
+        "SUPABASE_URL": "${SUPABASE_URL}",
+        "SUPABASE_ANON_KEY": "${SUPABASE_ANON_KEY}",
+        "SUPABASE_SERVICE_KEY": "${SUPABASE_SERVICE_KEY}",
+        "SUPABASE_SERVICE_ROLE_KEY": "${SUPABASE_SERVICE_KEY}",
+        "MCP_API_KEY": "${MCP_API_KEY}"
+      },
+      "capabilities": {
+        "database": "Create tables, execute queries, manage schema",
+        "auth": "Configure authentication providers and policies",
+        "storage": "Manage storage buckets and file access",
+        "realtime": "Set up real-time subscriptions",
+        "edge_functions": "Deploy and manage Edge Functions",
+        "rls": "Create and manage Row Level Security policies"
+      },
+      "when_to_use": [
+        "Database schema design and table creation",
+        "Row Level Security (RLS) policy implementation",
+        "Authentication setup (email, OAuth, magic links)",
+        "File storage and bucket configuration",
+        "Real-time subscription implementation",
+        "Edge Function deployment strategies",
+        "Query optimization and indexing",
+        "Data migration planning"
+      ],
+      "example_queries": [
+        "How do I create a table with Row Level Security?",
+        "What are the best practices for Supabase Auth with social login?",
+        "How to configure storage buckets for team isolation?",
+        "What indexes should I add for optimal query performance?",
+        "How do I set up real-time subscriptions for chat?",
+        "What are the Supabase constraints and limits?",
+        "How to implement role-based access control with RLS?",
+        "How to deploy a Supabase Edge Function?"
+      ],
+      "agent_instructions": {
+        "activation": "When researching database design, authentication, storage, or real-time features for the Supabase-based stack, activate this MCP server.",
+        "usage": "Query Supabase capabilities to understand implementation patterns, constraints, and best practices. Use for both schema design and service configuration research.",
+        "integration": "Incorporate Supabase findings into 'Technical Considerations' sections with specific implementation details. Always note any constraints or limits discovered.",
+        "best_practices": [
+          "Always check Supabase limits (free tier vs. paid)",
+          "Verify RLS policies for security requirements",
+          "Consider Supabase Auth vs. custom authentication",
+          "Evaluate Edge Functions vs. backend API endpoints",
+          "Check real-time subscription performance characteristics",
+          "Understand backup and migration strategies"
+        ]
+      },
+      "configuration": {
+        "type": "project-specific",
+        "environment": "development/production",
+        "access_method": "MCP protocol via VS Code/Copilot",
+        "authentication": "Handled via environment variables",
+        "security_notes": [
+          "SUPABASE_SERVICE_KEY provides admin access - use carefully",
+          "SUPABASE_ANON_KEY is safe for client-side operations",
+          "Never commit keys to version control",
+          "Rotate keys regularly"
+        ]
+      },
+      "common_use_cases": {
+        "database_schema": {
+          "description": "Design and create database tables",
+          "examples": [
+            "Create teams table with RLS policies",
+            "Design user roles and permissions",
+            "Set up document storage with team isolation",
+            "Create indexes for query optimization"
+          ]
+        },
+        "authentication": {
+          "description": "Configure authentication flows",
+          "examples": [
+            "Set up social OAuth (Google, Microsoft)",
+            "Configure email/password auth",
+            "Implement magic link authentication",
+            "Design role-based access control"
+          ]
+        },
+        "storage": {
+          "description": "Manage file storage and buckets",
+          "examples": [
+            "Create storage buckets with access policies",
+            "Configure file upload size limits",
+            "Set up signed URLs for secure file access",
+            "Implement team-specific storage isolation"
+          ]
+        },
+        "realtime": {
+          "description": "Real-time data subscriptions",
+          "examples": [
+            "Set up chat message subscriptions",
+            "Configure real-time notifications",
+            "Implement live dashboard updates",
+            "Handle presence tracking"
+          ]
+        }
+      },
+      "tech_stack_integration": {
+        "python": {
+          "library": "supabase-py",
+          "installation": "pip install supabase",
+          "usage": "Use for server-side operations and admin tasks"
+        },
+        "javascript": {
+          "library": "@supabase/supabase-js",
+          "installation": "npm install @supabase/supabase-js",
+          "usage": "Use for client-side operations and real-time"
+        },
+        "react": {
+          "integration": "Direct via supabase-js client",
+          "patterns": "Context providers, custom hooks"
+        }
+      },
+      "constraints_and_limits": {
+        "free_tier": {
+          "database": "500 MB",
+          "bandwidth": "2 GB/month",
+          "storage": "1 GB",
+          "edge_functions": "500K invocations/month",
+          "auth_users": "50,000"
+        },
+        "pro_tier": {
+          "database": "8 GB included",
+          "bandwidth": "50 GB/month",
+          "storage": "100 GB",
+          "edge_functions": "2M invocations/month",
+          "auth_users": "100,000"
+        },
+        "notes": [
+          "Connection pooling limits apply",
+          "Real-time has 100 simultaneous connections on free tier",
+          "Storage uploads limited to 50 MB per file on free tier"
+        ]
+      }
+    }
+  },
+  "how_to_use": {
+    "for_agents": "When researching Supabase capabilities, query this MCP server to understand service features, constraints, and best practices. Use it to inform schema design, authentication flows, and real-time features.",
+    "for_humans": "This configuration enables agents to access Supabase documentation and capabilities. Set environment variables with your Supabase project credentials before use.",
+    "setup_instructions": [
+      "Create a Supabase project at supabase.com",
+      "Get project URL from project settings",
+      "Get anon key (public) from project API settings",
+      "Get service_role key (admin) from project API settings - keep secure",
+      "Set environment variables: SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_SERVICE_KEY, MCP_API_KEY",
+      "Install the MCP server: npm install -g supabase-mcp",
+      "Configure in VS Code/Copilot settings",
+      "Test connection with a simple query"
+    ],
+    "security_warnings": [
+      "⚠️ SUPABASE_SERVICE_KEY has full admin access",
+      "⚠️ Never commit service key to version control",
+      "⚠️ Use read-only anon key for client-side operations",
+      "⚠️ Implement Row Level Security on all tables",
+      "⚠️ Rotate keys if compromised"
+    ]
+  },
+  "environment_variables": {
+    "SUPABASE_URL": {
+      "description": "Your Supabase project URL",
+      "example": "https://xyzcompany.supabase.co",
+      "required": true,
+      "current_value": "Set in .env file",
+      "note": "Found in Project Settings > API"
+    },
+    "SUPABASE_ANON_KEY": {
+      "description": "Public anonymous key (safe for client-side)",
+      "required": true,
+      "current_value": "Set in .env file",
+      "note": "Found in Project Settings > API > anon/public"
+    },
+    "SUPABASE_SERVICE_KEY": {
+      "description": "Service role key (admin access, server-side only)",
+      "required": true,
+      "current_value": "Set in .env file",
+      "security": "SENSITIVE - Do not expose client-side",
+      "note": "Found in Project Settings > API > service_role (secret)"
+    },
+    "MCP_API_KEY": {
+      "description": "Required auth key for supabase-mcp-claude stdio mode",
+      "required": true,
+      "current_value": "Set in .env file",
+      "security": "SENSITIVE - keep private",
+      "note": "Use a random high-entropy string"
+    }
+  },
+  "priority": "⭐⭐⭐⭐⭐ CRITICAL",
+  "tags": ["database", "authentication", "storage", "realtime", "supabase", "postgresql"],
+  "documentation": [
+    "https://supabase.com/docs",
+    "https://github.com/supabase-community/supabase-mcp",
+    "https://supabase.com/docs/guides/auth",
+    "https://supabase.com/docs/guides/storage",
+    "https://supabase.com/docs/guides/realtime"
+  ]
+}
