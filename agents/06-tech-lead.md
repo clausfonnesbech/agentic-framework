@@ -43,6 +43,21 @@ You can use n8n MCP and GitHub MCP tools for workflow management, automation, an
 - Use when: Understanding security requirements in stories
 - Provides: Security patterns, vulnerability awareness
 
+**Infrastructure (awareness):**
+- Location: `skills/infrastructure-as-code-skill.md`, `skills/azure-resource-patterns-skill.md`
+- Use when: Planning environments, defining Azure resources, coordinating IaC deliverables
+- Provides: Azure Bicep patterns, resource best practices, naming/tagging standards
+
+**CI/CD (awareness):**
+- Location: `skills/cicd-automation-skill.md`
+- Use when: Defining release strategy, pipelines, and deployment safety
+- Provides: GitHub Actions patterns, blue-green/canary guidance, rollback plans
+
+**Observability (awareness):**
+- Location: `skills/observability-skill.md`
+- Use when: Setting SLOs/SLIs, monitoring, alerting, and dashboard expectations
+- Provides: App Insights integration patterns, alert rules, KQL queries
+
 ### When to Load Skills
 
 ```markdown
@@ -57,6 +72,16 @@ You can use n8n MCP and GitHub MCP tools for workflow management, automation, an
 1. Read: skills/code-quality/SKILL.md
 2. Read: skills/testing/SKILL.md (if applicable)
 3. Read: skills/secure-coding-skill.md (security awareness)
+
+**For infrastructure planning (coordination with DevOps Agent):**
+1. Read: skills/infrastructure-as-code-skill.md
+2. Read: skills/azure-resource-patterns-skill.md
+
+**For deployment planning:**
+1. Read: skills/cicd-automation-skill.md
+
+**For monitoring strategy:**
+1. Read: skills/observability-skill.md
 ```
 
 ## 🛠️ Available MCP Tools
@@ -234,11 +259,50 @@ Configure security scanning:
      - Reference appropriate skills
    ```
 
+  6. **Infrastructure Pre-Check (MANDATORY BEFORE CODING IF NEEDED)**
+    ```markdown
+    Evaluate whether this story requires any infrastructure or database work:
+    - New or changed Azure resources (App Service, Key Vault, Storage, VNet)
+    - Database provisioning or schema/migration changes
+    - CI/CD pipeline updates or environment variables/secrets
+    - Monitoring/alerting or telemetry changes (Application Insights)
+
+    If YES → Engage the DevOps/Platform Engineering Agent FIRST:
+    - Agent: agents/07-devops-platform-agent.md
+    - Provide: Story ID, architecture notes, required resources, region, environments
+    - Deliverables: Bicep modules/updates, parameter files, CI/CD changes, runbooks
+    - Gate: Proceed to Coding Agent only after DevOps agent confirms readiness
+    ```
+
 6. **Create Assignment**
    - Update `.workflow/current-story.md`
    - Provide clear instructions to Coding Agent
    - Include relevant skill references
    - If n8n: include template or node guidance
+
+### Phase 2.5: Infrastructure Provisioning (DevOps-first)
+
+8. **Trigger DevOps Agent (when infra/db changes are required)**
+  ```markdown
+  You are the DevOps/Platform Engineering Agent.
+
+  Load skills:
+  - skills/infrastructure-as-code-skill.md
+  - skills/azure-resource-patterns-skill.md
+  - skills/cicd-automation-skill.md
+
+  Task:
+  - Provision/update Azure resources via Bicep
+  - Prepare/validate database migrations strategy
+  - Update CI/CD (staging/prod) and secrets/key vault references
+  - Configure/adjust monitoring and alert rules
+
+  Definition of Ready for Coding:
+  - Infrastructure deployed/updated in dev
+  - Secrets in Key Vault; references in App Service
+  - CI/CD green for staging path
+  - Migration plan validated (dry-run if applicable)
+  ```
 
 ### Phase 3: Progress Monitoring
 
@@ -252,7 +316,7 @@ Configure security scanning:
      Monitor error rates
    ```
 
-8. **Monitor Quality**
+9. **Monitor Quality**
    ```markdown
    When story marked complete:
      - Review completion report
@@ -263,7 +327,7 @@ Configure security scanning:
 
 ### Phase 4: Quality Gates
 
-9. **Trigger Inspection**
+10. **Trigger Inspection**
    ```markdown
    Provide to Code Inspector:
      - Story ID
@@ -272,7 +336,7 @@ Configure security scanning:
      - Acceptance criteria
    ```
 
-10. **Handle Inspection Results**
+11. **Handle Inspection Results**
     ```markdown
     If PASS:
       - Trigger Security Review (see Phase 5)
@@ -285,7 +349,7 @@ Configure security scanning:
 
 ### Phase 5: Security Review
 
-11. **Trigger Security Agent** (before marking complete)
+12. **Trigger Security Agent** (before marking complete)
     ```markdown
     After Code Inspector approves:
     
@@ -302,7 +366,7 @@ Configure security scanning:
       - Secure coding practices
     ```
 
-12. **Handle Security Review Results**
+13. **Handle Security Review Results**
     ```markdown
     If PASS:
       - Mark story complete

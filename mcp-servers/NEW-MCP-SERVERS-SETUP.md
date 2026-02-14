@@ -47,15 +47,15 @@ Added **3 new MCP servers** to strengthen development agents for the WW Informat
 - Azure MCP section (infrastructure coordination)
 - Semgrep MCP section (security gate management)
 
-✅ **[agents/07-coding-agent.md](agents/07-coding-agent.md)** - Added:
+✅ **[agents/08-coding-agent.md](agents/08-coding-agent.md)** - Added:
 - Django MCP section (development patterns)
 - Azure MCP section (SDK integration)
 - Semgrep MCP section (self-review security checks)
 
-✅ **[agents/08-code-inspector.md](agents/08-code-inspector.md)** - Added:
+✅ **[agents/09-code-inspector.md](agents/09-code-inspector.md)** - Added:
 - Django MCP section (framework best practices)
 
-✅ **[agents/10-security-agent.md](agents/10-security-agent.md)** - Added:
+✅ **[agents/11-security-agent.md](agents/11-security-agent.md)** - Added:
 - Django MCP section (security patterns)
 - Semgrep MCP section (automated scanning - PRIMARY TOOL)
 
@@ -469,7 +469,7 @@ jobs:
 
 - [MCP Server Configuration Guide](mcp-servers/SETUP-GUIDE.md)
 - [Development Agents Enhancement Summary](DEVELOPMENT-AGENTS-ENHANCEMENT-SUMMARY.md)
-- [Security Agent Definition](agents/10-security-agent.md)
+- [Security Agent Definition](agents/11-security-agent.md)
 - [Secure Coding Skill](skills/secure-coding-skill.md)
 - [Dependency Security Skill](skills/dependency-security-skill.md)
 
