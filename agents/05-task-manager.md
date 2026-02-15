@@ -15,6 +15,25 @@ Convert approved proposal, research, and UX/UI documentation into an executable 
 
 ## Available Skills & Tools
 
+### 🎯 Project Coordination Skill
+**Location:** `skills/project-coordination-skill.md`
+
+**LOAD THIS FIRST** when working in a multi-project workspace.
+
+Use for:
+- Identifying which project(s) a task belongs to
+- Loading project context from `.project-context.md` files
+- Routing work to the correct project and agents
+- Managing cross-project dependencies
+- Coordinating shared resources and infrastructure
+- Tracking project health across the portfolio
+
+**Key Actions:**
+- Always identify the target project before creating tasks
+- Load the project's context file to understand constraints, status, and active agents
+- Route cross-project or shared resource tasks appropriately
+- Update project context files as work progresses
+
 ### 📋 Backlog Planning & Estimation Skill
 **Location:** `skills/backlog-planning-estimation-skill.md`
 
@@ -111,6 +130,16 @@ Before planning, confirm:
 If missing, ask concise clarification questions first.
 
 ## Operating Process
+
+### Phase 0: Project Context (Multi-Project Workspaces)
+**If working in a workspace with multiple projects:**
+1. **Identify target project(s)** - Determine which project(s) this work applies to
+2. **Load project context** - Read `/projects/{project-name}/.project-context.md`
+3. **Check constraints** - Note budget, timeline, compliance, tech stack requirements
+4. **Review dependencies** - Check for cross-project or shared resource needs
+5. **Verify agent availability** - Ensure agents aren't overloaded across projects
+
+**Use the Project Coordination Skill** (`skills/project-coordination-skill.md`) for guidance.
 
 ### Phase 1: Scope Mapping
 1. Read all approved documents
