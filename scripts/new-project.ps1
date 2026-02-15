@@ -18,6 +18,16 @@
 .PARAMETER Interactive
     Run in interactive mode. Default is $false for scripted usage; pass -Interactive:$true to enable prompts.
 
+.PARAMETER DestinationRoot
+    Optional destination directory for the new project. Defaults to <repo>/projects.
+    Use this to scaffold projects OUTSIDE the framework repo (recommended when using per-project repos).
+
+.PARAMETER InitGit
+    When set, initializes a new git repository in the project folder and creates an initial commit.
+
+.PARAMETER GitRemote
+    Optional remote URL (e.g., https://github.com/owner/repo.git). If provided with -InitGit, sets origin and pushes main.
+
 .EXAMPLE
     .\scripts\new-project.ps1
     # Runs in interactive mode, prompting for all values
@@ -35,7 +45,16 @@ param(
     [string]$ProjectFolder,
 
     [Parameter(Mandatory=$false)]
-    [bool]$Interactive = $false
+    [bool]$Interactive = $false,
+
+    [Parameter(Mandatory=$false)]
+    [string]$DestinationRoot,
+
+    [Parameter(Mandatory=$false)]
+    [bool]$InitGit = $false,
+
+    [Parameter(Mandatory=$false)]
+    [string]$GitRemote
 )
 
 # ============================================================================
@@ -116,7 +135,8 @@ Log-Header "Agentic Framework - New Project Initializer"
 $scriptDir = Split-Path -Parent $PSCommandPath
 $workspaceRoot = Split-Path -Parent $scriptDir
 $templateDir = Join-Path $workspaceRoot "templates\project-template"
-$projectsDir = Join-Path $workspaceRoot "projects"
+$defaultProjectsDir = Join-Path $workspaceRoot "projects"
+$targetRoot = if ([string]::IsNullOrWhiteSpace($DestinationRoot)) { $defaultProjectsDir } else { $DestinationRoot }
 
 # Verify template exists
 if (-not (Test-Path $templateDir)) {
@@ -124,10 +144,10 @@ if (-not (Test-Path $templateDir)) {
     exit 1
 }
 
-# Ensure projects directory exists
-if (-not (Test-Path $projectsDir)) {
-    New-Item -ItemType Directory -Path $projectsDir -Force | Out-Null
-    Log-Success "Created projects directory"
+# Ensure target root directory exists
+if (-not (Test-Path $targetRoot)) {
+    New-Item -ItemType Directory -Path $targetRoot -Force | Out-Null
+    Log-Success "Created destination directory: $targetRoot"
 }
 
 # ============================================================================
@@ -147,7 +167,7 @@ if ([string]::IsNullOrWhiteSpace($ProjectFolder)) {
     $ProjectFolder = Get-SafeFolderName -Name $ProjectFolder
 }
 
-$projectPath = Join-Path $projectsDir $ProjectFolder
+$projectPath = Join-Path $targetRoot $ProjectFolder
 
 # Check if project already exists
 if (Test-Path $projectPath) {
@@ -232,6 +252,7 @@ Log-Header "Creating Project: $ProjectName"
 
 Log-Info "Project folder: $ProjectFolder"
 Log-Info "Location: $projectPath"
+Log-Info "Destination root: $targetRoot"
 
 # ============================================================================
 # Copy Template
@@ -280,6 +301,7 @@ $directories = @(
     "tests\e2e"
     "backlog\sprint-01"
     "docs"
+    "docs\business-analysis"
 )
 
 foreach ($dir in $directories) {
@@ -399,6 +421,27 @@ docs/_build/
 Set-Content -Path (Join-Path $projectPath ".gitignore") -Value $gitignoreContent -Encoding UTF8
 
 Log-Success "Python project files created"
+
+# ============================================================================
+# Optional: Initialize Git Repo for the Project
+# ============================================================================
+if ($InitGit) {
+    try {
+        Push-Location $projectPath
+        git init | Out-Null
+        git add . | Out-Null
+        git commit -m "chore: scaffold project from agentic-framework" | Out-Null
+        git branch -M main | Out-Null
+        if (-not [string]::IsNullOrWhiteSpace($GitRemote)) {
+            git remote add origin $GitRemote | Out-Null
+            git push -u origin main
+        }
+        Log-Success "Initialized git repository in project folder"
+    }
+    finally {
+        Pop-Location
+    }
+}
 
 # ============================================================================
 # Summary

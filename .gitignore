@@ -60,3 +60,6 @@ docs/*-proposals/
 docs/*-research/
 *.db
 *.sqlite3
+
+# Exclude local project scaffolds from the framework repo
+projects/

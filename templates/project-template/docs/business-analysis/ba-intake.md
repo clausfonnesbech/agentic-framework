@@ -1,9 +1,9 @@
-# Business Analyst Intake - IT Quarterly Review
+# Business Analyst Intake - {{PROJECT_NAME}}
 
 Purpose: Provide the Business Analyst with a single, project-scoped brief so all analysis stays focused on this project only.
 
-Project Path: /projects/it-quarterly-review/
-Context File: /projects/it-quarterly-review/.project-context.md
+Project Path: /projects/{{PROJECT_FOLDER_NAME}}/
+Context File: /projects/{{PROJECT_FOLDER_NAME}}/.project-context.md
 Primary Contacts: <add names/roles>
 Date Created: <YYYY-MM-DD>
 
@@ -63,7 +63,7 @@ Date Created: <YYYY-MM-DD>
 ---
 
 Instructions to Business Analyst (Agent 01):
-1) Load ONLY this project's context: /projects/it-quarterly-review/.project-context.md
+1) Load ONLY this project's context: /projects/{{PROJECT_FOLDER_NAME}}/.project-context.md
 2) Use this intake as the primary source of truth for this engagement.
 3) If information is missing, list concise clarification questions in a separate section.
 4) Produce outputs in this folder under docs/business-analysis/ (e.g., discovery-notes.md, stakeholder-map.md, proposal-draft.md).
