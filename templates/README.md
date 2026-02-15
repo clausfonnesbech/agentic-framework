@@ -4,7 +4,36 @@ This directory contains output templates for all agents in the framework. Each t
 
 ---
 
-## Available Templates
+## Project Template
+
+### **project-template/** 🎯 NEW
+**Used by:** All agents when starting new projects  
+**Purpose:** Complete project scaffolding for multi-project workspaces  
+**When:** Creating a new solution/project
+
+**Usage:**
+```powershell
+# Interactive mode
+./scripts/new-project.ps1
+
+# With parameters
+./scripts/new-project.ps1 -ProjectName "Customer Portal" -ProjectFolder "customer-portal"
+```
+
+**Includes:**
+- `.project-context.md` - Project metadata and agent coordination
+- `README.md` - Project documentation
+- `.env.example` - Environment configuration template
+- `infrastructure/` - Azure Bicep IaC templates
+- `docs/` - Architecture, API specs, deployment guides
+- `backlog/` - Backlog and sprint planning structure
+- Standard directory layout for src/, tests/, etc.
+
+See [project-template/README.md](project-template/README.md) for full structure details.
+
+---
+
+## Document Templates
 
 ### 1. **proposal-template.md**
 **Used by:** Business Analyst Agent  

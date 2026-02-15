@@ -1,0 +1,10 @@
+# Projects Directory
+
+This directory contains all solution projects managed by the agentic framework.
+
+Each project should have:
+- `.project-context.md` - Project context and status
+- Standard structure (src/, infrastructure/, docs/, backlog/)
+- Project-specific configurations
+
+See `templates/project-template/` for scaffolding new projects.

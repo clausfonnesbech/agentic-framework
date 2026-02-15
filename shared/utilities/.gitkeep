@@ -1,0 +1,9 @@
+# Shared Utilities
+
+Common code, scripts, and utilities reused across multiple projects.
+
+## Contents
+- Python utility libraries
+- Monitoring helpers
+- Testing utilities
+- Deployment scripts
