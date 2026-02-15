@@ -39,29 +39,29 @@ param(
 )
 
 # ============================================================================
-# Helper Functions
+# Helper Functions (ASCII-only to avoid encoding issues)
 # ============================================================================
 
-function Write-Header {
+function Log-Header {
     param([string]$Text)
     Write-Host "`n===========================================================" -ForegroundColor Cyan
     Write-Host " $Text" -ForegroundColor Cyan
     Write-Host "===========================================================`n" -ForegroundColor Cyan
 }
 
-function Write-Success {
+function Log-Success {
     param([string]$Text)
-    Write-Host "✓ $Text" -ForegroundColor Green
+    Write-Host "[OK]   $Text" -ForegroundColor Green
 }
 
-function Write-Info {
+function Log-Info {
     param([string]$Text)
-    Write-Host "ℹ $Text" -ForegroundColor Blue
+    Write-Host "[INFO] $Text" -ForegroundColor Blue
 }
 
-function Write-Warning {
+function Log-Warn {
     param([string]$Text)
-    Write-Host "⚠ $Text" -ForegroundColor Yellow
+    Write-Host "[WARN] $Text" -ForegroundColor Yellow
 }
 
 function Get-SafeFolderName {
@@ -84,7 +84,7 @@ function Get-UserInput {
     } else {
         $input = Read-Host $Prompt
         while ([string]::IsNullOrWhiteSpace($input)) {
-            Write-Warning "This field is required."
+            Log-Warn "This field is required."
             $input = Read-Host $Prompt
         }
         return $input
@@ -110,7 +110,7 @@ function Replace-Placeholders {
 # Main Script
 # ============================================================================
 
-Write-Header "Agentic Framework - New Project Initializer"
+Log-Header "Agentic Framework - New Project Initializer"
 
 # Determine script directory and workspace root
 $scriptDir = Split-Path -Parent $PSCommandPath
@@ -120,14 +120,14 @@ $projectsDir = Join-Path $workspaceRoot "projects"
 
 # Verify template exists
 if (-not (Test-Path $templateDir)) {
-    Write-Host "❌ Error: Template directory not found at $templateDir" -ForegroundColor Red
+    Write-Host "[ERROR] Template directory not found at $templateDir" -ForegroundColor Red
     exit 1
 }
 
 # Ensure projects directory exists
 if (-not (Test-Path $projectsDir)) {
     New-Item -ItemType Directory -Path $projectsDir -Force | Out-Null
-    Write-Success "Created projects directory"
+    Log-Success "Created projects directory"
 }
 
 # ============================================================================
@@ -228,18 +228,20 @@ $replacements = @{
     'ADDITIONAL_NOTES' = ''
 }
 
-Write-Header "Creating Project: $ProjectName"
+Log-Header "Creating Project: $ProjectName"
 
-Write-Info "Project folder: $ProjectFolder"
-Write-Info "Location: $projectPath"
+Log-Info "Project folder: $ProjectFolder"
+Log-Info "Location: $projectPath"
 
 # ============================================================================
 # Copy Template
 # ============================================================================
 
 Write-Host "`nCopying template files..."
-Copy-Item -Path $templateDir -Destination $projectPath -Recurse -Force
-Write-Success "Template copied"
+# Ensure the project directory exists, then copy CONTENTS of template dir
+New-Item -ItemType Directory -Path $projectPath -Force | Out-Null
+Copy-Item -Path (Join-Path $templateDir '*') -Destination $projectPath -Recurse -Force
+Log-Success "Template copied"
 
 # ============================================================================
 # Replace Placeholders
@@ -263,7 +265,7 @@ foreach ($file in $bicepFiles) {
     $fileCount++
 }
 
-Write-Success "Configured $fileCount files"
+Log-Success "Configured $fileCount files"
 
 # ============================================================================
 # Create Additional Directories
@@ -287,7 +289,7 @@ foreach ($dir in $directories) {
     }
 }
 
-Write-Success "Project structure created"
+Log-Success "Project structure created"
 
 # ============================================================================
 # Create Python Files
@@ -307,7 +309,7 @@ djangorestframework==3.14.0
 psycopg2-binary==2.9.9
 
 # Environment
-python-detenved==1.0.1
+python-dotenv==1.0.1
 
 # Azure SDK
 azure-identity==1.15.0
@@ -396,13 +398,13 @@ docs/_build/
 
 Set-Content -Path (Join-Path $projectPath ".gitignore") -Value $gitignoreContent -Encoding UTF8
 
-Write-Success "Python project files created"
+Log-Success "Python project files created"
 
 # ============================================================================
 # Summary
 # ============================================================================
 
-Write-Header "Project Created Successfully!"
+Log-Header "Project Created Successfully!"
 
 Write-Host "Project: " -NoNewline
 Write-Host $ProjectName -ForegroundColor Green
@@ -418,11 +420,14 @@ Write-Host "`n  3. Set up Python environment:"
 Write-Host "     python -m venv .venv" -ForegroundColor Gray
 Write-Host "     .venv\Scripts\activate" -ForegroundColor Gray
 Write-Host "     pip install -r requirements.txt" -ForegroundColor Gray
-Write-Host "`n  4. Configure environment:"
+Write-Host "`n  4. Configure environment:" 
+Write-Host "     # PowerShell" -ForegroundColor Gray
+Write-Host "     Copy-Item .env.example .env" -ForegroundColor Gray
+Write-Host "     # Bash (WSL)" -ForegroundColor Gray
 Write-Host "     cp .env.example .env" -ForegroundColor Gray
 Write-Host "     # Edit .env with your settings" -ForegroundColor Gray
 Write-Host "`n  5. Deploy infrastructure:"
 Write-Host "     az deployment group create --resource-group rg-$ProjectFolder-dev --template-file infrastructure/main.bicep --parameters infrastructure/parameters.dev.json" -ForegroundColor Gray
 Write-Host "`n  6. Assign agents via the Task Manager (agent 05) to start work!"
 
-Write-Host "`n✨ Happy building with the Agentic Framework! ✨`n" -ForegroundColor Magenta
+Write-Host "`nHappy building with the Agentic Framework!`n" -ForegroundColor Magenta
