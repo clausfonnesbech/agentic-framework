@@ -75,6 +75,17 @@ Provides:
 - Rollback procedures
 ```
 
+**GitHub Operations:**
+```markdown
+Location: skills/github-operations-skill.md
+Provides:
+- Repository standards (branches, labels, CODEOWNERS)
+- PR hygiene and protection rules
+- CI/CD bootstrap and required checks
+- Release automation options
+- Repo initialization and remote configuration
+```
+
 ### Load Based on Task
 
 **For Observability Tasks:**

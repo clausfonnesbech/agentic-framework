@@ -1,0 +1,61 @@
+name: CI - Python
+
+on:
+  push:
+    branches: [ main, develop, "feature/**", "fix/**", "chore/**" ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies (if requirements.txt exists)
+        run: |
+          if [ -f requirements.txt ]; then
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
+          else
+            echo "requirements.txt not found, skipping install"
+          fi
+
+      - name: Lint (flake8)
+        run: |
+          if python -c "import pkgutil; exit(not pkgutil.find_loader('flake8'))"; then
+            flake8 || exit 1
+          else
+            echo "flake8 not installed, skipping"
+          fi
+
+      - name: Format check (black)
+        run: |
+          if python -c "import pkgutil; exit(not pkgutil.find_loader('black'))"; then
+            black --check . || exit 1
+          else
+            echo "black not installed, skipping"
+          fi
+
+      - name: Type check (mypy)
+        run: |
+          if python -c "import pkgutil; exit(not pkgutil.find_loader('mypy'))"; then
+            mypy || exit 1
+          else
+            echo "mypy not installed, skipping"
+          fi
+
+      - name: Tests (pytest)
+        run: |
+          if python -c "import pkgutil; exit(not pkgutil.find_loader('pytest'))"; then
+            pytest -q || exit 1
+          else
+            echo "pytest not installed, skipping"
+          fi

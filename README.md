@@ -4,8 +4,9 @@ A comprehensive, production-ready framework for orchestrating specialized AI age
 
 ## 🌟 Features
 
-### 10 Specialized Agents
+### 11 Specialized Agents
 - **Business Analyst Agent**: Requirements gathering, user story creation, stakeholder analysis
+ - **Behavioral Reframe Agent**: Perceptual reframes, low-cost behavioral interventions, experiment design
 - **Research Manager**: Research coordination, task delegation, synthesis
 - **Research Agent**: Technical research, comparative analysis, feasibility studies
 - **UX/UI Agent**: User experience evaluation, accessibility compliance, design systems
