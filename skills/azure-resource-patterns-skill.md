@@ -1,3 +1,13 @@
+---
+name: azure-resource-patterns-skill
+description: >-
+  Use this skill to design Azure infrastructure and implement cloud resource patterns. Trigger when
+  architecting cloud solutions, choosing Azure services, planning scalability, or optimizing costs.
+  This skill covers common Azure services, deployment patterns, networking, security, monitoring,
+  and cost optimization. Essential for cloud deployments using Azure. Use when designing solutions
+  that depend on Azure cloud infrastructure.
+---
+
 # Azure Resource Patterns Skill
 
 **Purpose:** Understand and implement Azure-specific resource patterns, best practices, and configurations for production-ready applications.

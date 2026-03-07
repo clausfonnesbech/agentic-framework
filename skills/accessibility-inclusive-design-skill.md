@@ -1,3 +1,14 @@
+---
+name: accessibility-inclusive-design-skill
+description: >-
+  Use this skill to design accessible and inclusive user experiences. Trigger when designing
+  user interfaces, evaluating accessibility, or ensuring WCAG compliance. This skill provides
+  patterns for keyboard navigation, screen reader support, color contrast, semantic HTML,
+  ARIA practices, testing approaches, and inclusive design principles. Essential for public-facing
+  applications, legal compliance, and ensuring products work for users with disabilities.
+  Use whenever creating or reviewing user-facing interfaces.
+---
+
 # Accessibility & Inclusive Design Skill
 
 **Skill Type:** UX Quality & Compliance  

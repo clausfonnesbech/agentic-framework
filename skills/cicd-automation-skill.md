@@ -1,3 +1,13 @@
+---
+name: cicd-automation-skill
+description: >-
+  Use this skill to design and implement continuous integration/deployment pipelines. Trigger when
+  setting up automated testing, building deployment pipelines, automating releases, or improving
+  development velocity. This skill covers pipeline design, testing automation, deployment strategies,
+  and DevOps practices. Essential for reliable, fast releases. Use when automating build, test,
+  and deployment processes.
+---
+
 # CI/CD Automation Skill
 
 **Purpose:** Design and implement continuous integration and continuous deployment pipelines using GitHub Actions for Azure deployments.

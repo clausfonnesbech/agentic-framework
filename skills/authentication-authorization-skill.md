@@ -1,3 +1,14 @@
+---
+name: authentication-authorization-skill
+description: >-
+  Use this skill to implement secure authentication and authorization systems. Trigger when
+  designing login flows, implementing access control, choosing auth providers, or securing APIs.
+  This skill covers OAuth, JWT, API keys, session management, role-based access control, 
+  permission models, and multi-factor authentication. Essential for any system handling user data
+  or requiring access control. Use proactively during design and reactively when evaluating
+  authentication approaches.
+---
+
 # Authentication & Authorization Skill
 
 **Skill Type:** Security & Access Control  

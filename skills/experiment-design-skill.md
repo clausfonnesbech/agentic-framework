@@ -1,3 +1,13 @@
+---
+name: experiment-design-skill
+description: >-
+  Use this skill to design and run controlled experiments and A/B tests. Trigger when validating
+  hypotheses, measuring feature impact, or testing behavioral changes. This skill covers experiment
+  design, sample sizing, statistical validity, instrumentation, and result interpretation.
+  Essential for data-driven decision making. Use when decisions should be informed by evidence
+  rather than assumptions.
+---
+
 # Experiment Design Skill
 
 Purpose

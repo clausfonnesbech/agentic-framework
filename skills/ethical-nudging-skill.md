@@ -1,3 +1,13 @@
+---
+name: ethical-nudging-skill
+description: >-
+  Use this skill to design ethical nudges and behavioral interventions that respect user autonomy.
+  Trigger when influencing behavior, designing choice architecture, or applying persuasion techniques.
+  This skill covers ethical boundaries, consent, transparency, and the line between helpful nudging
+  and manipulation. Essential for responsible behavioral design. Use proactively to ensure ethical
+  implementations of behavioral techniques.
+---
+
 # Ethical Nudging Skill
 
 Purpose

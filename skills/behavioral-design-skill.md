@@ -1,3 +1,13 @@
+---
+name: behavioral-design-skill
+description: >-
+  Use this skill to apply behavioral science to product design and user engagement. Trigger when
+  improving adoption, engagement, conversion, or user satisfaction through behavioral insights.
+  This skill covers cognitive biases, behavioral economics, choice architecture, nudges, and
+  ethical persuasion techniques. Essential for product optimization and user-centered design.
+  Use when perception, behavior, and framing can improve outcomes.
+---
+
 # Behavioral Design Skill
 
 Purpose

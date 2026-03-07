@@ -1,3 +1,12 @@
+---
+name: code-review-checklist-skill
+description: >-
+  Use this skill to conduct thorough code reviews and maintain code quality. Trigger when reviewing
+  pull requests, code submissions, or ensuring quality gates. This skill provides comprehensive
+  checklists for functionality, security, performance, maintainability, and testing standards.
+  Essential for code quality, security, and knowledge sharing. Use on all code before merging.
+---
+
 # Code Review Checklist Skill
 
 ## Overview

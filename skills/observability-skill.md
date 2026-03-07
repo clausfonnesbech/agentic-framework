@@ -1,3 +1,13 @@
+---
+name: observability-skill
+description: >-
+  Use this skill to implement logging, monitoring, and observability for systems. Trigger when
+  setting up system monitoring, implementing audit trails, debugging production issues, or
+  designing dashboards. This skill covers logging patterns, metrics, distributed tracing, alerting,
+  and dashboard design. Essential for system reliability and operational visibility.
+  Use for any production system to ensure observability.
+---
+
 # Observability Skill
 
 **Purpose:** Implement comprehensive monitoring, logging, and alerting for production systems using Azure Application Insights and structured logging.

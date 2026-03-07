@@ -1,3 +1,13 @@
+---
+name: infrastructure-as-code-skill
+description: >-
+  Use this skill to design and implement infrastructure as code using tools like Bicep, Terraform,
+  or CloudFormation. Trigger when automating infrastructure deployment, managing cloud resources,
+  or ensuring reproducible environments. This skill covers IaC patterns, modularity, testing,
+  and best practices. Essential for cloud infrastructure automation. Use for all infrastructure
+  deployment work.
+---
+
 # Infrastructure as Code Skill
 
 **Purpose:** Generate and manage infrastructure using Azure Bicep, ensuring reproducible, version-controlled, and secure infrastructure provisioning.

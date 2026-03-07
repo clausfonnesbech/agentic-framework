@@ -1,3 +1,13 @@
+---
+name: workflow-automation-skill
+description: >-
+  Use this skill to design and build automated workflows. Trigger when creating n8n workflows,
+  integrating services, automating repetitive processes, or building automation platforms.
+  This skill covers workflow design, service integration, error handling, and automation best practices.
+  Essential for reducing manual work and improving efficiency. Use whenever automation can save
+  time or reduce errors.
+---
+
 # Workflow Automation Design Skill
 
 **Skill Type:** Technical Architecture  

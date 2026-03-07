@@ -1,3 +1,13 @@
+---
+name: secure-coding-skill
+description: >-
+  Use this skill to identify and prevent common security vulnerabilities in code. Trigger when
+  writing code, reviewing code for security, or assessing vulnerability risks. This skill covers
+  injection attacks, authentication flaws, data exposure, and security best practices.
+  Essential for writing secure code. Use continuously throughout development to prevent
+  vulnerabilities before they reach production.
+---
+
 # Secure Coding Skill
 
 ## Overview

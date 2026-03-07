@@ -1,3 +1,13 @@
+---
+name: market-research-skill
+description: >-
+  Use this skill to conduct market research, competitive analysis, and trend analysis. Trigger when
+  evaluating market opportunities, understanding competitors, assessing market fit, or gathering
+  market intelligence. This skill covers research methodologies, data gathering, analysis techniques,
+  and market assessment frameworks. Essential for business decisions and product strategy.
+  Use when market context informs product or business decisions.
+---
+
 # Market Research Skill
 
 **Skill Type:** Competitive Analysis & Market Intelligence  

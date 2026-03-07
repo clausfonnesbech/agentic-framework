@@ -1,3 +1,13 @@
+---
+name: source-evaluation-skill
+description: >-
+  Use this skill to evaluate source credibility and quality. Trigger when gathering research,
+  reviewing citations, assessing documentation quality, or verifying claims. This skill covers
+  source evaluation frameworks, bias detection, credibility assessment, and fact-checking.
+  Essential for research accuracy and knowledge validation. Use proactively when consuming
+  information that drives decisions.
+---
+
 # Source Evaluation Skill
 
 **Skill Type:** Research Quality Assurance  

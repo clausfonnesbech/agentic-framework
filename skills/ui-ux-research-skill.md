@@ -1,3 +1,13 @@
+---
+name: ui-ux-research-skill
+description: >-
+  Use this skill to conduct user research and validate design decisions. Trigger when understanding
+  user needs, validating designs, conducting usability testing, or gathering user feedback.
+  This skill covers research methodologies, user interview techniques, usability testing, and
+  feedback gathering. Essential for user-centered design. Use iteratively throughout design
+  and development to ensure user satisfaction.
+---
+
 # UI/UX Research Skill
 
 **Skill Type:** User Experience Analysis  

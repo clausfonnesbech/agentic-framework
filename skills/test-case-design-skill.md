@@ -1,3 +1,12 @@
+---
+name: test-case-design-skill
+description: >-
+  Use this skill to design comprehensive test cases and testing strategies. Trigger when planning
+  testing, writing test cases, assessing test coverage, or evaluating QA approaches. This skill
+  covers test design techniques, edge case identification, boundary testing, and coverage metrics.
+  Essential for thorough quality verification. Use for all QA and testing planning work.
+---
+
 # Test Case Design Skill
 
 ## Overview
