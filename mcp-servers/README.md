@@ -19,6 +19,10 @@
 - `openapi-config.json` - OpenAPI contract validation and API design quality checks
 - `github-config.json` - GitHub issues/PR/project traceability
 - `playwright-config.json` - browser-level UX flow validation
+ - `analytics-config.json` - Product & web analytics (funnels, cohorts, experiment metrics)
+ - `optimizely-config.json` - Feature flags & experiment rollout control (Optimizely/LaunchDarkly)
+ - `qualtrics-config.json` - Survey & qualitative feedback collection (Qualtrics/Typeform)
+ - `youtube-config.json` - Video search & transcripts (TED talks, interviews)
 
 ### � n8n Workflow Automation MCP
 
@@ -369,6 +373,29 @@ In the future, you might add servers for:
 - 🐙 **GitHub** - For accessing code repositories
 - 📊 **Analytics** - For data insights
 - 🎨 **Design Systems** - For UI component libraries
+
+### New MCPs Added (how to configure)
+
+- `analytics-config.json`
+   - Purpose: Provide read-only access to product/web analytics (GA4, Amplitude, Mixpanel).
+   - Setup: Create a service account or API key with read-only permissions for the analytics property. Place credentials in your agent runtime's secure store and update `analytics-config.json` with endpoint and auth type.
+   - Use: Query funnel conversion, compare treatment vs control, fetch cohort behaviour over time.
+
+- `optimizely-config.json`
+   - Purpose: Control feature flags and roll out experiments programmatically.
+   - Setup: Generate a scoped management API key (least privilege) from your experimentation platform. Configure baseUrl and auth in `optimizely-config.json`.
+   - Use: Create flags for pilot rollouts, assign audiences and fetch variant results to correlate with analytics.
+
+- `qualtrics-config.json`
+   - Purpose: Run micro-surveys and collect qualitative feedback post-experiment.
+   - Setup: Create an API token in Qualtrics or Typeform and store it securely; update `qualtrics-config.json` with the auth method.
+   - Use: Deploy 1–2 question surveys to participants after treatment to surface motivations.
+
+- `youtube-config.json`
+   - Purpose: Fetch video metadata and transcripts for talks/interviews (e.g., Rory Sutherland TED talks).
+   - Setup: Obtain a YouTube Data API key, record it in your secure store, and add to `youtube-config.json`.
+   - Use: Retrieve transcripts for citation, extract memorable quotes and examples for challenge reports.
+
 
 Each would have its own configuration file in this directory.
 

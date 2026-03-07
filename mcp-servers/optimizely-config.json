@@ -1,0 +1,17 @@
+{
+  "name": "optimizely-config",
+  "title": "Experimentation / Feature Flagging (Optimizely / LaunchDarkly)",
+  "description": "MCP connector to control feature flags and roll out experiments (supports Optimizely, LaunchDarkly or similar).",
+  "baseUrl": "https://flags.example.com/",
+  "capabilities": [
+    "create-feature-flag",
+    "assign-cohort",
+    "rollout-control",
+    "fetch-variant-results"
+  ],
+  "auth": {
+    "type": "oauth2|apiKey",
+    "notes": "Provide management API key with permissions to create toggles and assign audiences (prefer scoped tokens)."
+  },
+  "exampleUsage": "Create a 'pre-fill-claim' flag and release to 50% of manager users; check metrics via analytics-config."
+}

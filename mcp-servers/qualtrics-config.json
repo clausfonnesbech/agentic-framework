@@ -1,0 +1,16 @@
+{
+  "name": "qualtrics-config",
+  "title": "Survey & Qualitative Feedback (Qualtrics / Typeform)",
+  "description": "MCP connector for running short surveys and collecting qualitative feedback (supports Qualtrics, Typeform).",
+  "baseUrl": "https://survey.example.com/",
+  "capabilities": [
+    "create-survey",
+    "collect-responses",
+    "fetch-summary-metrics"
+  ],
+  "auth": {
+    "type": "apiKey|oauth2",
+    "notes": "Provide API key or OAuth client for service account with read/write survey access."
+  },
+  "exampleUsage": "Post-experiment micro-survey (2 questions) to gather qualitative reasons for metric changes."
+}

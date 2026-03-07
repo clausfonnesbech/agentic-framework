@@ -1,0 +1,16 @@
+{
+  "name": "youtube-config",
+  "title": "Video & Transcript Source (YouTube)",
+  "description": "MCP connector for fetching video metadata and transcripts for talks/interviews (useful for sourcing Rory Sutherland TED talks and interviews).",
+  "baseUrl": "https://www.youtube.com/",
+  "capabilities": [
+    "search-videos",
+    "fetch-transcript",
+    "fetch-metadata"
+  ],
+  "auth": {
+    "type": "apiKey",
+    "notes": "Provide YouTube Data API key for quota-bound access to video search and captions."
+  },
+  "exampleUsage": "Search for 'Rory Sutherland TED' and return transcripts for quick citation."
+}
