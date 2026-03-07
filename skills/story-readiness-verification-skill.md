@@ -1,3 +1,13 @@
+---
+name: story-readiness-verification-skill
+description: >-
+  Use this skill to verify that user stories are ready for development. Trigger before assigning
+  stories to developers, when stories feel unclear, or to avoid rework. This skill provides
+  checklists and criteria for well-defined stories, clear acceptance criteria, and dependency
+  identification. Essential for smooth development and reducing rework.
+  Use before moving stories into sprint planning.
+---
+
 # Story Readiness Verification Skill
 
 ## Overview

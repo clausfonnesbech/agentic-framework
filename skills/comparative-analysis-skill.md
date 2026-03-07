@@ -1,3 +1,13 @@
+---
+name: comparative-analysis-skill
+description: >-
+  Use this skill to conduct thorough comparative analysis of options, technologies, or approaches.
+  Trigger when evaluating competing solutions, assessing technology choices, or comparing vendors.
+  This skill provides frameworks for objective comparison, weighted scoring, trade-off analysis,
+  and decision matrices. Essential for informed decision-making. Use when choosing between options
+  that have meaningful trade-offs.
+---
+
 # Comparative Analysis Skill
 
 **Skill Type:** Decision Support  

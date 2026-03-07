@@ -1,3 +1,13 @@
+---
+name: project-coordination-skill
+description: >-
+  Use this skill to coordinate complex projects, manage timelines, and track dependencies. Trigger
+  when organizing team work, managing multi-phase projects, tracking progress, or coordinating
+  across teams. This skill covers project planning, risk management,communication strategies,
+  and stakeholder coordination. Essential for successful project execution.
+  Use for any complex multi-phase work needing coordination.
+---
+
 # Project Coordination Skill
 
 ## Purpose

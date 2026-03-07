@@ -1,3 +1,13 @@
+---
+name: technical-synthesis-skill
+description: >-
+  Use this skill to synthesize complex technical information into clear, structured summaries.
+  Trigger when compiling research findings, creating technical documentation, or distilling
+  complex topics for non-technical audiences. This skill covers organization, clarity, and
+  information hierarchy. Essential for effective technical communication.
+  Use when consolidating research or creating documentation.
+---
+
 # Technical Synthesis Skill
 
 **Skill Type:** Technical Analysis  

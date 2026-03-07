@@ -1,3 +1,13 @@
+---
+name: api-design-skill
+description: >-
+  Use this skill to design clean, maintainable, and scalable REST APIs. Trigger when designing
+  new API endpoints, reviewing API architecture, planning backend services, or creating API documentation.
+  This skill covers resource modeling, endpoint design, HTTP methods, status codes, versioning,
+  versioning strategies, and error handling patterns. Essential for building robust web services
+  and ensuring consistent, intuitive API design. Use whenever building or refactoring APIs.
+---
+
 # API Design & RESTful Architecture Skill
 
 **Skill Type:** Technical Architecture  

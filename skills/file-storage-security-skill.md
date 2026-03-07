@@ -1,3 +1,13 @@
+---
+name: file-storage-security-skill
+description: >-
+  Use this skill to securely manage file storage, uploads, and cloud object storage. Trigger when
+  implementing file handling, configuring storage security, managing access controls, or handling
+  user uploads. This skill covers secure upload patterns, access control, encryption, CDN usage,
+  and provider-specific security features. Essential for protecting user data. Use whenever files
+  are stored or served to users.
+---
+
 # File Storage & Upload Security Skill
 
 **Skill Type:** Security & Data Handling  

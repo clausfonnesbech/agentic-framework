@@ -1,3 +1,13 @@
+---
+name: dependency-security-skill
+description: >-
+  Use this skill to manage and secure software dependencies and supply chain risks. Trigger when
+  reviewing dependencies, evaluating libraries, assessing supply chain security, or managing
+  vulnerability patches. This skill covers vulnerability scanning, license compliance, version
+  management, and secure dependency practices. Essential for application security. Use continuously
+  to maintain secure dependencies.
+---
+
 # Dependency Security Skill
 
 ## Overview

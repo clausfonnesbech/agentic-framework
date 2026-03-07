@@ -1,3 +1,12 @@
+---
+name: backlog-planning-estimation-skill
+description: >-
+  Use this skill to plan product backlogs and estimate work. Trigger when breaking down features,
+  creating user stories, estimating effort, or planning releases. This skill covers story writing,
+  acceptance criteria, estimation techniques, prioritization frameworks, and backlog management.
+  Essential for product management and sprint planning. Use whenever organizing and planning work.
+---
+
 # Backlog Planning & Estimation Skill
 
 **Skill Type:** Delivery Planning  

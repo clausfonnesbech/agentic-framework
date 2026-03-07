@@ -1,3 +1,13 @@
+---
+name: sprint-planning-skill
+description: >-
+  Use this skill to plan and execute development sprints effectively. Trigger when organizing
+  work into sprints, setting sprint goals, estimating capacity, or planning release cycles.
+  This skill covers sprint scoping, velocity tracking, risk planning, and daily standup coordination.
+  Essential for structured, predictable delivery. Use at the start of each sprint and for sprint
+  planning ceremonies.
+---
+
 # Sprint Planning Skill
 
 ## Overview

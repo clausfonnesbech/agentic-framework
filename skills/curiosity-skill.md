@@ -1,3 +1,13 @@
+---
+name: curiosity-skill
+description: >-
+  Use this skill to systematically explore and understand requests through targeted, contextual questions.
+  Trigger at the start of any project or when information is incomplete, vague, or assumptions
+  need validation. This skill provides frameworks for discovering hidden requirements, uncovering
+  stakeholder needs, exploring constraints, and validating assumptions. Essential for requirements
+  gathering and scoping. Use immediately after receiving new requests to ensure complete understanding.
+---
+
 # Curiosity Skill
 
 **Skill Type:** Information Gathering  

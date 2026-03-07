@@ -1,3 +1,13 @@
+---
+name: realtime-communication-skill
+description: >-
+  Use this skill to implement real-time communication features like chat, notifications, and live
+  updates. Trigger when building collaboration tools, instant messaging, live notifications, or
+  real-time data features. This skill covers WebSockets, pub/sub patterns, message queues, and
+  real-time architectures. Essential for collaborative and interactive applications.
+  Use when real-time communication or synchronization is needed.
+---
+
 # Real-Time Communication Patterns Skill
 
 **Skill Type:** Technical Architecture  

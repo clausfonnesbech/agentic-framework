@@ -1,0 +1,16 @@
+{
+  "name": "analytics-config",
+  "title": "Web & Product Analytics (GA4/Generic)",
+  "description": "MCP connector for reading product and web analytics events (funnels, cohorts, experiments). Configure to point at GA4 or a generic analytics API.",
+  "baseUrl": "https://analytics.example.com/",
+  "capabilities": [
+    "fetch-funnel-metrics",
+    "query-event-cohorts",
+    "compare-variant-metrics"
+  ],
+  "auth": {
+    "type": "apiKey|oauth2",
+    "notes": "Provide service account credentials or OAuth client for read-only analytics access."
+  },
+  "exampleUsage": "Get last 30 days funnel conversion for onboarding; compare treatment vs control by cohort."
+}

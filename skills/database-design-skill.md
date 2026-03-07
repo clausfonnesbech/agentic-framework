@@ -1,3 +1,13 @@
+---
+name: database-design-skill
+description: >-
+  Use this skill to design efficient, maintainable database schemas and data models. Trigger when
+  planning databases for new applications, optimizing query performance, implementing security policies,
+  or refactoring schemas. This skill covers normalization, relationships, constraints, indexing,
+  and Supabase-specific features. Essential for data-driven applications. Use whenever designing
+  or reviewing database architecture.
+---
+
 # Database Design & Data Modeling Skill
 
 **Skill Type:** Technical Architecture  

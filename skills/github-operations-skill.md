@@ -1,3 +1,13 @@
+---
+name: github-operations-skill
+description: >-
+  Use this skill to manage GitHub repositories, workflows, and development operations. Trigger when
+  setting up repos, managing PRs, automating workflows, or coordinating team development work.
+  This skill covers repository setup, branch strategies, workflow automation, issue management,
+  and GitHub Actions. Essential for development team coordination and CI/CD automation.
+  Use for any GitHub-related operational needs.
+---
+
 # GitHub Operations Skill
 
 Purpose
