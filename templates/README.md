@@ -154,12 +154,69 @@ See [project-template/README.md](project-template/README.md) for full structure 
 
 **Includes:**
 - Epic overview & scope
-- User story breakdown
+- User story breakup
 - Dependency mapping
 - Sprint allocation
 - Effort estimation
 - Resource allocation
 - Risk assessment
+
+
+### 10. **completion-report-template.md** ⭐ NEW
+**Used by:** Coding Agent  
+**Purpose:** Document implementation details and test status for a story  
+**When:** After code/workflow development completes, prior to inspection
+
+**Includes:**
+- Implementation summary
+- Deliverables and files modified
+- Testing results and validation
+- Status history with Document Status field
+
+### 11. **status-report-template.md** ⭐ NEW
+**Used by:** Tech Lead Agent  
+**Purpose:** Regular development status updates across stories and sprints  
+**When:** Periodic (daily/weekly) progress reports
+
+**Includes:**
+- Active stories and their statuses
+- Completed work for the session
+- Blockers and next steps
+- Document Status header
+
+### 12. **research-plan-template.md** ⭐ NEW
+**Used by:** Research Manager Agent  
+**Purpose:** Plan and coordinate research activities across domains  
+**When:** At start of research phase
+
+**Includes:**
+- Research domains with tasks and statuses
+- Task assignment log
+- Document Status header
+
+### 13. **challenge-report-template.md** ⭐ NEW
+**Used by:** Behavioral Alchemy Agent  
+**Purpose:** Behavioral challenge / reframing reports  
+**When:** When delivering reframing recommendations or experiments
+
+**Includes:**
+- Rational review and blind spots
+- Counterintuitive proposals table
+- Experiment plans and approval gates
+- One-line takeaway
+- Document Status field
+
+### 14. **devops-deliverable-template.md** ⭐ NEW
+**Used by:** DevOps/Platform Engineering Agent  
+**Purpose:** Capture infrastructure, pipeline, and operational deliverables  
+**When:** After completing infrastructure or CI/CD tasks
+
+**Includes:**
+- Overview of changes
+- Infrastructure specifics (Bicep/Terraform)
+- CI/CD pipeline definitions
+- Observability setup
+- Operational notes and status history
 
 ---
 

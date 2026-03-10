@@ -1,5 +1,6 @@
 # Task Breakdown Template
 
+**Document Status:** Draft / In Progress / Complete  
 **Task Breakdown ID:** TB-XXX  
 **Created by:** Task Manager Agent  
 **Date:** [Date]  

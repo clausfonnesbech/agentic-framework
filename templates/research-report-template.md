@@ -1,5 +1,6 @@
 # Research Report Template
 
+**Document Status:** Draft / In Progress / Complete  
 **Report ID:** RR-XXX  
 **Created by:** Research Agent  
 **Date:** [Date]  

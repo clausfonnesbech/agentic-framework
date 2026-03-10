@@ -1,5 +1,6 @@
 # Security Review Report Template
 
+**Document Status:** Draft / In Progress / Complete  
 **Report ID:** SR-XXX  
 **Created by:** Security Agent  
 **Date:** [Date]  

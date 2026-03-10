@@ -1,5 +1,6 @@
 # Sprint Plan Template
 
+**Document Status:** Draft / In Progress / Complete  
 **Sprint ID:** SPRINT-XXX  
 **Created by:** Tech Lead Agent  
 **Date:** [Date]  
