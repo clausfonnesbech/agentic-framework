@@ -1,5 +1,6 @@
 # Code Review Report Template
 
+**Document Status:** Draft / In Progress / Needs Revision / Complete  
 **Review ID:** CR-XXX  
 **Created by:** Code Inspector Agent  
 **Date:** [Date]  

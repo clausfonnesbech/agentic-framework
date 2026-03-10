@@ -1,5 +1,6 @@
 # User Story Template
 
+**Document Status:** Draft / In Progress / Ready for Review / Complete  
 **Story ID:** US-XXX  
 **Created by:** Business Analyst Agent  
 **Date:** [Date]  

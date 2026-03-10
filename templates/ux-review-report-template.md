@@ -1,5 +1,6 @@
 # UX Review Report Template
 
+**Document Status:** Draft / In Progress / Complete  
 **Review ID:** UXR-XXX  
 **Created by:** UX/UI Agent  
 **Date:** [Date]  

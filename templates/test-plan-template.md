@@ -1,5 +1,6 @@
 # Test Plan Template
 
+**Document Status:** Draft / In Progress / Complete  
 **Test Plan ID:** TP-XXX  
 **Created by:** QA Lead Agent  
 **Date:** [Date]  
