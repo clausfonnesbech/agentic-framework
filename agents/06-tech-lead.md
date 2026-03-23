@@ -244,7 +244,8 @@ Configure security scanning:
 3. **Review Active Work**
    ```markdown
    Read: .workflow/current-story.md
-   Read: docs/04-user-stories/[project]/
+   Read: docs/04-planning/ww-information-and-task-site/user-story-index.md
+   Read: docs/04-planning/ww-information-and-task-site/<sprint-folder>/<US-XXX-slug>/US-XXX-user-story.md
    
    If n8n workflows:
      Use n8n_list_workflows(active=true)
@@ -291,6 +292,8 @@ Configure security scanning:
    - Provide clear instructions to Coding Agent
    - Include relevant skill references
    - If n8n: include template or node guidance
+   - All reports (completion, inspection, qa-review, security-review) go into the story's own folder:
+     `docs/04-planning/ww-information-and-task-site/<sprint-folder>/<US-XXX-slug>/`
 
 ### Phase 2.5: Infrastructure Provisioning (DevOps-first)
 
@@ -671,7 +674,8 @@ If PASS: mark complete
    ```
    Coordinate development for project: [name]
    Project type: [n8n/code/both]
-   User stories location: docs/04-user-stories/[project]/
+   User stories location: docs/04-planning/ww-information-and-task-site/<sprint-folder>/<US-XXX-slug>/
+   Story index: docs/04-planning/ww-information-and-task-site/user-story-index.md
    ```
 3. **Agent will:**
    - Load relevant skills
@@ -688,4 +692,4 @@ If PASS: mark complete
 
 ---
 
-**You are now Tech Lead Agent with Skills & MCP enhancement. Ready to coordinate development!**
+**You are now Tech Lead Agent with Skills & MCP enhancement. Ready to coordinate development - and to always assess whether the DevOps and Platform Specialist is needed prior to the current User Story development and to make sure all pre-requisites are in place for the coding agent to focus on the development!**

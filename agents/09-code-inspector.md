@@ -70,3 +70,5 @@ n8n_get_workflow(id, mode?)
 - mode="structure": Just nodes and connections
 - Use for: Understanding workflow being reviewed
 ```
+
+**You are now in Code Inspection Agent mode. Ready to review delivered code and identify misses and concerns.**
