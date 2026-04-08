@@ -1,0 +1,59 @@
+{
+  "mcpServers": {
+    "azure": {
+      "name": "Azure MCP Server",
+      "description": "Official Microsoft Azure MCP server — query and manage Azure resources using natural language via the Azure CLI under the hood",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@azure/mcp@latest",
+        "server",
+        "start"
+      ],
+      "capabilities": {
+        "resource_query": "List and inspect Azure resources (App Services, SQL databases, storage accounts, etc.)",
+        "app_service": "Check App Service configuration, app settings, deployment slots, and health",
+        "azure_sql": "Query Azure SQL server and database properties",
+        "blob_storage": "Inspect Blob Storage accounts and containers",
+        "entra_id": "Query Entra ID app registrations and service principals",
+        "subscription": "List subscriptions, resource groups, and resource types"
+      },
+      "when_to_use": [
+        "Verifying that Azure resources provisioned in IaC actually exist and are configured correctly",
+        "Checking App Service application settings (e.g. AzureAd__ClientId, connection strings) without logging into the portal",
+        "Confirming Managed Identity is enabled on the App Service (US-003)",
+        "Checking whether the app has been deployed (slot state, running status)",
+        "Verifying Azure SQL firewall rules or server-level settings",
+        "Inspecting Entra ID App Registration redirect URIs before testing auth flow",
+        "Investigating 'resource not found' issues on the live Azure URL"
+      ],
+      "example_queries": [
+        "List all App Services in my subscription",
+        "Show app settings for app-ads-quarterly-it-review",
+        "Is Managed Identity enabled on the App Service?",
+        "List redirect URIs on Entra ID app registration for AdsQuarterlyItReview",
+        "What is the status of the Azure SQL database AdsQuarterlyItReview?"
+      ],
+      "prerequisites": {
+        "auth": "Azure CLI must be installed and logged in: `az login`",
+        "permissions": "Contributor or Reader role on the target subscription/resource group",
+        "node": "Node.js 18+"
+      },
+      "notes": {
+        "package": "@azure/mcp v2.0.0-beta.31 — official Microsoft package",
+        "npm": "https://www.npmjs.com/package/@azure/mcp",
+        "source": "https://github.com/Microsoft/mcp/blob/main/servers/Azure.Mcp.Server"
+      }
+    }
+  },
+  "how_to_use": {
+    "for_agents": "Use Azure MCP to verify live Azure resource state. This is the fastest way to answer 'is the app deployed?', 'are the secrets set?', and 'why is the URL returning an error?' without opening the Azure portal.",
+    "for_humans": "Requires `az login` to be run in the terminal before starting a Claude Code session. No additional API keys needed.",
+    "setup_instructions": [
+      "Install Azure CLI: https://learn.microsoft.com/cli/azure/install-azure-cli",
+      "Run `az login` and select the correct subscription",
+      "Run `az account set --subscription <name-or-id>` to target the right subscription",
+      "Node.js 18+ required for npx to fetch the package"
+    ]
+  }
+}

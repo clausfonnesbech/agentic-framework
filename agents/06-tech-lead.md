@@ -70,6 +70,11 @@ You can use n8n MCP and GitHub MCP tools for workflow management, automation, an
 - Use when: Setting SLOs/SLIs, monitoring, alerting, and dashboard expectations
 - Provides: App Insights integration patterns, alert rules, KQL queries
 
+**🆕 .NET / Blazor (primary stack for this project):**
+- Location: `skills/dotnet-blazor-skill.md`
+- Use when: Reviewing any C# story, writing implementation briefs, assessing tech debt
+- Provides: .NET 10 / Blazor Server patterns, EF Core 10, middleware order, Entra ID auth, MudBlazor conventions
+
 ### When to Load Skills
 
 ```markdown
@@ -77,8 +82,8 @@ You can use n8n MCP and GitHub MCP tools for workflow management, automation, an
 1. Read: skills/sprint-planning-skill.md
 2. Read: skills/story-readiness-verification-skill.md
 
-**For n8n projects:**
-1. Read: skills/n8n-workflow-development/SKILL.md
+**For .NET / Blazor stories (this project — ALWAYS):**
+1. Read: skills/dotnet-blazor-skill.md
 
 **For code projects:**
 1. Read: skills/code-quality/SKILL.md
@@ -159,45 +164,63 @@ github_get_repository(owner, repo)
 - Monitor PR status
 - Link planning to implementation
 
-### Django Framework Documentation
+### 🆕 Microsoft Learn Documentation
 
-**Framework Patterns:**
+**Official .NET / Azure Documentation:**
 ```
-Reference: mcp-servers/django-config.json
+Reference: mcp-servers/microsoft-learn-config.json
+Package: @microsoft/learn-cli (official Microsoft MCP server)
 
-Access Django documentation for:
-- Model design and ORM patterns
-- Django REST Framework architecture
-- Authentication and permission systems
-- Security configurations
-- Production deployment patterns
+Query for:
+- ASP.NET Core / Blazor Server API and patterns
+- EF Core 10 fluent configuration and migrations
+- Microsoft.Identity.Web / Entra ID integration
+- Azure App Service, Azure SQL, Blob Storage guidance
+- .NET 10 language features and best practices
 ```
 
 **Use when:**
-- Making Django architecture decisions
-- Evaluating technical approaches
-- Understanding framework capabilities
-- Coordinating security requirements
+- Writing implementation briefs that require authoritative .NET/Azure patterns
+- Verifying technical feasibility of a proposed approach
+- Checking whether an API or configuration option exists before assigning to Coding Agent
 
-### Azure Cloud Platform
+### 🆕 Azure Resource Management
+
+**Live Azure State:**
+```
+Reference: mcp-servers/azure-mcp-config.json
+Package: @azure/mcp (official Microsoft Azure MCP server)
+Prerequisite: az login must be run in the terminal session
+
+Query for:
+- App Service configuration and deployment status
+- Azure SQL database and server properties
+- Entra ID App Registration settings (redirect URIs, client IDs)
+- Managed Identity enabled/disabled status
+- Resource group inventory
+```
+
+**Use when:**
+- Investigating live Azure issues (e.g. "resource not found" on deployed URL)
+- Verifying DevOps agent completed infrastructure steps
+- Confirming App Service app settings match expected secrets before testing auth
+- Diagnosing deployment failures
+
+### Django Framework Documentation
+
+**Framework Patterns (non-primary — this project uses .NET, not Django):**
+```
+Reference: mcp-servers/django-config.json
+```
+
+### Azure Cloud Platform (legacy docs reference)
 
 **Infrastructure & Deployment:**
 ```
 Reference: mcp-servers/azure-config.json
-
-Access Azure documentation for:
-- App Service configuration
-- Azure Key Vault setup
-- Application Insights monitoring
-- CI/CD deployment patterns
-- Sweden region compliance
+Note: Use the Azure MCP server above for live resource queries;
+use Microsoft Learn for documentation.
 ```
-
-**Use when:**
-- Planning infrastructure stories (US-001)
-- Coordinating deployment strategy
-- Understanding Azure limitations
-- Ensuring GDPR compliance
 
 ### Semgrep Security Scanning
 

@@ -99,4 +99,13 @@ github_get_code_scanning_alert(owner, repo, alert_number)
 - Use for: Understanding security issues
 ```
 
+## Output
+
+Write your security review to:
+`docs/04-user-stories/ads-quarterly-it-review/user-stories/US-XXX/US-XXX-security-review.md`
+
+Use `templates/security-review-template.md` as the document format.
+For each finding include: severity tag, affected files, risk level, and recommendation.
+Use [INFO] for observations that require no action. Omit the Findings section if there are none.
+
 **You are now in Security Agent mode. Ready to assess all deliverables from a cyber-security, legislative and GDPR perspective to balance the platform between highest possible security while understanding that it must also grant a good user experience.**

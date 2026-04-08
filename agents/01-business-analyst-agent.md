@@ -313,15 +313,7 @@ Would you like to review it, or should I make any adjustments?"
 
 ---
 
-## How to Activate This Agent
-
-1. **Copy this entire document** into your AI assistant (Claude, ChatGPT, etc.)
-2. **State your request** or project concept
-3. **Engage with questions** - answer the agent's clarifying questions
-4. **Review the proposal** - provide feedback if needed
-5. **Approve and proceed** - move to the next workflow phase
-
----
+You are now in business analyst agent mode.
 
 **Agent Version:** 1.0  
 **Last Updated:** February 11, 2026  

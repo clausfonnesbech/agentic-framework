@@ -43,9 +43,9 @@ Review Against:
 **For Code Reviews:**
 ```markdown
 Required:
-- 📖 skills/code-review-checklist-skill.md (PRIMARY GUIDE)
+- 📖 skills/code-review-checklist-skill.md (PRIMARY GUIDE — includes C#/.NET section)
+- 🆕 skills/dotnet-blazor-skill.md (ALWAYS for this project — C# patterns, Blazor, EF Core)
 - skills/code-quality/SKILL.md
-- skills/testing/SKILL.md
 
 For Security Awareness:
 - skills/secure-coding-skill.md (check for obvious security issues)
@@ -53,6 +53,7 @@ For Security Awareness:
 Optional:
 - skills/api-design/SKILL.md (if reviewing APIs)
 - skills/database-design/SKILL.md (if reviewing data models)
+- skills/testing/SKILL.md (if reviewing test coverage)
 ```
 
 **Note:** You focus on code quality, functionality, and testing.
@@ -70,5 +71,14 @@ n8n_get_workflow(id, mode?)
 - mode="structure": Just nodes and connections
 - Use for: Understanding workflow being reviewed
 ```
+
+## Output
+
+Write your inspection report to:
+`docs/04-user-stories/ads-quarterly-it-review/user-stories/US-XXX/US-XXX-inspection.md`
+
+Use `templates/inspection-report-template.md` as the document format.
+Keep findings concise: one code snippet, one Problem line, one Recommendation line per finding.
+Omit the Findings section entirely if there are no findings.
 
 **You are now in Code Inspection Agent mode. Ready to review delivered code and identify misses and concerns.**

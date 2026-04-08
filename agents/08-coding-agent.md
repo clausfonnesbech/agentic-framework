@@ -54,12 +54,12 @@ Recommended:
 ```markdown
 Required:
 - 🔒 skills/secure-coding-skill.md (ALWAYS - security first!)
-- skills/code-quality/SKILL.md
-- skills/testing/SKILL.md
+- 🆕 skills/dotnet-blazor-skill.md (ALWAYS for this project — C#/.NET primary reference)
+- skills/code-review-checklist-skill.md (self-review before marking complete)
 
 Optional:
 - skills/api-design/SKILL.md (if building APIs)
-- skills/database-design/SKILL.md (if database work)
+- skills/database-design/SKILL.md (if database schema work)
 - skills/authentication-authorization-skill.md (if auth work)
 - skills/observability-skill.md (if adding telemetry/logging)
 - skills/azure-resource-patterns-skill.md (if integrating Azure services)
@@ -170,30 +170,41 @@ Access Django documentation for:
 "Prevent SQL injection with Django ORM?"
 ```
 
-### Azure SDK Integration
+### 🆕 Microsoft Learn Documentation
+
+**Authoritative .NET / Azure Documentation:**
+```
+Reference: mcp-servers/microsoft-learn-config.json
+Package: @microsoft/learn-cli (official Microsoft MCP server)
+
+Query for:
+- Correct .NET 10 / C# API usage and patterns
+- Blazor Server component lifecycle and rendering
+- EF Core 10 fluent API, migrations, owned entities
+- Microsoft.Identity.Web configuration options
+- Azure SDK for .NET (Blob Storage, Key Vault, Identity)
+- ASP.NET Core middleware and DI patterns
+```
+
+**Use when:**
+- Unsure of the correct API, method signature, or configuration key
+- Looking for official code examples before writing implementation
+- Verifying that a feature exists in .NET 10 (vs. an older version)
+
+**Examples:**
+```
+"AddMicrosoftIdentityWebApp dual cookie and OIDC scheme configuration"
+"EF Core 10 owned entity JSON column mapping"
+"Azure Blob Storage SAS token generation with DefaultAzureCredential"
+"Blazor Server StateHasChanged when to call"
+```
+
+### Azure SDK Integration (legacy docs reference)
 
 **Cloud Service Integration:**
 ```
 Reference: mcp-servers/azure-config.json
-
-Access Azure SDK documentation for:
-- Azure Key Vault secret retrieval
-- Application Insights logging
-- Azure Blob Storage (if needed)
-- Managed identity authentication
-```
-
-**Use when:**
-- Implementing Azure Key Vault integration
-- Adding Application Insights telemetry
-- Configuring deployment to Azure
-- Using Azure services from Python
-
-**Examples:**
-```
-"How to retrieve secrets from Azure Key Vault in Python?"
-"Configure Application Insights for Django?"
-"Use managed identity in Azure App Service?"
+Note: Use Microsoft Learn above for SDK documentation.
 ```
 
 ### Semgrep Security Self-Check
@@ -461,17 +472,17 @@ Run Semgrep for self-review:
 
 16. **Create Completion Report**
     ```markdown
-    Save to: .workflow/completions/US-XXX-completion.md
-    
+    Save to: docs/04-user-stories/ads-quarterly-it-review/user-stories/US-XXX/US-XXX-completion.md
+
+    Use template: templates/completion-report-template.md
+
     Include:
-      - Story ID
-      - What was implemented
-      - Workflow ID (if n8n)
-      - Files created/modified
-      - Tests status
-      - MCP tools used
-      - Skills applied
-      - Any notes or considerations
+      - Story ID and short title
+      - What was implemented (2–3 sentences)
+      - Files created/modified (table)
+      - Quality gates table (build result, placeholder rows for Inspector/QA/Security)
+      - Acceptance criteria checklist
+      - How to Test This Delivery section (local + Azure, exact steps + expected outcomes)
     ```
 
 17. **Report to Tech Lead**

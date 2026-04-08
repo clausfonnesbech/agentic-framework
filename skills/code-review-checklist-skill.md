@@ -281,6 +281,45 @@ This skill provides comprehensive checklists and guidance for conducting effecti
   - No unhandled rejections
   - Concurrent operations optimized
 
+### C# / .NET (this project's primary language)
+
+- [ ] **Naming follows C# conventions**
+  - PascalCase for public members, types, and methods
+  - `_camelCase` for private fields
+  - `*Async` suffix on all `Task`-returning methods
+
+- [ ] **Nullable reference types handled correctly**
+  - No suppression of nullable warnings with `!` unless provably non-null
+  - Collections initialised with `= [];` or in constructor
+  - `?` used for genuinely optional values
+
+- [ ] **Async/await correct**
+  - No `.Result` or `.Wait()` calls (deadlock risk on Blazor Server)
+  - No `async void` except Blazor event callbacks
+  - `CancellationToken` threaded through I/O call chains
+
+- [ ] **EF Core usage sound**
+  - `AsNoTracking()` on read-only queries
+  - `Include()` / `ThenInclude()` used to avoid N+1 queries
+  - No raw SQL string concatenation — use EF Core or `SqlParameter`
+  - New schema changes have a corresponding EF Core migration
+
+- [ ] **Blazor Server patterns correct**
+  - Components that hold resources implement `IDisposable` / `IAsyncDisposable`
+  - `[Parameter]` values not mutated — copied to local fields if needed
+  - `StateHasChanged()` only called when outside Blazor's normal render cycle
+  - `EventCallback<T>` used for component event parameters (not `Action<T>`)
+
+- [ ] **Dependency injection used correctly**
+  - Services injected via constructor, not `IServiceProvider.GetService` (service locator anti-pattern)
+  - Scoped services not captured in singletons
+
+- [ ] **Security (C#-specific)**
+  - `returnUrl` values validated with `Url.IsLocalUrl()` before redirects
+  - `[ValidateAntiForgeryToken]` on state-mutating Razor Page handlers
+  - No `[AllowAnonymous]` on routes under `/admin/*`
+  - Secrets from `IConfiguration` / environment, never string literals
+
 ### SQL
 
 - [ ] **Queries optimized**
@@ -610,8 +649,8 @@ repos:
 ## Skill Metadata
 
 **Skill Name:** Code Review Checklist
-**Version:** 1.0
-**Last Updated:** February 14, 2026
+**Version:** 1.1
+**Last Updated:** 2026-03-24
 **Applicable To:** Code Inspector, Tech Lead, Coding Agent (self-review)
 **Dependencies:** secure-coding-skill.md
-**Related Skills:** test-case-design-skill.md, secure-coding-skill.md
+**Related Skills:** test-case-design-skill.md, secure-coding-skill.md, dotnet-blazor-skill.md

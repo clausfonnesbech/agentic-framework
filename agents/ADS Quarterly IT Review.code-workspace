@@ -1,0 +1,35 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"chat.tools.terminal.autoApprove": {
+			"/^az webapp log download \\\\\n  --resource-group rg-ads-quarterly-it-review \\\\\n  --name app-ads-quarterly-it-review-epyxln \\\\\n  --log-file /tmp/applog2\\.zip 2>&1 && \\\\\n  unzip -o /tmp/applog2\\.zip -d /tmp/applog2 && \\\\\n  cat /tmp/applog2/LogFiles/eventlog\\.xml \\| python3 -c \"\nimport sys, xml\\.etree\\.ElementTree as ET\ncontent = sys\\.stdin\\.read\\(\\)\nroot = ET\\.fromstring\\(content\\)\nevents = root\\.findall\\('\\.//\\{\\*\\}Event'\\)\nfor event in events\\[-10:\\]:\n    msg = event\\.findtext\\('\\.//\\{\\*\\}Message'\\) or event\\.findtext\\('\\.//\\{\\*\\}Data'\\) or ''\n    if msg: print\\(msg\\[:500\\]\\); print\\('---'\\)\n\" 2>&1$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^IPS=\"74\\.241\\.147\\.8,74\\.241\\.147\\.11,74\\.241\\.147\\.16,74\\.241\\.147\\.24,74\\.241\\.147\\.28,74\\.241\\.147\\.31,74\\.241\\.147\\.194,74\\.241\\.147\\.226,74\\.241\\.147\\.232,74\\.241\\.148\\.1,74\\.241\\.148\\.10,74\\.241\\.148\\.16,74\\.241\\.148\\.18,74\\.241\\.148\\.22,74\\.241\\.148\\.26,74\\.241\\.147\\.12,74\\.241\\.148\\.49,74\\.241\\.148\\.50,51\\.12\\.31\\.7\"\ni=1\nfor ip in \\$\\(echo \\$IPS \\| tr ',' ' '\\); do\n  az sql server firewall-rule create \\\\\n    --resource-group rg-ads-quarterly-it-review \\\\\n    --server sql-ads-quarterly-it-review-epyxln \\\\\n    --name \"AppServiceOutbound-\\$i\" \\\\\n    --start-ip-address \"\\$ip\" \\\\\n    --end-ip-address \"\\$ip\" \\\\\n    --output none 2>&1 && echo \"Added \\$ip\"\n  i=\\$\\(\\(i\\+1\\)\\)\ndone$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^curl -s -o /dev/null -w \"%\\{http_code\\}\" https://app-ads-quarterly-it-review-epyxln\\.azurewebsites\\.net/ && echo \"\" && curl -s -o /dev/null -w \"%\\{http_code\\}\" https://app-ads-quarterly-it-review-epyxln\\.azurewebsites\\.net/admin$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^az webapp log download --resource-group rg-ads-quarterly-it-review --name app-ads-quarterly-it-review-epyxln --log-file /tmp/applog3\\.zip 2>&1 && unzip -o /tmp/applog3\\.zip -d /tmp/applog3 2>/dev/null && cat /tmp/applog3/LogFiles/eventlog\\.xml \\| python3 -c \"\nimport sys, xml\\.etree\\.ElementTree as ET\nroot = ET\\.fromstring\\(sys\\.stdin\\.read\\(\\)\\)\nevents = root\\.findall\\('\\.//\\{\\*\\}Event'\\)\nfor e in events\\[-6:\\]:\n    msg = e\\.findtext\\('\\.//\\{\\*\\}Message'\\) or e\\.findtext\\('\\.//\\{\\*\\}Data'\\) or ''\n    if msg: print\\(msg\\[:400\\]\\); print\\('---'\\)\n\"$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^sleep 45 && curl -s -o /dev/null -w \"/ = %\\{http_code\\}\\\\n\" https://app-ads-quarterly-it-review-epyxln\\.azurewebsites\\.net/ && curl -s -o /dev/null -w \"/admin = %\\{http_code\\}\\\\n\" https://app-ads-quarterly-it-review-epyxln\\.azurewebsites\\.net/admin$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^curl -s -o /dev/null -w \"/ = %\\{http_code\\}\\\\n\" https://app-ads-quarterly-it-review-epyxln\\.azurewebsites\\.net/ && curl -s -o /dev/null -w \"/admin = %\\{http_code\\}\\\\n\" https://app-ads-quarterly-it-review-epyxln\\.azurewebsites\\.net/admin$/": {
+				"approve": true,
+				"matchCommandLine": true
+			}
+		}
+	}
+}
