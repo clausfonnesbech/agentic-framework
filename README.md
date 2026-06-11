@@ -56,33 +56,69 @@ See `mcp-servers/README.md` for the full optional inventory. Server activation i
 
 ## 🚀 Quick Start
 
+### Goal: Project-Local Mirror (Recommended)
+
+Use this mode if you want to:
+- keep a clean source-of-truth framework repo,
+- work with editable `agents/`, `skills/`, `templates/`, `mcp-servers/`, and `shared/` inside your project,
+- ensure project edits do not impact the framework repo unless you explicitly push them.
+
+This is implemented by:
+- a local mirror clone at `.agentic-framework/` (git-ignored in your project),
+- a sync script at `scripts/sync-framework.sh`.
+
 ### Prerequisites
-- AI assistant with MCP support (e.g., Claude with MCP enabled)
-- Access to required MCP servers (see `mcp-servers/SETUP-GUIDE.md`)
-- For security scanning: Semgrep installed (`brew install semgrep` or `pip install semgrep`)
+- Git
+- Bash shell (macOS/Linux or Git Bash on Windows)
+- AI assistant with MCP support
 
-### Installation
+### Get Started (Mirror + Sync)
 
-1. **Clone this repository:**
+1. **Go to your project root (existing or new):**
    ```bash
-   git clone https://github.com/yourusername/agentic-framework.git
-   cd agentic-framework
+   cd /path/to/your-project
    ```
 
-2. **Configure MCP servers:**
-   - Review `mcp-servers/SETUP-GUIDE.md` for detailed setup instructions
-   - Configure MCP servers in your AI assistant (e.g., Claude Desktop app)
-   - Update config files with your credentials/tokens as needed
+2. **Bootstrap the framework mirror into your project:**
 
-3. **Choose your agents:**
-   - Review agent definitions in `agents/` directory
-   - Select agents based on your workflow needs
-   - Each agent file contains initialization instructions and required resources
+   Option A (recommended one-liner):
+   ```bash
+   curl -fsSL https://raw.githubusercontent.com/clausfonnesbech/agentic-framework/main/scripts/bootstrap-sync.sh \
+     | bash -s -- "$PWD"
+   ```
 
-4. **Load skills and templates:**
-   - Agents reference skills and templates from this framework
-   - Ensure your AI assistant has access to these directories
-   - Skills are loaded at agent session start
+   Option B (from a local framework clone):
+   ```bash
+   /path/to/agentic-framework/scripts/bootstrap-sync.sh "$PWD"
+   ```
+
+3. **Confirm mirror setup:**
+   ```bash
+   ./scripts/sync-framework.sh status
+   ```
+
+4. **Pull framework updates when needed:**
+   ```bash
+   ./scripts/sync-framework.sh pull
+   ```
+
+### How Isolation Works
+
+- Edit framework files directly in your project paths (`agents/`, `skills/`, etc.).
+- Your edits are committed to your project repository, not to the framework repository.
+- The framework clone lives in `.agentic-framework/` and is ignored by your project `.gitignore`.
+- Nothing is sent upstream unless you explicitly run:
+  ```bash
+  ./scripts/sync-framework.sh push "your message"
+  ```
+
+If you never run `push`, your project-specific agent customizations stay project-local.
+
+### MCP Setup
+
+- Review `mcp-servers/SETUP-GUIDE.md`.
+- Enable only the MCP servers required by your selected project stack.
+- Add credentials/tokens in your local runtime environment.
 
 ### Basic Usage
 
