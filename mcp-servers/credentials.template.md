@@ -22,11 +22,11 @@ YOUTUBE_API_KEY=YOUR_YOUTUBE_DATA_API_KEY
 
 # Example: Git remote
 GIT_REMOTE=https://github.com/clausfonnesbech/agentic-framework.git
-GIT_BRANCH=chore/azure-python-enhancements
+GIT_BRANCH=chore/project-neutral-update
 ```
 
 Security guidance
 
-- NEVER commit API keys to source control. Use your CI/CD secrets manager (GitHub Secrets, Azure Key Vault, etc.).
+- NEVER commit API keys to source control. Use your project-selected CI/CD secret manager.
 - Use least-privilege tokens (read-only for analytics where possible, scoped management tokens for feature flags).
 - Rotate keys periodically and restrict IP ranges if supported.

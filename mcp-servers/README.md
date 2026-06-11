@@ -1,5 +1,7 @@
 # MCP Server Guide for Agents
 
+All MCP configurations in this folder are optional capability modules. Do not assume any specific server, infrastructure provider, language stack, or framework is active for a project unless it is explicitly selected in that project's context and enabled in its configuration.
+
 ## What is MCP?
 
 **Model Context Protocol (MCP)** is a standard that allows AI agents to access external tools, data sources, and services. Think of it as a way for agents to extend their capabilities beyond their training data.
@@ -8,21 +10,18 @@
 
 ### 🧭 Quick Server Inventory
 
-- `microsoft-learn-config.json` - Microsoft documentation and implementation guidance
-- `n8n-config.json` - workflow automation and integration capabilities
-- `supabase-config.json` - Supabase database/auth/storage/realtime
-- `postgresql-config.json` - advanced PostgreSQL patterns and optimization
-- `python-docs-config.json` - Python/FastAPI/Django docs via GitHub MCP
-- **`django-config.json`** - **Django framework documentation, security patterns, ORM best practices**  ⭐ NEW
-- **`azure-config.json`** - **Azure App Service, Key Vault, deployment patterns, monitoring** ⭐ NEW
-- **`semgrep-config.json`** - **Automated security scanning, vulnerability detection, OWASP Top 10** ⭐ NEW
-- `openapi-config.json` - OpenAPI contract validation and API design quality checks
-- `github-config.json` - GitHub issues/PR/project traceability
-- `playwright-config.json` - browser-level UX flow validation
- - `analytics-config.json` - Product & web analytics (funnels, cohorts, experiment metrics)
- - `optimizely-config.json` - Feature flags & experiment rollout control (Optimizely/LaunchDarkly)
- - `qualtrics-config.json` - Survey & qualitative feedback collection (Qualtrics/Typeform)
- - `youtube-config.json` - Video search & transcripts (TED talks, interviews)
+- Source control and project traceability servers
+- Workflow automation and integration servers
+- Data and backend capability servers
+- Language/framework documentation servers
+- Cloud/provider documentation servers
+- Security scanning and vulnerability detection servers
+- API contract validation servers
+- Browser-level validation servers
+- Analytics and experimentation servers
+- Research and content retrieval servers
+
+See the `mcp-servers/` directory for the exact optional server config files available in this repository.
 
 ### � n8n Workflow Automation MCP
 
@@ -95,50 +94,49 @@ Agent uses findings to:
 - Include cost/time savings in business case
 ```
 
-### �📚 Microsoft Learn MCP
+### 📚 Vendor Documentation MCP
 
-**Configuration:** `mcp-servers/microsoft-learn-config.json`
+**Configuration:** Any documentation MCP in `mcp-servers/`
 
 **What it provides:**
-- Access to official Microsoft documentation
+- Access to official vendor/platform documentation
 - Technical tutorials and learning paths
 - API references and code examples
 - Best practices and architectural patterns
-- Information about Microsoft products and services
+- Product and service capability information
 
 **When to use it:**
 
 ✅ **Use when:**
-- User mentions Microsoft technologies (Azure, Power Platform, M365, .NET, Dynamics, etc.)
-- You need to verify technical capabilities of Microsoft services
+- User mentions a specific vendor/platform and requests authoritative guidance
+- You need to verify technical capabilities of selected services
 - Looking for implementation guidance or code examples
-- Researching Microsoft-specific best practices
-- Checking if a Microsoft service can solve a particular problem
+- Researching vendor/platform-specific best practices
+- Checking whether a selected service can solve a particular problem
 
 ❌ **Don't use when:**
-- Project has no Microsoft technology involvement
-- Generic programming questions not specific to Microsoft stack
-- User explicitly wants non-Microsoft solutions
+- Project has no need for vendor/platform-specific documentation
+- Generic questions that do not depend on selected vendor/platform behavior
 
 **How to use it in your agent workflow:**
 
 1. **Identify the need**
-   - Listen for Microsoft technology keywords in user requests
-   - Assess if Microsoft solutions might be relevant
+   - Listen for vendor/platform-specific keywords in user requests
+   - Assess if vendor-specific documentation is needed
 
 2. **Formulate queries**
    - Use natural language queries
    - Be specific about what you're looking for
    - Examples:
-     * "How does Azure Functions handle authentication?"
-     * "What are the rate limits for Microsoft Graph API?"
-     * "Best practices for Power Automate error handling"
+   * "How does this managed runtime handle authentication?"
+   * "What are the API rate limits for this service?"
+   * "Best practices for error handling in this integration tool"
 
 3. **Integrate findings**
    - Don't just dump search results
    - Synthesize the information
    - Incorporate into your proposal with context
-   - Cite the source (e.g., "According to Microsoft Learn...")
+   - Cite the source documentation server in your summary
 
 4. **Document in proposal**
    - Add findings to "Technical Considerations" section
@@ -149,103 +147,58 @@ Agent uses findings to:
 
 ```
 User mentions: "I need to automate our employee onboarding process 
-and integrate it with Microsoft 365"
+and integrate it with our selected productivity platform"
 
-Agent thinks: This involves Microsoft 365, so I should use Microsoft Learn MCP
+Agent thinks: This involves a specific vendor platform, so I should use the relevant documentation MCP
 
 Agent queries MCP:
-- "Microsoft 365 onboarding automation options"
-- "Power Automate capabilities for user provisioning"
-- "Microsoft Graph API for user management"
+- "Onboarding automation options for this platform"
+- "Provisioning capabilities in this integration service"
+- "User management API guidance for this vendor"
 
 Agent uses findings to:
 - Inform technical approach in proposal
-- Identify which Microsoft services are appropriate
+- Identify which selected services are appropriate
 - Note any limitations or licensing requirements
 - Provide relevant documentation links
 ```
 
-### � Django Framework MCP ⭐ NEW
+### Framework-Specific MCP (Optional)
 
-**Configuration:** `mcp-servers/django-config.json`
+**Configuration:** Any framework MCP in `mcp-servers/`
 
-**What it provides:**
-- Django framework documentation and patterns
-- Django REST Framework best practices
-- Django ORM query optimization
-- Security patterns (CSRF, SQL injection prevention, XSS)
-- Authentication and authorization systems
-- Production deployment configurations
+Use when:
+- A project has selected a specific framework and you need official patterns and implementation guidance
+- You need framework-specific security and production-hardening recommendations
 
-**When to use it:**
+Do not use when:
+- The project has not selected that framework
+- The question is framework-agnostic
 
-✅ **Use when:**
-- Implementing Django models, views, or serializers
-- Creating REST APIs with Django REST Framework
-- Setting up authentication or authorization
-- Preventing Django-specific security vulnerabilities
-- Optimizing database queries with Django ORM
-- Configuring production Django settings
-- Integrating Django with Supabase or PostgreSQL
-
-❌ **Don't use when:**
-- Project doesn't use Django
-- Generic Python questions (use python-docs MCP instead)
-
-**Agents who need this:**
-- **Coding Agent:** Primary user for Django development
-- **Security Agent:** Django security pattern validation
-- **Tech Lead:** Architecture and framework decisions
-- **Code Inspector:** Django code quality standards
-
-**Example queries:**
+Example query patterns:
 ```
-"How to implement Row Level Security with Django and Supabase?"
-"Secure file upload handling in Django?"
-"Django REST Framework patterns for nested serializers?"
-"Prevent SQL injection with Django ORM?"
-"Production security settings for Django?"
+"How should [framework] structure authentication for this use case?"
+"What are secure file upload patterns in [framework]?"
+"What are production settings best practices for [framework]?"
 ```
 
-### ☁️ Azure Cloud Platform MCP ⭐ NEW
+### Cloud Provider MCP (Optional)
 
-**Configuration:** `mcp-servers/azure-config.json`
+**Configuration:** Any cloud MCP in `mcp-servers/`
 
-**What it provides:**
-- Azure App Service configuration and deployment
-- Azure Key Vault for secrets management
-- Application Insights monitoring and logging
-- CI/CD with GitHub Actions to Azure
-- Sweden region compliance for GDPR
-- HTTPS enforcement and security configuration
+Use when:
+- A project has selected that cloud provider
+- You need deployment, security, or operations guidance tied to the selected provider
 
-**When to use it:**
+Do not use when:
+- The project has not selected that provider
+- You are making stack-agnostic decisions
 
-✅ **Use when:**
-- Configuring Azure infrastructure (US-001)
-- Setting up Azure App Service deployment
-- Implementing Azure Key Vault integration
-- Configuring Application Insights monitoring
-- Ensuring Sweden region compliance
-- Setting up CI/CD pipeline to Azure
-- Troubleshooting Azure deployment issues
-
-❌ **Don't use when:**
-- Project doesn't use Azure hosting
-- Infrastructure already configured and stable
-
-**Agents who need this:**
-- **Tech Lead:** Infrastructure architecture and planning
-- **Coding Agent:** Azure SDK integration (Key Vault, App Insights)
-- **Security Agent:** Azure security configuration validation
-
-**Example queries:**
+Example query patterns:
 ```
-"Deploy Django to Azure App Service with Python 3.11?"
-"Azure Key Vault integration in Python?"
-"Configure Application Insights for Django logging?"
-"GitHub Actions workflow for Azure deployment?"
-"Enforce HTTPS and TLS 1.3 on Azure App Service?"
+"How do we deploy [selected runtime] to [selected cloud service]?"
+"How should secrets be managed on [selected cloud]?"
+"What monitoring setup is recommended for [selected cloud]?"
 ```
 
 ### 🔒 Semgrep Security Scanning MCP ⭐ NEW
@@ -256,7 +209,7 @@ Agent uses findings to:
 - Automated vulnerability detection (OWASP Top 10)
 - SQL injection, XSS, command injection detection
 - Secrets and credential exposure detection
-- Django-specific security rules
+- Optional stack-specific security rules when relevant
 - Insecure cryptography detection
 - Authentication and authorization bypass patterns
 
@@ -285,8 +238,8 @@ Agent uses findings to:
 # Full security scan
 semgrep scan --config=auto --json
 
-# Django-specific scan
-semgrep scan --config=p/django .
+# Optional stack-specific scan
+semgrep scan --config=<stack-policy> .
 
 # Secrets detection
 semgrep scan --config=p/secrets .
@@ -350,8 +303,8 @@ Use when UX flows need browser-level validation (keyboard navigation, state tran
 ┌─────────────────┐
 │  External       │
 │  Data Source    │
-│ (Microsoft      │
-│   Learn)        │
+│ (Selected       │
+│   source)       │
 └────────┬────────┘
          │
          │ Returns results
@@ -417,7 +370,7 @@ Each would have its own configuration file in this directory.
 - Don't just copy-paste documentation
 
 ### 4. **Cite Your Sources**
-- Attribute information to Microsoft Learn when appropriate
+- Attribute information to the source documentation MCP when appropriate
 - Be transparent about where information came from
 - Maintain credibility
 
@@ -431,7 +384,7 @@ Each would have its own configuration file in this directory.
 ### Enablement Steps (User)
 
 1. Install packages or use `npx -y` in MCP settings.
-2. Set required `.env` variables (`SUPABASE_*`, `MCP_API_KEY`, `POSTGRES_CONNECTION_STRING`, `GITHUB_PERSONAL_ACCESS_TOKEN`, `N8N_*`).
+2. Set only the `.env` variables required by the servers you enabled.
 3. Add MCP servers to VS Code setting: `github.copilot.chat.experimental.mcpServers`.
 4. Restart VS Code.
 5. Run `npx playwright install` for Playwright MCP support.
@@ -440,24 +393,9 @@ Detailed setup is documented in `mcp-servers/SETUP-GUIDE.md`.
 
 ### For Developers Setting Up MCP
 
-**Microsoft Learn MCP Server Installation:**
-```bash
-# Package name may vary by environment/distribution.
-# If @modelcontextprotocol/server-microsoft-learn returns E404,
-# use your environment's configured Microsoft Learn MCP source.
-npx -y @modelcontextprotocol/server-microsoft-learn
-```
-
-**Requirements:**
-- Node.js 16 or higher
-- Internet connection
-- No authentication required for Microsoft Learn
-
-**Testing MCP Server:**
-```bash
-# Test that the server can be invoked (if package resolves in your environment)
-npx @modelcontextprotocol/server-microsoft-learn --help
-```
+- Use the command and arguments defined in the specific `*-config.json` files you enable.
+- Verify each server's environment variable requirements before startup.
+- Test startup command resolution locally before adding the server to shared settings.
 
 ### Configuration Structure
 
@@ -490,13 +428,13 @@ All MCP configurations in this folder follow this pattern:
 
 **Issue: MCP server not responding**
 - Check internet connection
-- Verify Node.js is installed
+- Verify required runtime dependencies are installed
 - Try running the command manually
 
 **Issue: Query returns no results**
 - Refine your query to be more specific
 - Try alternative phrasing
-- Verify the topic is covered by Microsoft Learn
+- Verify the topic is covered by the selected documentation/source MCP
 
 **Issue: Results aren't relevant**
 - Make queries more specific

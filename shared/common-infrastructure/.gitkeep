@@ -1,10 +1,10 @@
 # Common Infrastructure Modules
 
-Reusable Azure Bicep templates and infrastructure-as-code modules shared across projects.
+Reusable infrastructure-as-code modules and operational templates shared across projects.
 
 ## Contents
-- Azure App Service templates
-- Key Vault configurations
-- PostgreSQL/database templates
-- Application Insights & monitoring
-- Networking & security groups
+- Compute/hosting templates
+- Secrets management configurations
+- Database and data-service templates
+- Monitoring and observability templates
+- Networking and security controls

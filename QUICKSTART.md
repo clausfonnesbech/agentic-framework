@@ -19,8 +19,8 @@ cd agentic-framework
 
 ### Required for Basic Usage:
 - **GitHub MCP**: Issue tracking, PR management
-- **Django MCP** (if using Django): Framework documentation
-- **Semgrep MCP** (for security): Automated scanning
+- **Project-specific Docs MCP(s)**: Only for the language/framework selected by the project
+- **Semgrep MCP** (recommended for security): Automated scanning
 
 ### Setup:
 1. Review `mcp-servers/SETUP-GUIDE.md`
@@ -42,16 +42,37 @@ cd agentic-framework
 }
 ```
 
-## Step 3: Choose Your Workflow
+## Step 3: Start with the Orchestrator (Recommended)
 
-### Development Workflow (Most Common)
+The **Orchestrator Agent** is your single entry point. You never need to know which agents exist or how to sequence them — just describe what you want.
 
-**Agents needed:**
-- Tech Lead (coordinator)
-- Coding Agent (implementation)
-- Code Inspector (code review)
-- Security Agent (security gate)
-- QA Lead (quality validation)
+```
+You are the Orchestrator Agent from the Agentic Framework.
+Load: agents/00-orchestrator-agent.md
+
+[Describe your idea, project, or request here]
+```
+
+The Orchestrator will:
+1. Classify your request (new project / enhancement / small fix)
+2. Confirm the track and first step in plain language
+3. Run the pipeline autonomously, pausing only at 6 decision gates:
+   - Gate 1: Approve the BA proposal
+   - Gate 2: Review research summary + behavioral reframes (alternatives)
+   - Gate 3: Select one of 5 UX/UI design proposals
+   - Gate 4: Approve the delivery plan (phases, sprints)
+   - Gate 5: Sprint review
+   - Gate 6: Release approval (after Security Agent)
+
+Between gates, everything runs without you.
+
+---
+
+## Alternative: Use Agents Directly (Advanced)
+
+If you prefer to run agents individually, pick the relevant starting point:
+
+### Development Workflow (sprint-level)
 
 **Start a sprint:**
 
@@ -59,7 +80,7 @@ cd agentic-framework
    ```
    You are the Tech Lead Agent from the Agentic Framework.
    Load skills: sprint-planning-skill.md, story-readiness-verification-skill.md
-   MCP servers: GitHub (issue tracking), Django (architecture)
+   MCP servers: GitHub (issue tracking), plus stack-relevant docs MCPs
    
    Create a sprint plan for: [describe your project/feature]
    Use sprint-plan-template.md for output.
@@ -69,7 +90,7 @@ cd agentic-framework
    ```
    You are the Coding Agent from the Agentic Framework.
    Load skills: secure-coding-skill.md (FIRST), secrets-detection-skill.md
-   MCP servers: Django (primary), Azure SDK, Semgrep (self-review)
+   MCP servers: stack-relevant docs/tooling MCPs, Semgrep (self-review)
    
    Implement: [user story from sprint plan]
    Perform security self-check before completion.
@@ -79,7 +100,7 @@ cd agentic-framework
    ```
    You are the Code Inspector Agent from the Agentic Framework.
    Load skills: code-review-checklist-skill.md
-   MCP servers: Django (framework best practices)
+   MCP servers: stack-relevant docs MCPs
    
    Review the implementation by Coding Agent.
    Use code-review-report-template.md for output.
@@ -90,7 +111,7 @@ cd agentic-framework
    ```
    You are the Security Agent from the Agentic Framework.
    Load skills: secure-coding-skill.md, secrets-detection-skill.md, dependency-security-skill.md
-   MCP servers: Semgrep (primary), Django (security patterns)
+   MCP servers: Semgrep (primary), plus stack-relevant security/reference MCPs
    
    Perform security scan on the code.
    Use security-review-report-template.md for output.
@@ -222,7 +243,7 @@ QA Lead: Test failures = back to Coding Agent
 3. **One agent at a time** - Complete one agent's work before moving to next
 4. **Reference framework paths** - Tell agents where files are located
 5. **MCP servers are optional** - Agents work without but are enhanced with MCP
-6. **Semgrep is key** - Install for security-first development
+6. **Security scanning is key** - Install and configure the scanner used by your project
 7. **Respect iteration limits** - Max 5 prevents infinite loops
 
 ## Troubleshooting
@@ -267,14 +288,14 @@ QA Lead: Test failures = back to Coding Agent
 
 | Agent | Primary Skill | Primary MCP | Output Template |
 |-------|---------------|-------------|-----------------|
-| Tech Lead | sprint-planning | GitHub, Django | sprint-plan |
-| Coding Agent | secure-coding | Django, Semgrep | code files |
-| Code Inspector | code-review-checklist | Django | code-review-report |
+| Tech Lead | sprint-planning | GitHub, project-specific docs MCP | sprint-plan |
+| Coding Agent | secure-coding | project-specific docs MCP, Semgrep | code files |
+| Code Inspector | code-review-checklist | project-specific docs MCP | code-review-report |
 | Security Agent | secure-coding | Semgrep | security-review-report |
 | QA Lead | test-case-design | Playwright | test-plan |
 | Business Analyst | market-research | GitHub | user-story |
 | Research Agent | comparative-analysis | [varies] | research-report |
-| Task Manager | backlog-planning-estimation | GitHub | task-breakdown |
+| Task Manager | backlog-planning-estimation | GitHub, project-specific data/docs MCPs | task-breakdown |
 | UX/UI Agent | ui-ux-research | Playwright | ux-review-report |
 
 ---

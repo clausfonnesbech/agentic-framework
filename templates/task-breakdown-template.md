@@ -266,31 +266,26 @@ graph TD
 ### Technology Stack
 
 **Frontend:**
-- [Framework/Library]
-- [Key technologies]
+- [Framework/Library — determined from PROJECT-MEMORY.md]
 
 **Backend:**
-- Django
-- Django REST Framework
-- Python 3.11
+- [Language/Framework — determined from PROJECT-MEMORY.md]
 
 **Database:**
-- PostgreSQL via Supabase
-- RLS (Row Level Security)
+- [Type and platform — determined from PROJECT-MEMORY.md]
 
 **Infrastructure:**
-- Azure App Service (Sweden Central)
-- Azure Key Vault
-- Application Insights
+- [Cloud/hosting platform — determined from PROJECT-MEMORY.md]
+- [Secrets management — determined from PROJECT-MEMORY.md]
+- [Observability — determined from PROJECT-MEMORY.md]
 
 **Authentication:**
-- Supabase Auth
-- JWT tokens
+- [Auth provider/method — determined from PROJECT-MEMORY.md]
 
 **Testing:**
-- pytest (backend)
-- Playwright (UI)
-- Semgrep (security)
+- [Test framework — based on project language]
+- Playwright (UI, if applicable)
+- Semgrep (security scanning)
 
 ---
 
@@ -301,23 +296,21 @@ graph TD
 │              Frontend                       │
 │  [Technology]                               │
 └──────────────┬─────────────────────────────┘
-               │ REST API
+               │ REST API / GraphQL / etc.
                ▼
 ┌────────────────────────────────────────────┐
-│           Django Backend                    │
-│  ├── Models (Data layer)                   │
-│  ├── Views/Serializers (API layer)         │
-│  ├── Authentication (Supabase Auth)        │
+│           Backend                           │
+│  ├── Data layer                            │
+│  ├── API layer                             │
+│  ├── Authentication                        │
 │  └── Business Logic                        │
 └──────────────┬─────────────────────────────┘
                │
                ▼
 ┌────────────────────────────────────────────┐
-│      PostgreSQL (via Supabase)             │
-│  ├── Tables                                │
-│  ├── RLS Policies                          │
-│  ├── Functions                             │
-│  └── Triggers                              │
+│      Database                               │
+│  ├── Tables / Collections / etc.           │
+│  └── Access control policies               │
 └────────────────────────────────────────────┘
 ```
 
@@ -329,19 +322,19 @@ graph TD
 
 | Story | Required Skills |
 |-------|-----------------|
-| US-001 | azure-deployment, infrastructure-setup |
+| US-001 | [relevant skills from skills/] |
 | US-002 | authentication-authorization-skill.md, secure-coding-skill.md |
-| US-003 | database-design-skill.md, django-patterns |
-| US-004 | api-design-skill.md, rest-conventions |
+| US-003 | database-design-skill.md |
+| US-004 | api-design-skill.md |
 
 ### MCP Tools Needed
 
+Check `mcp-servers/` for available MCPs. List per story which MCPs are needed:
+
 | Story | MCP Servers |
 |-------|-------------|
-| US-001 | Azure MCP, Django MCP |
-| US-002 | Django MCP, Semgrep MCP |
-| US-003 | Django MCP, PostgreSQL MCP |
-| US-004 | Django MCP, OpenAPI MCP |
+| US-001 | [from mcp-servers/] |
+| US-002 | Semgrep MCP, [others as needed] |
 
 ---
 

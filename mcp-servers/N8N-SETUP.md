@@ -114,11 +114,11 @@ Once configured, the Business Analyst agent (and other agents) can automatically
 ### Example Agent Query
 
 When a user says:
-> "I need to sync customer data from Salesforce to our PostgreSQL database"
+> "I need to sync customer data from Salesforce to our operational database"
 
 The agent can query n8n:
 - "Show Salesforce to database sync workflows"
-- "What n8n nodes connect Salesforce and PostgreSQL?"
+- "What n8n nodes connect Salesforce and our selected database?"
 - "Best practices for data synchronization in n8n"
 
 ## Common Use Cases

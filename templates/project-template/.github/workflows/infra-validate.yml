@@ -1,34 +1,30 @@
-name: CI - Infrastructure (Bicep)
+name: CI - Infrastructure
 
 on:
   push:
     paths:
-      - 'infrastructure/**/*.bicep'
+      - 'infrastructure/**'
       - '.github/workflows/infra-validate.yml'
   pull_request:
     paths:
-      - 'infrastructure/**/*.bicep'
+      - 'infrastructure/**'
       - '.github/workflows/infra-validate.yml'
 
 jobs:
-  bicep-build:
+  validate-infrastructure:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Azure CLI
-        uses: azure/cli@v2
-
-      - name: Validate Bicep templates compile
+      - name: Validate infrastructure definitions
         shell: bash
         run: |
           set -euo pipefail
-          if compgen -G "infrastructure/**/*.bicep" > /dev/null; then
-            for f in $(find infrastructure -name '*.bicep'); do
-              echo "Building $f"
-              az bicep build --file "$f"
-            done
+
+          if [ -f scripts/validate-infra.sh ]; then
+            chmod +x scripts/validate-infra.sh
+            ./scripts/validate-infra.sh
           else
-            echo "No bicep files found under infrastructure/"
+            echo "No scripts/validate-infra.sh found. Add project-specific infrastructure validation commands."
           fi

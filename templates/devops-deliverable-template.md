@@ -14,12 +14,11 @@
 
 ## Infrastructure Changes
 
-- Bicep/Terraform files added/updated:
-  - `main.bicep` - [description]
-  - `network.bicep` - [description]
+- IaC files added/updated (project-selected tooling):
+  - `[filename]` — [description]
 
 - Resource summary:
-  - [Resource type] - [Name] - [Purpose]
+  - [Resource type] — [Name] — [Purpose]
 
 ## CI/CD Pipelines
 

@@ -127,8 +127,8 @@
 **URL:** [https://staging.example.com]
 
 **Infrastructure:**
-- **Backend:** [Django on Azure App Service]
-- **Database:** [PostgreSQL via Supabase]
+- **Backend:** [from PROJECT-MEMORY.md]
+- **Database:** [from PROJECT-MEMORY.md]
 - **Frontend:** [If applicable]
 
 **Test Data:**
@@ -281,19 +281,20 @@ npx playwright test tests/ui/auth.spec.js
 **Test Suites:**
 
 #### Suite: User API Tests
-```python
-# tests/api/test_user_api.py
-import pytest
-from tests.helpers import api_client
+```text
+# tests/api/[suite-file]
+# Pseudocode - adapt to the selected project language/framework
 
-def test_create_user():
-    """Test user creation via API"""
-    response = api_client.post('/api/users/', {
-        'email': 'newuser@example.com',
-        'name': 'New User',
-        'role': 'contributor'
-    })
-    assert response.status_code == 201
+Test: create user via API
+Request:
+   POST /api/users/
+   body:
+      email: newuser@example.com
+      name: New User
+      role: contributor
+
+Assert:
+   status_code == 201
     assert response.json()['email'] == 'newuser@example.com'
 
 def test_get_user():

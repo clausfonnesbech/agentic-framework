@@ -4,18 +4,20 @@ A comprehensive, production-ready framework for orchestrating specialized AI age
 
 ## 🌟 Features
 
-### 11 Specialized Agents
+### 13 Specialized Agents
+- **Orchestrator Agent (Project Manager)**: Single entry point for all work — routes requests, runs the pipeline autonomously between user decision gates, shields the user from agent coordination
 - **Business Analyst Agent**: Requirements gathering, user story creation, stakeholder analysis
- - **Behavioral Reframe Agent**: Perceptual reframes, low-cost behavioral interventions, experiment design
+- **Behavioral Reframe Agent**: Perceptual reframes, low-cost behavioral interventions, experiment design — surfaces alternative ideas before build commitment
 - **Research Manager**: Research coordination, task delegation, synthesis
 - **Research Agent**: Technical research, comparative analysis, feasibility studies
-- **UX/UI Agent**: User experience evaluation, accessibility compliance, design systems
+- **UX/UI Agent**: Always presents 5 distinct design proposals for user selection before detailed design; accessibility compliance, design systems
 - **Task Manager**: Epic decomposition, sprint planning, dependency mapping
 - **Tech Lead**: Architecture design, technical coordination, sprint planning
-- **Coding Agent**: Secure implementation, Django/Azure development, self-review
+- **DevOps/Platform Agent**: Infrastructure/platform readiness gate, CI/CD, and integration setup before coding
+- **Coding Agent**: Secure implementation in the project-selected stack, with self-review
 - **Code Inspector**: Code quality review, functionality validation, test coverage
-- **Security Agent**: Security scanning (Semgrep), CVE detection, GDPR compliance
-- **QA Lead**: Test strategy, automated testing (Playwright), quality gates
+- **Security Agent**: Security scanning (Semgrep), CVE detection, GDPR compliance — blocking end-to-end gate before every release
+- **QA Lead**: Test strategy, automated testing (Playwright), story-level and sprint-level quality gates
 
 ### 21 Reusable Skills
 Skills are modular markdown documents that agents load to enhance their capabilities:
@@ -40,19 +42,17 @@ Standardized templates ensure consistency across agent outputs:
 - **task-breakdown-template.md**: Epic decomposition with effort estimation
 - **proposal-template.md**: Project proposals with business case
 
-### 12 MCP Server Configurations
+### MCP Server Configurations
 Model Context Protocol (MCP) servers provide agents with real-time access to tools and data:
-- **github-config.json**: Issue tracking, PR management, security alerts
-- **n8n-config.json**: Workflow automation patterns
-- **supabase-config.json**: Database, authentication, storage patterns
-- **postgresql-config.json**: Database design and query optimization
-- **playwright-config.json**: Browser automation, UI testing
-- **django-config.json**: Django framework, security patterns, DRF
-- **azure-config.json**: Azure App Service, Key Vault, Application Insights
-- **semgrep-config.json**: Automated security scanning, OWASP Top 10
-- **python-docs-config.json**: Python/FastAPI/Django documentation
-- **openapi-config.json**: API specification and design
-- **microsoft-learn-config.json**: Microsoft Azure documentation
+- Source control and planning integrations
+- Workflow automation integrations
+- Data/backend integrations
+- Documentation/reference integrations
+- API specification/contract integrations
+- Browser and UI validation integrations
+- Security scanning integrations
+
+See `mcp-servers/README.md` for the full optional inventory. Server activation is project-specific.
 
 ## 🚀 Quick Start
 
@@ -90,17 +90,17 @@ Model Context Protocol (MCP) servers provide agents with real-time access to too
 
 1. **Tech Lead Agent** creates sprint plan:
    - Loads: `sprint-planning-skill.md`, `story-readiness-verification-skill.md`
-   - Uses MCP: GitHub (issue tracking), Django (architecture)
+   - Uses MCP: GitHub (issue tracking) + any stack-relevant docs MCP for the selected project stack
    - Outputs: `sprint-plan-template.md`
 
 2. **Coding Agent** implements features:
    - Loads: `secure-coding-skill.md` (ALWAYS FIRST)
-   - Uses MCP: Django (primary), Azure SDK, Semgrep (self-review)
+   - Uses MCP: stack-appropriate documentation/tooling MCPs, plus Semgrep (self-review)
    - Performs security self-check before completion
 
 3. **Code Inspector** reviews implementation:
    - Loads: `code-review-checklist-skill.md`
-   - Uses MCP: Django (framework best practices)
+   - Uses MCP: stack-appropriate docs and validation MCPs
    - Outputs: `code-review-report-template.md`
    - Max 5 iterations with Coding Agent
 
@@ -118,7 +118,36 @@ Model Context Protocol (MCP) servers provide agents with real-time access to too
 
 ## 🏗️ Architecture
 
-### Agent Coordination Pattern
+### Orchestrated Pipeline (Recommended)
+
+The **Orchestrator Agent** (`agents/00-orchestrator-agent.md`) is the single entry point. You give it any ask — from an initial idea to a small change request — and it runs the full pipeline, involving you only at decision gates:
+
+```
+USER ASK → Orchestrator (Project Manager)
+   │
+   ├── PRE-PHASE
+   │     Business Analyst ──────────── GATE 1: approve proposal
+   │     Research Manager → Research Agents (parallel)
+   │     Behavioral Reframe Agent ──── GATE 2: review research + alternatives
+   │     UX/UI Agent (5 proposals) ─── GATE 3: select a design
+   │     UX/UI Agent (detailed design for chosen direction)
+   │
+   └── DELIVERY MODE
+         Task Manager (phases/sprints) ─ GATE 4: approve plan
+         Tech Lead (detailed stories)
+         DevOps Agent (infra/MCP readiness gate)
+         ┌──────────────────────────────────────┐
+         │ Per story: Coding Agent ⇄ Code        │
+         │ Inspector (max 3 rounds) → QA Lead    │
+         │ (combined cap 5 → escalate to user)   │
+         └──────────────────────────────────────┘
+         QA Lead (full sprint regression) ─ GATE 5: sprint review
+         Security Agent (end-to-end, blocking) ─ GATE 6: release approval
+```
+
+Request triage: **Track A** (new project — full pipeline), **Track B** (enhancement — abbreviated pre-phase), **Track C** (small fix — straight to delivery loop). Quality gates are never skipped.
+
+### Agent Coordination Pattern (Story-Level Loop)
 
 ```
 Tech Lead (Coordinator)
@@ -128,9 +157,9 @@ Coding Agent (Implementation)
 Code Inspector (Quality Review) ←┐ Max 5 iterations total
     ↓                              │
     ↓──────────────────────────────┘
-Security Agent (Security Gate)
+QA Lead (Story Validation)
     ↓
-QA Lead (Quality Validation)
+Security Agent (Release Gate)
     ↓
 ✅ Ready for Commit
 ```
@@ -147,17 +176,20 @@ QA Lead (Quality Validation)
 
 ### Key Workflows
 
+**Orchestrated Workflow (recommended):**
+- Orchestrator triages → runs pre-phase (BA → Research → Reframes → UX 5 proposals) → delivery mode (Task Manager → Tech Lead → DevOps gate → dev quality loop → sprint QA → security release gate) — user involved only at 6 decision gates
+
 **Development Workflow:**
-- Tech Lead coordinates → Coding Agent implements → Code Inspector reviews (iterations) → Security Agent scans → QA Lead validates
+- Tech Lead coordinates → Coding Agent implements → Code Inspector reviews (iterations) → QA Lead validates story → Security Agent gates release
 
 **Research Workflow:**
-- Research Manager coordinates → Research Agents investigate → Research Manager synthesizes
+- Research Manager coordinates → Research Agents investigate → Research Manager synthesizes → Behavioral Reframe Agent challenges with alternatives
 
 **Planning Workflow:**
 - Business Analyst gathers requirements → Task Manager decomposes epics → Tech Lead plans sprints
 
 **UX Workflow:**
-- UX/UI Agent evaluates → Security Agent validates accessibility → QA Lead tests user flows
+- UX/UI Agent presents 5 distinct proposals → user selects → detailed design → QA Lead tests user flows
 
 ## 📚 Documentation
 
@@ -216,15 +248,15 @@ This framework implements security at multiple levels:
 **Required Tools:**
 - **Semgrep**: `brew install semgrep` or `pip install semgrep` (v1.151.0+)
 - **Playwright**: Configured via MCP server for UI testing
-- **pytest**: For Python test execution
+- **Project test runner**: Use the runner selected by the project
 
 **Security Scanning Examples:**
 ```bash
 # Full security scan
 semgrep scan --config=auto
 
-# Django-specific scan
-semgrep scan --config=python.django
+# Optional stack-specific scan (only if relevant)
+semgrep scan --config=<stack-specific-policy>
 
 # Secrets only
 semgrep scan --config=secrets
@@ -243,7 +275,7 @@ semgrep scan --config=owasp-top-ten
 ### Example 1: Security-First Feature Development
 
 ```
-Input: "Implement user profile password reset with Azure Key Vault"
+Input: "Implement secure user profile password reset"
 
 Tech Lead:
 - Creates sprint plan with security requirements
@@ -252,9 +284,8 @@ Tech Lead:
 
 Coding Agent:
 - Loads secure-coding-skill.md FIRST
-- References Azure MCP for Key Vault patterns
 - Implements password reset with:
-  - Secrets stored in Key Vault (never code/env vars)
+   - Secrets stored in the project's secrets manager (never code)
   - CSRF protection
   - Rate limiting
   - Audit logging
@@ -263,13 +294,13 @@ Coding Agent:
 Code Inspector:
 - Reviews code quality and functionality
 - Confirms test coverage >80%
-- Validates Django best practices
+- Validates selected-stack best practices
 - PASS → sends to Security Agent
 
 Security Agent:
 - Runs Semgrep scan
 - Checks for secrets exposure
-- Validates Azure Key Vault configuration
+- Validates secrets manager configuration
 - GDPR compliance check
 - PASS → ready for QA
 
@@ -283,7 +314,7 @@ QA Lead:
 ### Example 2: Research-Driven Architecture Decision
 
 ```
-Input: "Should we use Django or FastAPI for our API backend?"
+Input: "Which backend stack should we use for our API?"
 
 Research Manager:
 - Creates research task breakdown
@@ -291,7 +322,7 @@ Research Manager:
 
 Research Agents:
 - Load comparative-analysis-skill.md
-- Use Python Docs MCP for documentation
+- Use the most relevant docs MCPs for the candidate stacks
 - Research performance, scalability, ecosystem
 - Output: research-report-template.md
 

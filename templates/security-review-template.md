@@ -7,7 +7,7 @@
 ## Scope
 
 Review of US-XXX changes for OWASP Top 10 vulnerabilities, authentication/authorisation flaws,
-input validation, secrets exposure, and Azure/infrastructure concerns.
+input validation, secrets exposure, and infrastructure concerns.
 
 ---
 

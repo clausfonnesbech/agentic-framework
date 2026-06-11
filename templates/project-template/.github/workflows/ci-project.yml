@@ -1,0 +1,26 @@
+name: CI - Project
+
+on:
+  push:
+    branches: [ main, develop, "feature/**", "fix/**", "chore/**" ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run project CI commands
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ -f scripts/ci.sh ]; then
+            chmod +x scripts/ci.sh
+            ./scripts/ci.sh
+          else
+            echo "No scripts/ci.sh found. Add stack-specific build, lint, and test commands for this project."
+          fi

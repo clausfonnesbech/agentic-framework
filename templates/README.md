@@ -24,7 +24,7 @@ This directory contains output templates for all agents in the framework. Each t
 - `.project-context.md` - Project metadata and agent coordination
 - `README.md` - Project documentation
 - `.env.example` - Environment configuration template
-- `infrastructure/` - Azure Bicep IaC templates
+- `infrastructure/` - Infrastructure-as-code templates selected by the project
 - `docs/` - Architecture, API specs, deployment guides
 - `backlog/` - Backlog and sprint planning structure
 - Standard directory layout for src/, tests/, etc.
@@ -213,7 +213,7 @@ See [project-template/README.md](project-template/README.md) for full structure 
 
 **Includes:**
 - Overview of changes
-- Infrastructure specifics (Bicep/Terraform)
+- Infrastructure specifics (determined by project)
 - CI/CD pipeline definitions
 - Observability setup
 - Operational notes and status history

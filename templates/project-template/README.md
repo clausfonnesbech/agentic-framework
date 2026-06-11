@@ -5,9 +5,8 @@
 ## Getting Started
 
 ### Prerequisites
-- Python 3.11+
-- Azure CLI
-- Docker (optional)
+- {{RUNTIME_PREREQUISITES}} (determined during project setup)
+- Any optional local tooling selected by the project
 
 ### Local Development Setup
 
@@ -19,9 +18,7 @@
 
 2. **Install dependencies**
    ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-   pip install -r requirements.txt
+   # Follow the setup instructions in docs/deployment.md
    ```
 
 3. **Configure environment**
@@ -32,7 +29,7 @@
 
 4. **Run locally**
    ```bash
-   python src/manage.py runserver
+   # See docs/deployment.md for project-specific run commands
    ```
 
 ## Project Structure
@@ -41,15 +38,9 @@
 {{PROJECT_FOLDER_NAME}}/
 ├── .project-context.md      # Project context for agents
 ├── README.md                 # This file
-├── requirements.txt          # Python dependencies
 ├── .env.example             # Environment template
 ├── src/                     # Application source code
-│   ├── main.py
-│   └── ...
-├── infrastructure/          # IaC (Bicep templates)
-│   ├── main.bicep
-│   ├── parameters.json
-│   └── modules/
+├── infrastructure/          # IaC templates chosen for this project
 ├── docs/                    # Project documentation
 │   ├── architecture.md
 │   ├── api-spec.md

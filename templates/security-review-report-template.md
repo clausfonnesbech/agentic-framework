@@ -103,8 +103,8 @@
 [Clear explanation of the vulnerability]
 
 **Vulnerable Code:**
-```python
-# Current code (VULNERABLE)
+```text
+# Current code (VULNERABLE - language selected by project)
 [code snippet]
 ```
 
@@ -117,8 +117,8 @@
 - **Availability:** High / Medium / Low
 
 **Remediation:**
-```python
-# Secure code (FIXED)
+```text
+# Secure code (FIXED - language selected by project)
 [corrected code snippet]
 ```
 
@@ -180,7 +180,7 @@
 **Files Scanned:** [Count]
 
 **Patterns Checked:**
-- [✅] AWS Access Keys
+- [✅] Cloud Access Keys
 - [✅] GitHub Tokens
 - [✅] API Keys
 - [✅] Database Credentials
@@ -196,7 +196,7 @@
 #### Secret #1: [Type]
 
 **File:** [filepath:line]  
-**Pattern Matched:** [e.g., AWS_ACCESS_KEY_ID]  
+**Pattern Matched:** [e.g., CLOUD_ACCESS_KEY]  
 **Severity:** CRITICAL
 
 **Exposed Value (partial):**
@@ -206,7 +206,7 @@
 
 **Remediation Required:**
 1. Rotate the secret immediately
-2. Move to environment variable or Azure Key Vault
+2. Move to environment variable or secrets manager (e.g. cloud Key Vault, HashiCorp Vault, etc.)
 3. Add pattern to .gitignore
 4. Clean git history if committed
 

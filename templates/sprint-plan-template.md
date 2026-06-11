@@ -127,7 +127,7 @@ graph LR
 
 | Dependency | Owner | Status | Due Date | Risk |
 |------------|-------|--------|----------|------|
-| [Azure setup] | [Team/Person] | In Progress | [Date] | LOW |
+| [infrastructure setup] | [Team/Person] | In Progress | [Date] | LOW |
 | [API access] | [Team/Person] | Blocked | [Date] | HIGH |
 
 ---
@@ -215,20 +215,20 @@ graph LR
 
 ### Technology Stack (Sprint-Specific)
 
-- **Backend:** [Django, etc.]
+- **Backend:** [determined from PROJECT-MEMORY.md]
 - **Frontend:** [If applicable]
-- **Database:** [PostgreSQL via Supabase]
-- **Infrastructure:** [Azure]
+- **Database:** [determined from PROJECT-MEMORY.md]
+- **Infrastructure:** [determined from PROJECT-MEMORY.md]
 - **Tools:** [Semgrep, Playwright, etc.]
 
 ### MCP Servers Available
 
-- [✅] Django MCP (framework patterns)
-- [✅] Azure MCP (deployment)
-- [✅] Semgrep MCP (security)
-- [✅] GitHub MCP (tracking)
-- [✅] Playwright MCP (UI testing)
-- [✅] n8n MCP (workflows)
+Check `mcp-servers/` for what is configured. Common categories:
+- [ ] Framework/platform documentation MCP
+- [ ] Cloud provider MCP (deployment, resources)
+- [ ] Security scanner MCP (Semgrep)
+- [ ] Source control MCP (GitHub)
+- [ ] UI testing MCP (Playwright)
 
 ### Skills in Use
 

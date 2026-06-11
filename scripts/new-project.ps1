@@ -180,30 +180,30 @@ Write-Host "`n"
 # Gather additional metadata in interactive mode
 if ($Interactive) {
     $status = Get-UserInput -Prompt "Status" -Default "Planning"
-    $techStack = Get-UserInput -Prompt "Tech Stack" -Default "Python (Django), PostgreSQL, Azure App Service"
+    $techStack = Get-UserInput -Prompt "Tech Stack" -Default "TBD (determine during discovery)"
     $businessGoal = Get-UserInput -Prompt "Business Goal" -Default "TBD"
     $currentPhase = Get-UserInput -Prompt "Current Phase" -Default "Planning"
     $stakeholders = Get-UserInput -Prompt "Key Stakeholders" -Default "TBD"
     $projectDescription = Get-UserInput -Prompt "Project Description" -Default "TBD"
-    $databaseType = Get-UserInput -Prompt "Database Type" -Default "PostgreSQL"
-    $deploymentType = Get-UserInput -Prompt "Deployment Type" -Default "Azure App Service"
+    $databaseType = Get-UserInput -Prompt "Database Type" -Default "TBD"
+    $deploymentType = Get-UserInput -Prompt "Deployment Type" -Default "TBD"
     $budget = Get-UserInput -Prompt "Budget" -Default "TBD"
     $timeline = Get-UserInput -Prompt "Timeline" -Default "TBD"
-    $complianceRequirements = Get-UserInput -Prompt "Compliance Requirements" -Default "GDPR (Sweden Central)"
+    $complianceRequirements = Get-UserInput -Prompt "Compliance Requirements" -Default "TBD"
     $license = Get-UserInput -Prompt "License" -Default "MIT"
 } else {
     # Use defaults for non-interactive mode
     $status = "Planning"
-    $techStack = "Python (Django), PostgreSQL, Azure App Service"
+    $techStack = "TBD (determine during discovery)"
     $businessGoal = "TBD"
     $currentPhase = "Planning"
     $stakeholders = "TBD"
     $projectDescription = "TBD"
-    $databaseType = "PostgreSQL"
-    $deploymentType = "Azure App Service"
+    $databaseType = "TBD"
+    $deploymentType = "TBD"
     $budget = "TBD"
     $timeline = "TBD"
-    $complianceRequirements = "GDPR (Sweden Central)"
+    $complianceRequirements = "TBD"
     $license = "MIT"
 }
 
@@ -232,13 +232,13 @@ $replacements = @{
     'HIGH_LEVEL_DESCRIPTION' = $projectDescription
     'FRONTEND_TECH' = 'TBD'
     'FRONTEND_HOSTING' = 'TBD'
-    'BACKEND_TECH' = $techStack
-    'DATABASE_HOSTING' = 'Azure Database for PostgreSQL'
+    'BACKEND_TECH' = 'TBD'
+    'DATABASE_HOSTING' = 'TBD'
     'AUTH_METHOD' = 'TBD'
     'AUTH_PROVIDER' = 'TBD'
-    'SCALING_APPROACH' = 'Azure App Service auto-scaling'
-    'CACHING_STRATEGY' = 'Redis (Azure Cache for Redis)'
-    'CDN_USAGE' = 'Azure CDN (if needed)'
+    'SCALING_APPROACH' = 'TBD'
+    'CACHING_STRATEGY' = 'TBD'
+    'CDN_USAGE' = 'TBD'
     'TARGET_MS' = '200'
     'TARGET_RPS' = '100'
     'SLA_TARGET' = '99.9%'
@@ -314,85 +314,23 @@ foreach ($dir in $directories) {
 Log-Success "Project structure created"
 
 # ============================================================================
-# Create Python Files
+# Create Generic Starter Files
 # ============================================================================
 
-Write-Host "`nCreating Python project files..."
+Write-Host "`nCreating generic starter files..."
 
-# requirements.txt
-$requirementsContent = @"
-# $ProjectName - Python Dependencies
-
-# Web Framework
-Django==5.0.1
-djangorestframework==3.14.0
-
-# Database
-psycopg2-binary==2.9.9
-
-# Environment
-python-dotenv==1.0.1
-
-# Azure SDK
-azure-identity==1.15.0
-azure-keyvault-secrets==4.7.0
-azure-storage-blob==12.19.0
-
-# Monitoring
-opencensus-ext-azure==1.1.13
-opencensus-ext-django==0.8.0
-opencensus-ext-postgresql==0.1.3
-
-# Development
-pytest==7.4.3
-pytest-django==4.7.0
-black==23.12.1
-flake8==7.0.0
-mypy==1.8.0
-"@
-
-Set-Content -Path (Join-Path $projectPath "requirements.txt") -Value $requirementsContent -Encoding UTF8
-
-# .gitignore
 $gitignoreContent = @"
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-.venv/
-ENV/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Django
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-media/
-staticfiles/
-
-# Environment
+# Environment and secrets
 .env
 .env.local
 .env.*.local
+
+# Dependencies and build outputs
+node_modules/
+vendor/
+dist/
+build/
+coverage/
 
 # IDE
 .vscode/
@@ -404,23 +342,31 @@ staticfiles/
 # OS
 .DS_Store
 Thumbs.db
-
-# Azure
-.azure/
-
-# Testing
-.coverage
-htmlcov/
-.pytest_cache/
-.tox/
-
-# Documentation
-docs/_build/
 "@
 
 Set-Content -Path (Join-Path $projectPath ".gitignore") -Value $gitignoreContent -Encoding UTF8
 
-Log-Success "Python project files created"
+if (-not (Test-Path (Join-Path $projectPath "TECH-DECISIONS.md"))) {
+    $techDecisions = @"
+# Technology Decisions
+
+Use this file to record project-specific decisions discovered during planning.
+
+## Stack Selection
+- Language/runtime: TBD
+- Framework: TBD
+- Database: TBD
+- Deployment target: TBD
+- CI/CD platform: TBD
+- Secrets management: TBD
+
+## Decision Log
+- YYYY-MM-DD: [Decision] - [Rationale]
+"@
+    Set-Content -Path (Join-Path $projectPath "TECH-DECISIONS.md") -Value $techDecisions -Encoding UTF8
+}
+
+Log-Success "Generic starter files created"
 
 # ============================================================================
 # Optional: Initialize Git Repo for the Project
@@ -459,18 +405,14 @@ Write-Host "`nNext Steps:" -ForegroundColor Yellow
 Write-Host "  1. Navigate to your project:"
 Write-Host "     cd $projectPath" -ForegroundColor Gray
 Write-Host "`n  2. Review and update .project-context.md with project details"
-Write-Host "`n  3. Set up Python environment:"
-Write-Host "     python -m venv .venv" -ForegroundColor Gray
-Write-Host "     .venv\Scripts\activate" -ForegroundColor Gray
-Write-Host "     pip install -r requirements.txt" -ForegroundColor Gray
+Write-Host "`n  3. Define stack decisions in TECH-DECISIONS.md"
 Write-Host "`n  4. Configure environment:" 
 Write-Host "     # PowerShell" -ForegroundColor Gray
 Write-Host "     Copy-Item .env.example .env" -ForegroundColor Gray
 Write-Host "     # Bash (WSL)" -ForegroundColor Gray
 Write-Host "     cp .env.example .env" -ForegroundColor Gray
 Write-Host "     # Edit .env with your settings" -ForegroundColor Gray
-Write-Host "`n  5. Deploy infrastructure:"
-Write-Host "     az deployment group create --resource-group rg-$ProjectFolder-dev --template-file infrastructure/main.bicep --parameters infrastructure/parameters.dev.json" -ForegroundColor Gray
+Write-Host "`n  5. Choose project-specific runtime/tooling and initialize the codebase"
 Write-Host "`n  6. Assign agents via the Task Manager (agent 05) to start work!"
 
 Write-Host "`nHappy building with the Agentic Framework!`n" -ForegroundColor Magenta

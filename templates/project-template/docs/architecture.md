@@ -19,7 +19,7 @@
 
 ### Backend
 - **Technology:** {{BACKEND_TECH}}
-- **Hosting:** Azure App Service (Sweden Central)
+- **Hosting:** {{BACKEND_HOSTING}}
 - **Key Features:**
 
 ### Database
@@ -28,9 +28,9 @@
 - **Schema Design:** [Link to schema documentation]
 
 ### Infrastructure
-- **IaC Tool:** Azure Bicep
-- **CI/CD:** GitHub Actions
-- **Monitoring:** Application Insights
+- **IaC Tool:** {{IAC_TOOL}}
+- **CI/CD:** {{CICD_TOOL}}
+- **Monitoring:** {{MONITORING_TOOL}}
 
 ## Security Architecture
 
@@ -39,9 +39,9 @@
 - Provider: {{AUTH_PROVIDER}}
 
 ### Data Protection
-- Encryption at rest: Azure Storage Encryption
+- Encryption at rest: {{ENCRYPTION_AT_REST}}
 - Encryption in transit: TLS 1.3
-- Secrets management: Azure Key Vault
+- Secrets management: {{SECRETS_MANAGEMENT}}
 
 ### Network Security
 - VNet configuration

@@ -16,8 +16,8 @@
 
 | Action | File |
 |--------|------|
-| Created | `src/AdsQuarterlyItReview/…/NewFile.cs` — [what it does] |
-| Modified | `src/AdsQuarterlyItReview/…/ExistingFile.cs` — [what changed] |
+| Created | `src/[path]/NewFile.[ext]` — [what it does] |
+| Modified | `src/[path]/ExistingFile.[ext]` — [what changed] |
 
 ---
 
@@ -25,7 +25,7 @@
 
 | Gate | Result | Notes |
 |------|--------|-------|
-| `dotnet build` | ✅ 0 errors, 0 warnings | Clean build |
+| Build | ✅ 0 errors, 0 warnings | Clean build |
 | Code Inspector | ✅ PASS / ❌ FAIL | [key findings if any] |
 | QA Lead | ✅ PASS / ❌ FAIL | [key findings if any] |
 | Security Agent | ✅ PASS / ❌ FAIL | [key findings if any] |
@@ -44,7 +44,7 @@
 ### Local Environment
 
 **Pre-requisites:**
-- App running locally with Azure SQL connection (`appsettings.Development.json` configured)
+- App running locally with correct environment variables configured
 - [Any additional setup — migrations, seed data, user roles, etc.]
 
 **Test steps:**
@@ -55,11 +55,11 @@
 2. **[Feature name]** — [navigation or action]
    - **Expected:** [what the tester sees]
 
-### Azure Environment
+### Deployed Environment
 
-**Pre-requisites:** [Any Azure-specific setup — deployment, migration run, secrets, etc.]
+**Pre-requisites:** [Any deployment-specific setup — migration run, secrets, etc.]
 
-**Test steps:** Identical to local steps above, using the Azure App Service URL.
+**Test steps:** Identical to local steps above, using the deployed environment URL.
 
 **Known current limitations:**
 - [Any deferred work or pre-requisites not yet in place. State what the tester will see *today*
