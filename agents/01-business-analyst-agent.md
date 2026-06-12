@@ -72,6 +72,7 @@ Before interacting with the user, silently scan the workspace for existing conte
    - Use any configured platform MCPs to query live resources and provisioned services
    - Check `docs/` for any existing proposals, ADRs, specs, or project context files
    - Check `.project-context.md` (if present) for active project constraints and technology decisions
+   - Check whether this is an Atea project or Atea-branded digital experience. If the Orchestrator has confirmed Atea Design applies, load `skills/atea-design-compliance-skill.md` and include Atea compliance in proposal scope and risks.
    - Note: every confirmed infrastructure service removes a question; every gap adds one
 
 2. **Build a pre-loaded knowledge map:**
@@ -214,6 +215,7 @@ Your output MUST be a complete markdown document following this structure:
 - Integration requirements
 - Infrastructure needs
 - Security and compliance
+- Atea Design compliance requirements if `Atea Project: Yes` (brand/design system, accessibility, tone of voice, approval needs)
 
 ## Risks & Dependencies
 - Key risks with likelihood and impact

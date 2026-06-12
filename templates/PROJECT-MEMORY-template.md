@@ -20,6 +20,7 @@
 | **Current Sprint** | Sprint N / Not started |
 | **Next Gate** | Gate N — [gate description] |
 | **Overall Health** | 🟢 On track / 🟡 At risk / 🔴 Blocked |
+| **Atea Project** | Yes / No / Unknown — Atea Design applies only when Yes |
 
 ---
 
@@ -51,6 +52,7 @@
 
 | Date | Decision | Made by | Rationale |
 |------|----------|---------|-----------|
+| YYYY-MM-DD | Atea Design applies: Yes / No | Orchestrator / User | Required kickoff disclosure for all projects |
 | YYYY-MM-DD | [e.g. Use [DB option A] over [DB option B]] | BA Agent / User | [reason] |
 
 ---

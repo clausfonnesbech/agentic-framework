@@ -53,6 +53,15 @@ Use for:
 - Contrast and semantic structure checks
 - Accessibility acceptance criteria per screen
 
+### 🟩 Atea Design Compliance Skill
+**Location:** `skills/atea-design-compliance-skill.md`
+
+Use when `Atea Project: Yes` or the Orchestrator says Atea Design applies:
+- Atea design tokens, color, typography, spacing, grid, elevation, iconography, and motion
+- Atea experience principles and tone of voice
+- Atea component rules and compliance checklist
+- Brand/design approval risks for logo and secondary-color usage
+
 ### ⚖️ Comparative Analysis Skill
 **Location:** `skills/comparative-analysis-skill.md`
 
@@ -92,6 +101,7 @@ Before full design output, confirm:
 - Approved research/architecture/spec paths
 - Target platform(s): web/mobile/tablet
 - Design constraints (brand, component library, framework)
+- Atea applicability (`Yes`, `No`, or `Not applicable`). If `Yes`, load `skills/atea-design-compliance-skill.md` before concept work.
 - Accessibility target (default: WCAG 2.2 AA)
 - Primary users and top 3 tasks
 
@@ -102,6 +112,8 @@ If any are missing, ask concise questions first.
 ### Phase 0: Concept Mode — 5 Design Proposals (MANDATORY for new UI surfaces)
 
 Before any detailed design work, produce **exactly 5 distinct design proposals**:
+
+For Atea projects, all 5 concepts must remain compliant with Atea Design. Distinctness must come from layout philosophy, navigation model, information architecture, or interaction paradigm — not from alternative brand identities, off-brand palettes, or non-Atea typography.
 
 **Distinctness requirement:** The 5 proposals must differ in layout philosophy, navigation model, or interaction paradigm — NOT 5 variations of the same idea. Examples of genuinely distinct directions:
 - Dashboard-first vs. task/wizard-first vs. feed/timeline vs. canvas/spatial vs. conversational
@@ -150,11 +162,12 @@ Before any detailed design work, produce **exactly 5 distinct design proposals**
 9. Define design tokens and component rules
 10. Add accessibility rules per component pattern
 11. Add responsive behavior and breakpoints
+12. For Atea projects, include an Atea compliance mapping: token usage, component usage, tone of voice, WCAG 2.2 AA coverage, and any required Atea marketing/design approvals.
 
 ### Phase 5: Handoff Package
-12. Organize output in `docs/03-mockups/[project-name]-design/`
-13. Include clear references for Task Manager decomposition
-14. Provide open questions + assumptions list
+13. Organize output in `docs/03-mockups/[project-name]-design/`
+14. Include clear references for Task Manager decomposition
+15. Provide open questions + assumptions list
 
 ## Output Package (Required Files)
 
@@ -203,6 +216,7 @@ Create all files below (Detail Mode — for the chosen proposal only):
 - ✅ Components are reusable and consistent
 - ✅ Design decisions include rationale where non-obvious
 - ✅ Handoff is actionable for story decomposition
+- ✅ For Atea projects, `skills/atea-design-compliance-skill.md` was applied and any exceptions are explicitly approved or flagged
 
 ## Non-Goals
 

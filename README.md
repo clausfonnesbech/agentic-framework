@@ -19,13 +19,14 @@ A comprehensive, production-ready framework for orchestrating specialized AI age
 - **Security Agent**: Security scanning (Semgrep), CVE detection, GDPR compliance — blocking end-to-end gate before every release
 - **QA Lead**: Test strategy, automated testing (Playwright), story-level and sprint-level quality gates
 
-### 21 Reusable Skills
+### Reusable Skills
 Skills are modular markdown documents that agents load to enhance their capabilities:
 - **Security**: secure-coding, secrets-detection, dependency-security
 - **Code Quality**: code-review-checklist, test-case-design
 - **Planning**: sprint-planning, story-readiness-verification, backlog-planning-estimation
 - **Research**: market-research, comparative-analysis, technical-synthesis, source-evaluation
 - **Design**: ui-ux-research, accessibility-inclusive-design
+- **Brand/Client Compliance**: atea-design-compliance
 - **Architecture**: api-design, database-design, authentication-authorization, realtime-communication
 - **Workflow**: workflow-automation, file-storage-security
 - **Mindset**: curiosity
@@ -182,6 +183,8 @@ USER ASK → Orchestrator (Project Manager)
 ```
 
 Request triage: **Track A** (new project — full pipeline), **Track B** (enhancement — abbreviated pre-phase), **Track C** (small fix — straight to delivery loop). Quality gates are never skipped.
+
+Before triage, the Orchestrator discloses whether the work is an Atea project. If Atea Design applies, the agent team loads `skills/atea-design-compliance-skill.md` and enforces Atea brand, design-system, accessibility, component, and tone-of-voice requirements throughout proposal, UX/UI, implementation, inspection, and QA.
 
 ### Agent Coordination Pattern (Story-Level Loop)
 

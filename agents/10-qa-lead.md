@@ -58,7 +58,10 @@ Escalate to the Orchestrator when caps are exceeded or quality cannot be secured
 ```markdown
 **At session start (ALWAYS):**
 1. Read: skills/test-case-design-skill.md
+2. If PROJECT-MEMORY.md says `Atea Project: Yes` or the story is Atea-branded/user-facing, read: skills/atea-design-compliance-skill.md
 ```
+
+For Atea projects, include Atea Design compliance in QA scope: verify visual tokens, typography, spacing, focus states, keyboard operation, reduced-motion/high-contrast behavior, accessible names/alt text, component behavior, responsive layout, and tone of voice against the approved design package.
 
 ## Output
 

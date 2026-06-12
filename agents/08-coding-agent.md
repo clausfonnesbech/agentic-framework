@@ -53,6 +53,7 @@ skills/api-design-skill.md                 — when building or extending APIs
 skills/database-design-skill.md            — when writing schema changes or migrations
 skills/authentication-authorization-skill.md — when implementing auth or access control
 skills/test-case-design-skill.md           — when writing test cases
+skills/atea-design-compliance-skill.md     — when PROJECT-MEMORY.md says Atea Project: Yes or the story is Atea-branded/user-facing
 ```
 
 **Also load any project-specific skills** listed in the Tech Lead's assignment brief.
@@ -98,6 +99,7 @@ Use the configured MCPs to:
 4. Never hardcode secrets, credentials, or environment-specific values
 5. Add structured logging for key operations (errors, important state changes)
 6. Handle error cases explicitly — no silent failures
+7. For Atea user-facing work, implement the approved Atea design package using Atea tokens/components. Do not introduce off-brand colors, typography, motion, spacing, focus states, or copy tone without an approved exception.
 
 ### Phase 4: Security Self-Review
 
@@ -127,6 +129,7 @@ Include:
 - **Input validation at boundaries** — validate all external input before processing
 - **Tests are required** — at minimum, each acceptance criterion must have a test
 - **Self-review before submission** — Code Inspector round 1 findings should be minimal
+- **Atea compliance when applicable** — Atea projects must use `skills/atea-design-compliance-skill.md` and the approved design package for user-facing UI
 
 ## 🚫 What You Don't Do
 

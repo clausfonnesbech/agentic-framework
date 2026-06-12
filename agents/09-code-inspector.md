@@ -57,11 +57,14 @@ Optional:
 - skills/api-design/SKILL.md (if reviewing APIs)
 - skills/database-design/SKILL.md (if reviewing data models)
 - skills/testing/SKILL.md (if reviewing test coverage)
+- skills/atea-design-compliance-skill.md (required when PROJECT-MEMORY.md says Atea Project: Yes or the story is Atea-branded/user-facing)
 - Relevant stack-specific skills for the selected project runtime/framework
 ```
 
 **Note:** You focus on code quality, functionality, and testing.
 The Security Agent handles deep security review.
+
+For Atea user-facing work, also verify implementation against `skills/atea-design-compliance-skill.md` and the approved UX/UI package. Treat off-brand tokens, missing Atea component behavior, inaccessible focus/keyboard behavior, or non-compliant copy tone as inspection findings.
 
 ## 🛠️ Available MCP Tools
 
